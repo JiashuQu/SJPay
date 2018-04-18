@@ -4,7 +4,6 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -14,7 +13,6 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,16 +21,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.sohu.sdk.common.toolbox.LogUtils;
-import com.bumptech.glide.Glide;
 import com.sujin.sjpay.BuildConfig;
 import com.sujin.sjpay.R;
 import com.sujin.sjpay.android.ApiConstants;
-import com.sujin.sjpay.android.AppConstants;
 import com.sujin.sjpay.android.SJApplication;
 import com.sujin.sjpay.nohttp.HttpListener;
 import com.sujin.sjpay.protocol.UploadImgResponse;
 import com.sujin.sjpay.util.BitmapUtil;
-import com.sujin.sjpay.util.DialogUtil;
 import com.sujin.sjpay.util.StringUtil;
 import com.sujin.sjpay.util.ToastUtil;
 import com.sujin.sjpay.view.dialog.AuthenticateDialog;
@@ -252,7 +247,7 @@ public class AuthenticateActivity extends BaseActivity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        DialogUtil.showLoading(this, false);
+//        DialogUtil.showLoading(this, false);
         String path = StringUtil.EMPTY;
 
         if (resultCode == Activity.RESULT_OK) {
@@ -279,7 +274,7 @@ public class AuthenticateActivity extends BaseActivity {
                     }
                 }
             }
-            DialogUtil.dismisLoading();
+//            DialogUtil.dismisLoading();
             if (authenticateDialog != null) {
                 authenticateDialog.dismiss();
             }
