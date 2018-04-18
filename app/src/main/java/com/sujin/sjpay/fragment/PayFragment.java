@@ -330,7 +330,6 @@ public class PayFragment extends BaseFragment {
                     }
                     break;
                 case 2:
-                    click = true;
                     String receiveApiJson = response.get();
                     ReceiveApiResponse receiveApiResponse = getGson().fromJson(receiveApiJson, ReceiveApiResponse.class);
                     LogUtils.d("SJHttp", receiveApiResponse.getBackStatus());
@@ -339,8 +338,6 @@ public class PayFragment extends BaseFragment {
                         String payUrl = data.getPayUrl();
                         Intent intent = new Intent(getActivity(), WebActivity.class);
                         intent.putExtra("payUrl", payUrl);
-//                        intent.putExtra("payUrl", "http://api.sujintech.com/itapi/pay/success?backState=0&message=%E6%94%AF%E4%BB%98%E6%88%90%E5%8A%9F");
-//                        intent.putExtra("payUrl", "https://www.baidu.com/");
                         intent.putExtra("title", "付款");
                         startActivity(intent);
                     } else if (TextUtils.equals(receiveApiResponse.getBackStatus(), "-200")) {
