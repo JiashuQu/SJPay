@@ -352,6 +352,7 @@ public class PayFragment extends BaseFragment {
                     } else {
                         ToastUtil.show(receiveApiResponse.getMessage());
                     }
+                    click = true;
                     break;
                 case 3:
                     String payTypeJson = response.get();
@@ -438,18 +439,6 @@ public class PayFragment extends BaseFragment {
                     return;
                 }
 
-                float money = Float.parseFloat(payMoney);
-
-//                if (money > 10000) {
-//                    ToastUtil.show("无积分通道支付金额不能大于10000元");
-//                    return;
-//                }
-
-//                if (money < 500) {
-//                    ToastUtil.show("无积分通道支付金额不能小于500元");
-//                    return;
-//                }
-
                 bankCardNumber = etBankCardNumber.getText().toString().trim();
                 if (TextUtils.isEmpty(bankCardNumber)) {
                     ToastUtil.show("请选择支付卡");
@@ -458,27 +447,6 @@ public class PayFragment extends BaseFragment {
                 if (!StringUtil.checkBankCardNumber(bankCardNumber)) {
                     return;
                 }
-//                String earlyTime = timeNoIntegral.substring(0, 5);
-//                String lateTime = timeNoIntegral.substring(6, 11);
-//                SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
-//                Date curDate = new Date(System.currentTimeMillis());
-//                String sysTime = formatter.format(curDate);
-//                boolean earlyResult = false;
-//                boolean lateResult = true;
-//                try {
-//                    earlyResult = StringUtil.dateCompare(sysTime, earlyTime);
-//                    lateResult = StringUtil.dateCompare(sysTime, lateTime);
-//                } catch (ParseException e) {
-//                    e.printStackTrace();
-//                }
-//                if (!earlyResult) {
-//                    ToastUtil.show("未到通道开启时间");
-//                    return;
-//                }
-//                if (lateResult) {
-//                    ToastUtil.show("通道已关闭，请明天再试");
-//                    return;
-//                }
                 payType = noIntegralPayType;
                 if (click) {
                     getReceiveApi(userId, payMoney, bankID, payType);
@@ -505,27 +473,6 @@ public class PayFragment extends BaseFragment {
                 if (!StringUtil.checkBankCardNumber(bankCardNumber)) {
                     return;
                 }
-//                String earlyTimeIntegral = timeIntegral.substring(0, 5);
-//                String lateTimeIntegral = timeIntegral.substring(6, 11);
-//                SimpleDateFormat formatterIntegral = new SimpleDateFormat("HH:mm");
-//                Date curDateIntegral = new Date(System.currentTimeMillis());
-//                String sysTimeIntegral = formatterIntegral.format(curDateIntegral);
-//                boolean earlyResultIntegral = false;
-//                boolean lateResultIntegral = true;
-//                try {
-//                    earlyResultIntegral = StringUtil.dateCompare(sysTimeIntegral, earlyTimeIntegral);
-//                    lateResultIntegral = StringUtil.dateCompare(sysTimeIntegral, lateTimeIntegral);
-//                } catch (ParseException e) {
-//                    e.printStackTrace();
-//                }
-//                if (!earlyResultIntegral) {
-//                    ToastUtil.show("未到通道开启时间");
-//                    return;
-//                }
-//                if (lateResultIntegral) {
-//                    ToastUtil.show("通道已关闭，请明天再试");
-//                    return;
-//                }
                 payType = integralPayType;
                 if (click) {
                     getReceiveApi(userId, payMoney, bankID, payType);
