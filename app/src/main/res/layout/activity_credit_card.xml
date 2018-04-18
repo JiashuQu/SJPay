@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_EFEFEF"
+    android:orientation="vertical">
+
+    <com.sujin.sjpay.view.TitleBarView
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        app:bar_title="@string/band_credit_card" />
+
+    <ScrollView style="@style/scrollView_common">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/et_bank_card_number"
+                style="@style/edit_common"
+                android:layout_marginTop="@dimen/marginLeft_login"
+                android:hint="@string/input_card_number"
+                android:inputType="number"
+                android:maxLength="25" />
+
+            <com.sujin.sjpay.view.BankCellView
+                android:id="@+id/bankcell_band_card"
+                android:layout_marginTop="@dimen/marginLeft_login"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:paddingLeft="@dimen/padding_horizontal"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginRight="@dimen/margin"
+                android:background="@drawable/bg_white_rect"/>
+
+            <EditText
+                android:id="@+id/et_bank_date"
+                style="@style/edit_common"
+                android:layout_marginTop="@dimen/marginLeft_login"
+                android:hint="@string/hint_bank_date"
+                android:inputType="number"
+                android:maxLength="4" />
+
+            <EditText
+                android:id="@+id/et_bank_cvn"
+                style="@style/edit_common"
+                android:layout_marginTop="@dimen/marginLeft_login"
+                android:hint="@string/hint_bank_cvn"
+                android:inputType="number"
+                android:maxLength="3" />
+
+            <EditText
+                android:id="@+id/et_bank_phone_number"
+                style="@style/edit_common"
+                android:layout_marginTop="@dimen/marginLeft_login"
+                android:hint="@string/hint_login_phone_num"
+                android:inputType="number"
+                android:maxLength="11" />
+
+            <TextView
+                android:id="@+id/tv_confirm"
+                style="@style/bt_normal"
+                android:text="@string/band" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

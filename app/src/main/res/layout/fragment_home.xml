@@ -1,0 +1,140 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.sujin.sjpay.fragment.HomeFragment"
+    android:background="@color/white">
+
+    <com.youth.banner.Banner
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="165dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50dp"
+        android:background="@color/gray_EFEFEF"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/_20dp"
+        android:text="@string/activity"
+        android:textSize="@dimen/_16sp"
+        android:textColor="@color/orange"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_150dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1.0">
+
+            <ImageView
+                android:id="@+id/iv_loan"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:padding="@dimen/_10dp"
+                android:src="@drawable/online_loan" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="#88DBDBDB"
+                android:text="@string/loan"
+                android:padding="6dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1.0">
+
+            <ImageView
+                android:id="@+id/iv_get_card"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:padding="@dimen/_10dp"
+                android:src="@drawable/get_card"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="#88DBDBDB"
+                android:text="@string/get_card"
+                android:padding="6dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_150dp"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1.0">
+
+            <ImageView
+                android:id="@+id/iv_card_raiders"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:padding="@dimen/_10dp"
+                android:src="@drawable/card_raiders"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#88DBDBDB"
+                android:gravity="center"
+                android:padding="6dp"
+                android:text="@string/card_raiders" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1.0">
+
+
+            <ImageView
+                android:id="@+id/iv_pay_raiders"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:padding="@dimen/_10dp"
+                android:src="@drawable/pay_raiders"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="#88DBDBDB"
+                android:text="@string/pay_raiders"
+                android:padding="6dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/activity"/>-->
+
+</LinearLayout>

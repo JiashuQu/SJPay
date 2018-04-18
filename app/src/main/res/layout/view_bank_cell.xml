@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <TextView
+        android:id="@+id/tv_view_bank_select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/textSize_34px"
+        android:textColor="@color/gray_DBDBDB"
+        android:text="@string/select_bank_belong"
+        android:layout_centerVertical="true"
+        android:visibility="visible"/>
+
+    <ImageView
+        android:id="@+id/img_my_card_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/icon_add"
+        android:visibility="gone"
+        />
+
+    <LinearLayout
+        android:id="@+id/ll_my_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/img_my_card_icon"
+        android:gravity="center_vertical"
+        android:layout_centerVertical="true">
+
+        <TextView
+            android:id="@+id/tv_my_card_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:textColor="@color/black_262626"
+            android:textSize="@dimen/textSize_32px"
+            tools:text="1231543513"/>
+
+        <TextView
+            android:id="@+id/tv_my_card_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="3dp"
+            android:textSize="@dimen/textSize_22px"
+            android:textColor="@color/gray_A3A3A3"
+            tools:text="13212132"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/img_my_card_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/next_arrow_tip"/>
+
+    <TextView
+        android:id="@+id/tv_my_card_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:textColor="@color/blue_3897F0"
+        android:text="@string/transfer_recharge"
+        android:visibility="gone"/>
+
+</RelativeLayout>

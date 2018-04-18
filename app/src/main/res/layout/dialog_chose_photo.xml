@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:id="@+id/pop_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100dp"
+            android:layout_marginLeft="20dip"
+            android:layout_marginRight="20dip"
+            android:orientation="vertical"
+            android:background="@drawable/bg_white_corners_10dp">
+
+            <Button
+                android:id="@+id/btn_pick_photo"
+                android:layout_marginTop="5dip"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.0"
+                android:text="@string/chose_photo"
+                android:textColor="@color/blue_3897F0"
+                android:background="@null"
+                />
+
+            <View style="@style/view_1dp_line_horizontal"/>
+
+            <Button
+                android:id="@+id/btn_take_photo"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.0"
+                android:text="@string/take_photo"
+                android:textColor="@color/blue_3897F0"
+                android:background="@null"
+                />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_marginLeft="20dip"
+            android:layout_marginRight="20dip"
+            android:layout_marginTop="15dip"
+            android:layout_marginBottom="15dip"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/cancel"
+            android:background="@drawable/bg_white_corners_10dp"
+            />
+    </LinearLayout>
+</RelativeLayout>

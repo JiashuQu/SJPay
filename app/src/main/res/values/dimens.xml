@@ -1,0 +1,96 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="title_height">44dp</dimen>
+    <dimen name="tab_layout_height">48dp</dimen>
+
+    <!-- 统一的间隔 -->
+    <dimen name="margin">20dp</dimen>
+    <dimen name="fresh_margin">@dimen/_10dp</dimen>
+    <dimen name="padding_horizontal">15dp</dimen>
+
+    <dimen name="marginHorizontal_login">40dp</dimen>
+    <dimen name="marginLeft_login">20dp</dimen>
+    <dimen name="marginTop_login">15dp</dimen>
+
+    <dimen name="marginLeft_register">30dp</dimen>
+    <dimen name="marginTop_register">10dp</dimen>
+
+    <dimen name="textSize_common">17sp</dimen>
+    <dimen name="marginLeft_invest_list">10dp</dimen>
+    <dimen name="margin_product_detail_eight">8dp</dimen>
+    <dimen name="margin_product_detail_36">36dp</dimen>
+    <dimen name="marginTop_invest_income_text">3dp</dimen>
+
+    <!-- 字体大小 -->
+    <dimen name="textSize_80px">40sp</dimen> <!-- 38.38 -->
+    <dimen name="textSize_60px">30sp</dimen> <!-- 28.79 -->
+    <dimen name="textSize_54px">27sp</dimen> <!-- 25.91 -->
+    <dimen name="textSize_48px">24sp</dimen> <!-- 23.03 -->
+    <dimen name="textSize_40px">20sp</dimen> <!-- 19.00 -->
+    <dimen name="textSize_36px">18sp</dimen> <!-- 18.00 -->
+    <dimen name="textSize_34px">17sp</dimen> <!-- 16.31 -->
+    <dimen name="textSize_32px">16sp</dimen> <!-- 15.36 -->
+    <dimen name="textSize_28px">14sp</dimen> <!-- 15.36 -->
+    <dimen name="textSize_26px">13sp</dimen> <!-- 12.48 -->
+    <dimen name="textSize_24px">12sp</dimen> <!-- 11.52 -->
+    <dimen name="textSize_22px">11sp</dimen> <!-- 10.56 -->
+    <dimen name="textSize_20px">10sp</dimen> <!-- 10.56 -->
+    <dimen name="textSize_18px">9sp</dimen>
+    <dimen name="textSize_16px">8sp</dimen>
+
+    <!-- 记录详情页进度 -->
+    <dimen name="margin_horizontal_record_detail">50dp</dimen>
+    <dimen name="size_record_img">26dp</dimen>
+
+    <!-- 产品详情页进度条size -->
+    <dimen name="size_product_detail_thumb">8dp</dimen>
+
+    <!-- 支付键盘行高 -->
+    <dimen name="keyboard_height">50dp</dimen>
+
+
+    <!-- ↓手势密码↓-->
+    <dimen name="_0dp">0dp</dimen>
+    <dimen name="_0.5dp">0.5dp</dimen>
+    <dimen name="_1dp">1dp</dimen>
+    <dimen name="_2dp">2dp</dimen>
+    <dimen name="_5dp">5dp</dimen>
+    <dimen name="_8dp">8dp</dimen>
+    <dimen name="_10dp">10dp</dimen>
+    <dimen name="_15dp">15dp</dimen>
+    <dimen name="_20dp">20dp</dimen>
+    <dimen name="_30dp">30dp</dimen>
+    <dimen name="_40dp">40dp</dimen>
+    <dimen name="_50dp">50dp</dimen>
+    <dimen name="_60dp">60dp</dimen>
+    <dimen name="_80dp">80dp</dimen>
+    <dimen name="_100dp">100dp</dimen>
+    <dimen name="_150dp">150dp</dimen>
+    <dimen name="_270dp">270dp</dimen>
+    <dimen name="_300dp">300dp</dimen>
+
+    <dimen name="_18sp">18sp</dimen>
+    <dimen name="_16sp">16sp</dimen>
+    <dimen name="_14sp">14sp</dimen>
+    <dimen name="_11sp">11sp</dimen>
+    <!-- ↑手势密码↑-->
+
+    <dimen name="bank_icon_size">38dp</dimen>
+
+    <!-- 置业订单确认页统一的margin,padding -->
+    <dimen name="order_confirm_margin">15dp</dimen>
+    <dimen name="order_confirm_textSize">15sp</dimen>
+    <dimen name="custom_item">43dp</dimen>
+    <dimen name="dialog_edit_height">39dp</dimen>
+    <dimen name="dialog_padding">19dp</dimen>
+    <dimen name="custom_left">15dp</dimen>
+    <dimen name="custom_right">15dp</dimen>
+    <dimen name="view_line_h">0.5dp</dimen>
+
+
+    <!--邀请页-->
+    <dimen name="record_margin">15dp</dimen>
+</resources>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_EFEFEF"
+    android:orientation="vertical">
+
+    <com.sujin.sjpay.view.TitleBarView
+        android:id="@+id/tb_login_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        app:bar_title="@string/quick_agreement" />
+
+    <TextView
+        android:id="@+id/tv_bank_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20dp"
+        android:layout_gravity="center"
+        android:textColor="@color/black_262626"
+        android:textSize="@dimen/_18sp"
+        android:text="中国银行"/>
+
+    <TextView
+        android:id="@+id/tv_bankcard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10dp"
+        android:layout_gravity="center"
+        android:textColor="@color/gray_A3A3A3"
+        android:textSize="@dimen/_16sp"
+        android:text="620634324****321312"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:background="@drawable/bg_white_rect"
+        >
+
+        <EditText
+            android:id="@+id/et_sms_code"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            android:background="@null"
+            android:paddingLeft="@dimen/padding_horizontal"
+            android:inputType="number"
+            android:textSize="@dimen/textSize_34px"
+            android:textColorHint="@color/gray_DBDBDB"
+            android:hint="@string/input_sms_code"
+            android:maxLength="6"/>
+
+        <TextView
+            android:id="@+id/tv_get_sms_code"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/padding_horizontal"
+            android:gravity="center"
+            android:text="@string/get_sms_code"
+            android:textColor="@color/blue_3897F0"
+            android:textSize="@dimen/textSize_34px"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_next"
+        android:text="@string/open"
+        style="@style/bt_normal"
+        />
+
+</LinearLayout>

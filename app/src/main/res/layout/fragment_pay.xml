@@ -1,0 +1,327 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/gray_EFEFEF">
+
+    <com.sujin.sjpay.view.TitleBarView
+        android:id="@+id/tb_pay_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        app:bar_title="@string/get_pay"
+        app:bar_type="1"
+        app:bar_have_back="false"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/et_pay_money"
+                style="@style/edit_common"
+                android:layout_marginTop="@dimen/marginLeft_login"
+                android:hint="@string/hint_pay_money"
+                android:inputType="number"
+                android:maxLength="8"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_10dp"
+                android:textColor="@color/gray_A3A3A3"
+                android:layout_marginTop="@dimen/_10dp"
+                android:layout_marginLeft="@dimen/_20dp"
+                android:text="*收款金额不要输入整数，如:1000,20000等整数"/>
+
+            <LinearLayout
+                android:id="@+id/ll_add_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/marginLeft_login">
+
+                <EditText
+                    android:id="@+id/et_bank_card_number"
+                    style="@style/edit_common"
+                    android:hint="@string/select_pay_card"
+                    android:inputType="number"
+                    android:maxLength="20"/>
+
+                <ImageView
+                    android:id="@+id/iv_add_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="-50dp"
+                    android:src="@drawable/icon_add"
+                    android:layout_gravity="center_vertical"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_no_integral_aisle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20dp"
+                android:layout_marginLeft="@dimen/_20dp"
+                android:layout_marginRight="@dimen/_20dp"
+                android:orientation="vertical"
+                android:background="@drawable/bg_white_rect">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_integral_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:layout_marginLeft="@dimen/_10dp"
+                        android:textColor="@color/orange"/>
+
+                    <View
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="@dimen/_0dp"
+                        android:layout_weight="1.0"/>
+
+                    <TextView
+                        android:id="@+id/tv_no_integral_fee_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="费用：0.00元"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:layout_marginRight="@dimen/_10dp"
+                        android:textColor="@color/gray_A3A3A3"
+                        android:textSize="12sp"/>
+
+                </LinearLayout>
+
+                <View
+                    style="@style/view_1px_line_horizontal"
+                    android:layout_marginTop="@dimen/_5dp"
+                    android:background="@color/gray_A3A3A3" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_no_integral_quota"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="额度："
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:layout_marginLeft="@dimen/_10dp"
+                        android:textColor="@color/gray_A3A3A3"
+                        android:textSize="12sp"/>
+
+                    <View
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="@dimen/_0dp"
+                        android:layout_weight="1.0"/>
+
+                    <TextView
+                        android:id="@+id/tv_no_integral_fee"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="费率："
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:layout_marginRight="@dimen/_10dp"
+                        android:textColor="@color/gray_A3A3A3"
+                        android:textSize="12sp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_no_integral_clearing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="结算："
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:layout_marginLeft="@dimen/_10dp"
+                        android:textColor="@color/gray_A3A3A3"
+                        android:textSize="12sp"/>
+
+                    <View
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="@dimen/_0dp"
+                        android:layout_weight="1.0"/>
+
+                    <TextView
+                        android:id="@+id/tv_no_integral_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="时间："
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:layout_marginRight="@dimen/_10dp"
+                        android:textColor="@color/gray_A3A3A3"
+                        android:textSize="12sp"/>
+
+                </LinearLayout>
+
+                <View
+                    style="@style/view_1px_line_horizontal"
+                    android:layout_marginTop="@dimen/_5dp"
+                    android:background="@color/gray_A3A3A3" />
+
+                <TextView
+                    android:id="@+id/tv_no_integral_tip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5dp"
+                    android:layout_marginRight="@dimen/_10dp"
+                    android:layout_marginLeft="@dimen/_10dp"
+                    android:layout_marginBottom="@dimen/_5dp"
+                    android:text="提示："
+                    android:textColor="@color/gray_A3A3A3"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_integral_aisle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20dp"
+                android:layout_marginLeft="@dimen/_20dp"
+                android:layout_marginRight="@dimen/_20dp"
+                android:orientation="vertical"
+                android:background="@drawable/bg_white_rect">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_no_integral_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:layout_marginLeft="@dimen/_10dp"
+                        android:textColor="@color/orange"/>
+
+                    <View
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="@dimen/_0dp"
+                        android:layout_weight="1.0"/>
+
+                    <TextView
+                        android:id="@+id/tv_integral_fee_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="费用：0.00元"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:layout_marginRight="@dimen/_10dp"
+                        android:textColor="@color/gray_A3A3A3"
+                        android:textSize="12sp"/>
+
+                </LinearLayout>
+
+                <View
+                    style="@style/view_1px_line_horizontal"
+                    android:layout_marginTop="@dimen/_5dp"
+                    android:background="@color/gray_A3A3A3" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_integral_quota"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="额度："
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:layout_marginLeft="@dimen/_10dp"
+                        android:textColor="@color/gray_A3A3A3"
+                        android:textSize="12sp"/>
+
+                    <View
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="@dimen/_0dp"
+                        android:layout_weight="1.0"/>
+
+                    <TextView
+                        android:id="@+id/tv_integral_fee"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="费率："
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:layout_marginRight="@dimen/_10dp"
+                        android:textColor="@color/gray_A3A3A3"
+                        android:textSize="12sp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_integral_clearing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="结算："
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:layout_marginLeft="@dimen/_10dp"
+                        android:textColor="@color/gray_A3A3A3"
+                        android:textSize="12sp"/>
+
+                    <View
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="@dimen/_0dp"
+                        android:layout_weight="1.0"/>
+
+                    <TextView
+                        android:id="@+id/tv_integral_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="时间："
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:layout_marginRight="@dimen/_10dp"
+                        android:textColor="@color/gray_A3A3A3"
+                        android:textSize="12sp"/>
+
+                </LinearLayout>
+
+                <View
+                    style="@style/view_1px_line_horizontal"
+                    android:layout_marginTop="@dimen/_5dp"
+                    android:background="@color/gray_A3A3A3" />
+
+                <TextView
+                    android:id="@+id/tv_integral_tip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5dp"
+                    android:layout_marginRight="@dimen/_10dp"
+                    android:layout_marginLeft="@dimen/_10dp"
+                    android:layout_marginBottom="@dimen/_5dp"
+                    android:text="提示："
+                    android:textColor="@color/gray_A3A3A3"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

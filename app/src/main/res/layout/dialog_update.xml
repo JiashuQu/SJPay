@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="278dp"
+        android:layout_height="360dp"
+        >
+
+        <ImageView
+            android:id="@+id/img_update_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/update_bg" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2.3"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_update_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="190dp"
+                    android:layout_weight="2.0"
+                    android:background="@color/white"
+                    android:textColor="@color/black_262626"
+                    android:text="1.优化了支付流程；\n2.优化了支付流程；\n3.优化了支付流程；"
+                    android:textSize="15sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray_DEDEDE" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_update_now"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/marginLeft_invest_list"
+                android:layout_weight="0.3"
+                android:background="@color/white"
+                android:text="@string/update_now"
+                android:textColor="@color/blue_3897F0"
+                android:textSize="19sp" />
+
+        </LinearLayout>
+    </FrameLayout>
+
+
+    <View
+        android:layout_width="2dp"
+        android:layout_height="60dp"
+        android:background="@color/white" />
+
+    <ImageView
+        android:id="@+id/iv_update_close"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/update_close" />
+
+</LinearLayout>

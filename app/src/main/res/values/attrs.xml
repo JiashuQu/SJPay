@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="WebViewBase">
+
+        <attr name="show_progress" format="boolean" />
+
+    </declare-styleable>
+
+    <declare-styleable name="TitleBarView">
+        <!-- TitleBar类型（类中定义） -->
+        <attr name="bar_type" format="integer" />
+        <!-- 标题 -->
+        <attr name="bar_title" format="string" />
+        <!-- 是否有back键（默认有true） -->
+        <attr name="bar_have_back" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="EditLifeItemView">
+        <!-- 主图图标 -->
+        <attr name="mainImage" format="reference" />
+        <attr name="title" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="SnapUpCountDownTimerView">
+        <attr name="viewSize" format="dimension"/>
+        <attr name="type" format="integer"/>
+    </declare-styleable>
+</resources>

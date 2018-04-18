@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFFFF</color>
+    <color name="white_77FFFFFF">#77FFFFFF</color>
+    <color name="transparent">#00000000</color> //透明
+    <color name="transparent_770000">#77000000</color> //透明
+    <color name="color_titlebar_line">#FFB1B1B1</color>
+    <color name="gray_E5E5E5">#FFE5E5E5</color>
+    <color name="gray_FAFAFA">#FFFAFAFA</color>
+    <color name="gray_DBDBDB">#FFDBDBDB</color>
+    <color name="gray_DEDEDE">#FFDEDEDE</color>
+    <color name="gray_EFEFEF">#FFEFEFEF</color>
+    <color name="gray_EEEEEE">#FFEEEEEE</color>
+    <color name="gray_E6E6E6">#FFE6E6E6</color>
+    <color name="gray_F9F9F9">#FFF9F9F9</color>
+    <color name="gray_A3A3A3">#FFA3A3A3</color>
+    <color name="gray_262626">#FF262626</color>
+    <color name="gray_999999">#FF999999</color>
+    <color name="gray_B2B2B2">#FFB2B2B2</color>
+    <color name="gray_CCCCCC">#FFCCCCCC</color>
+    <color name="gray_DDDDDD">#FFDDDDDD</color>
+    <color name="gray_7D7D7D">#DD7D7D7D</color>
+    <color name="gray_F4F4F4">#DDF4F4F4</color>
+    <color name="green_70C050">#FF70C050</color>
+    <color name="green_B4C466">#FF70C050</color>
+    <!--<color name="orange">#FFFFA336</color>-->
+    <color name="orange">#FFFE2D55</color>
+    <color name="blue_3897F0">#FF3897F0</color>
+    <color name="blue_D0E6F6">#FFD0E6F6</color>
+    <color name="blue_C1D7EA">#FFC1D7EA</color>
+    <color name="blue_689AFF">#FF689AFF</color>
+    <color name="blue_D9EEFF">#FFD9EEFF</color>
+    <color name="blue_3BA8FF">#FF3BA8FF</color>
+    <color name="color_white_F4F4F4">#FFF4F4F4</color>
+    <color name="black_262626">#FF262626</color>
+    <color name="black_333333">#FF333333</color>
+    <color name="red_FF653B">#FFFF653B</color>
+    <color name="red_E85045">#FFE85045</color>
+    <color name="red_E9544B">#FFE9544B</color>
+    <color name="red_E0690C">#FFE0690C</color>
+    <color name="red_B61020">#FFB61020</color>
+    <color name="red_D72F2F">#FFD72F2F</color>
+    <color name="red_DC2222">#FFDC2222</color>
+    <color name="red_FF0036">#FFFF0036</color>
+    <color name="orange_E1690D">#FFE1690D</color>
+    <color name="orange_FD9821">#FFFD9821</color>
+    <color name="orange_FFD4A1">#FFFFD4A1</color>
+    <color name="orange_F9E3C9">#FFF9E3C9</color>
+    <color name="orange_F86B23">#FFF86B23</color>
+    <color name="orange_FFA336">#FFFFA336</color>
+    <color name="grey_f5f5f5">#f5f5f5</color>
+
+    <!-- ↓手势密码↓-->
+    <color name="grey_f6f6f6">#f6f6f6</color>
+    <color name="grey_a5a5a5">#A5A5A5</color>
+    <color name="grey_dde1e7">#DDE1E7</color>
+    <color name="red_f4333c">#F4333C</color>
+    <!-- ↑手势密码↑-->
+
+    <!--置业相关-->
+    <!-- 支付结果页 -->
+    <color name="colorSuccess">#FF5DB354</color>
+    <color name="colorFail">#FFE5341D</color>
+    <color name="gray_F0F0F0">#FFF0F0F0</color>
+    <color name="colorCrowdfundingBG">#dcdddd</color>
+    <color name="c_33">#333333</color>
+    <color name="c_aa">#aaaaaa</color>
+    <!-- 浅背景色 -->
+    <color name="JD_lightBackground">#f2f1ef</color>
+    <!-- 线条颜色 -->
+    <color name="view_line">#d1cfca</color>
+
+    <!-- SnapUpCountDownTimerView -->
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+</resources>

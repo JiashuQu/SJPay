@@ -1,0 +1,74 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="com.sujin.sjpay.activity.MyInfoActivity"
+    android:background="@color/gray_EFEFEF">
+
+    <com.sujin.sjpay.view.TitleBarView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        app:bar_title="@string/about_us" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_30dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_30dp"
+        android:text="@string/sj_info"
+        android:textColor="@color/black_262626"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_30dp"
+        android:text="@string/wx_info"
+        android:textColor="@color/black_262626"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10dp"
+        android:layout_marginLeft="@dimen/_30dp"
+        android:text="@string/wx_service"
+        android:textColor="@color/black_262626"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/tv_app_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10dp"
+        android:layout_marginLeft="@dimen/_30dp"
+        android:text="@string/app_version"
+        android:textColor="@color/black_262626"
+        android:textSize="14sp"/>
+
+    <View
+        android:layout_weight="1.0"
+        android:layout_height="@dimen/_0dp"
+        android:layout_width="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_security_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        android:background="@drawable/bg_orange_rect"
+        android:gravity="center"
+        android:padding="@dimen/_10dp"
+        android:text="@string/logout"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textSize_40px" />
+
+</LinearLayout>

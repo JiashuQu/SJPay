@@ -1,0 +1,78 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/gray_EFEFEF">
+
+    <com.sujin.sjpay.view.TitleBarView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        app:bar_title="@string/fee_info" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/_20dp"
+        >
+
+        <TextView
+            style="@style/fee_info"
+            android:text="@string/transaction_type"/>
+
+        <TextView
+            style="@style/fee_info"
+            android:text="@string/normal_fee"/>
+
+        <TextView
+            style="@style/fee_info"
+            android:text="@string/vip_fee"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/_20dp"
+        >
+
+        <TextView
+            style="@style/fee_info2"
+            android:text="@string/have_integral"/>
+
+        <TextView
+            style="@style/fee_info2"
+            android:text="@string/normal_fee_num"/>
+
+        <TextView
+            style="@style/fee_info2"
+            android:text="@string/vip_fee_num"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/_20dp"
+        >
+
+        <TextView
+            style="@style/fee_info2"
+            android:text="@string/no_integral"/>
+
+        <TextView
+            style="@style/fee_info2"
+            android:text="@string/normal_no_integral_fee_num"/>
+
+        <TextView
+            style="@style/fee_info2"
+            android:text="@string/vip_no_integral_fee_num"/>
+
+    </LinearLayout>
+
+</LinearLayout>

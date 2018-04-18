@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sujin.sjpay">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+    <application
+        android:name=".android.SJApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <activity
+            android:name=".activity.OpenActivity"
+            android:theme="@style/White">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.MainActivity" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.FindPasswordActivity" />
+        <activity android:name=".activity.SetPasswordActivity" />
+        <activity android:name=".activity.MyInfoActivity" />
+        <activity android:name=".activity.AuthenticateActivity" />
+        <activity android:name=".activity.BandCardActivity" />
+        <activity android:name=".activity.SelectAddressActivity" />
+        <activity android:name=".activity.SelectBankActivity" />
+        <activity android:name=".activity.WebActivity" />
+        <activity android:name=".activity.ChoseBankCardActivity" />
+        <activity android:name=".activity.SelectPayBankActivity" />
+        <activity
+            android:name=".activity.MySecretActivity"
+            android:label="@string/title_activity_my_secret" />
+        <activity android:name=".activity.ChangePasswordActivity" />
+        <activity android:name=".activity.AboutUsActivity" />
+        <activity android:name=".activity.PayListActivity" />
+        <activity android:name=".activity.CreditCardActivity" />
+        <activity android:name=".activity.FeeInfoActivity" />
+        <activity android:name=".activity.QuickAgreementActivity"></activity>
+    </application>
+
+</manifest>

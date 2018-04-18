@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/red_FF653B">
+
+    <com.sujin.sjpay.view.TitleBarView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        app:bar_title="@string/register"/>
+
+    <ImageView
+        android:id="@+id/img_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_0dp"
+        android:layout_weight="1.0"/>
+
+    <EditText
+        android:id="@+id/edit_register_phone_num"
+        style="@style/edit_register"
+        android:hint="@string/hint_register_phone_num"
+        android:inputType="number"
+        android:maxLength="11"
+        android:layout_marginTop="@dimen/_20dp"
+        />
+
+    <LinearLayout
+        style="@style/edit_register"
+        android:layout_marginTop="@dimen/margin">
+
+        <EditText
+            android:id="@+id/edit_register_img_code"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:maxLength="6"
+            android:hint="@string/input_img_code"
+            android:textColorHint="@color/gray_DBDBDB"
+            android:textSize="@dimen/textSize_common" />
+
+        <ImageView
+            android:id="@+id/tv_register_code_get"
+            android:layout_width="@dimen/_100dp"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/edit_register"
+        android:layout_marginTop="@dimen/margin">
+
+        <EditText
+            android:id="@+id/edit_register_sms"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:inputType="number"
+            android:maxLength="6"
+            android:hint="@string/input_sms_code"
+            android:textColorHint="@color/gray_DBDBDB"
+            android:textSize="@dimen/textSize_common" />
+
+        <TextView
+            android:id="@+id/tv_register_sms_get"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/get_sms_code"
+            android:textColor="@color/blue_3897F0"
+            android:textSize="@dimen/textSize_common" />
+
+    </LinearLayout>
+
+    <com.sujin.sjpay.view.PasswordEditText
+        android:id="@+id/edit_register_password"
+        style="@style/edit_register"
+        android:hint="@string/hint_register_password"
+        android:layout_marginTop="@dimen/_20dp"
+        android:maxLength="18"
+        android:inputType="textPassword"/>
+
+    <EditText
+        android:id="@+id/edit_register_invite_code"
+        style="@style/edit_register"
+        android:hint="@string/hint_invite_code"
+        android:layout_marginTop="@dimen/_20dp"
+        android:maxLength="11"
+        android:inputType="number"/>
+
+    <TextView
+        android:id="@+id/tv_register"
+        style="@style/edit_register"
+        android:gravity="center"
+        android:textColor="@color/red_E85045"
+        android:text="@string/immediately_register"
+        android:layout_marginTop="@dimen/_20dp"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30dp"
+        android:background="@color/transparent"/>
+
+
+</LinearLayout>

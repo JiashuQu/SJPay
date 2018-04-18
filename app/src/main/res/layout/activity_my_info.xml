@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="com.sujin.sjpay.activity.MyInfoActivity"
+    android:background="@color/gray_EFEFEF">
+
+    <com.sujin.sjpay.view.TitleBarView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        app:bar_title="@string/my_info" />
+
+    <RelativeLayout style="@style/rl_my"
+        android:layout_marginTop="@dimen/_20dp">
+
+        <TextView
+            style="@style/tv_security"
+            android:text="@string/name" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/tv_security_right"/>
+
+    </RelativeLayout>
+    <View style="@style/view_1px_line_horizontal" />
+    <RelativeLayout style="@style/rl_my">
+
+        <TextView
+            style="@style/tv_security"
+            android:text="@string/phone" />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            style="@style/tv_security_right"/>
+
+    </RelativeLayout>
+    <View style="@style/view_1px_line_horizontal" />
+    <RelativeLayout style="@style/rl_my">
+
+        <TextView
+            style="@style/tv_security"
+            android:text="@string/level" />
+
+        <TextView
+            android:id="@+id/tv_level"
+            style="@style/tv_security_right"/>
+
+    </RelativeLayout>
+    <View style="@style/view_1px_line_horizontal" />
+    <RelativeLayout style="@style/rl_my">
+
+        <TextView
+            style="@style/tv_security"
+            android:text="@string/my_fee" />
+
+        <TextView
+            android:id="@+id/tv_my_feel"
+            style="@style/tv_security_right"
+            android:textSize="12sp"/>
+
+    </RelativeLayout>
+    <View style="@style/view_1px_line_horizontal" />
+    <RelativeLayout style="@style/rl_my">
+
+        <TextView
+            style="@style/tv_security"
+            android:text="@string/id_card" />
+
+        <TextView
+            android:id="@+id/tv_id_card"
+            style="@style/tv_security_right"/>
+
+    </RelativeLayout>
+    <View style="@style/view_1px_line_horizontal" />
+    <RelativeLayout style="@style/rl_my">
+
+        <TextView
+            style="@style/tv_security"
+            android:text="@string/bankcard" />
+
+        <TextView
+            android:id="@+id/tv_bankcard"
+            style="@style/tv_security_right"/>
+
+    </RelativeLayout>
+    <View style="@style/view_1px_line_horizontal" />
+    <RelativeLayout style="@style/rl_my">
+
+        <TextView
+            style="@style/tv_security"
+            android:text="@string/bank" />
+
+        <TextView
+            android:id="@+id/tv_bankcard_belong"
+            style="@style/tv_security_right"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
