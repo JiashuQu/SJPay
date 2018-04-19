@@ -83,7 +83,7 @@ public class RegisterActivity extends BaseActivity implements SJApplication.OnTi
         request.add("version", "1.0.0");
 //        request(0, request, httpListener, md5, true, true);
         Glide.with(this).load(request.url()).into(tvRegisterCodeGet);
-        com.lidroid.xutils.util.LogUtils.d(uuId + "---" + s + "---"  + md5);
+        com.lidroid.xutils.util.LogUtils.d(uuId + "---" + s + "---"  + md5 + "===" + request.url());
     }
 
     //获取短验

@@ -280,7 +280,7 @@ public class PayFragment extends BaseFragment {
         request.add("BankID", bankID);
         request.add("PayType", payType);
         LogUtils.d("SJHttp", "UserId=" + userId + "&Amount=" + amount + "&BankID=" + bankID + "---" + s + "---" + md5);
-        request(2, request, httpListener, md5, true, true);
+        request(2, request, httpListener, md5, false, true);
     }
 
     /**

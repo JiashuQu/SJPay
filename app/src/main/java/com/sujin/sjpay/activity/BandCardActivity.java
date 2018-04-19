@@ -9,6 +9,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
@@ -30,6 +32,7 @@ import com.sujin.sjpay.nohttp.HttpListener;
 import com.sujin.sjpay.protocol.GetPayBankQuotaList;
 import com.sujin.sjpay.protocol.UploadImgResponse;
 import com.sujin.sjpay.util.BitmapUtil;
+import com.sujin.sjpay.util.DialogUtil;
 import com.sujin.sjpay.util.StringUtil;
 import com.sujin.sjpay.util.ToastUtil;
 import com.sujin.sjpay.view.BankCellView;
@@ -104,6 +107,14 @@ public class BandCardActivity extends BaseActivity {
     private File imageFront;
     private File imageBack;
 
+    private final Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            DialogUtil.dismisLoading();
+            super.handleMessage(msg);
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -148,10 +159,9 @@ public class BandCardActivity extends BaseActivity {
                     return;
                 }
 
-                if (isCanUpload && imageBack != null && imageFront != null) {
+                if (isCanUpload && imageFront != null) {
                     tvConfirm.setEnabled(false);
                     upLoad(imageFrontBitmap);
-                    UPLOAD_STEP = 1;
                 } else {
                     ToastUtil.show("请您先上传照片");
                 }
@@ -323,22 +333,21 @@ public class BandCardActivity extends BaseActivity {
                     if (TextUtils.equals(uploadImgResponse.getBackStatus(), "0")) {
                         UploadImgResponse.UploadImg data = uploadImgResponse.getData();
                         int id = data.getID();
-                        if (UPLOAD_STEP == 1) {
-                            UPLOAD_STEP = 0;
+//                        if (UPLOAD_STEP == 1) {
+//                            UPLOAD_STEP = 0;
                             BankCardPhoto = id;
-                            upLoad(imageBackmap);
-                            UPLOAD_STEP = 2;
-                        } else if (UPLOAD_STEP == 2) {
-                            UPLOAD_STEP = 0;
-                            PersonPhoto = id;
-                            yeePayRegister(userId, idCard, realName, bankName, bankCardNumber, cityCode, BankCardPhoto, idCardPhoto, idCardBackPhoto, PersonPhoto);
-                        }
+//                            upLoad(imageBackmap);
+//                            UPLOAD_STEP = 2;
+//                        } else if (UPLOAD_STEP == 2) {
+//                            UPLOAD_STEP = 0;
+//                            PersonPhoto = id;
+                            yeePayRegister(userId, idCard, realName, bankName, bankCardNumber, cityCode, BankCardPhoto, idCardPhoto, idCardBackPhoto, 0);
+//                        }
                     } else {
                         ToastUtil.show(uploadImgResponse.getMessage());
                     }
                     break;
                 case 1:
-                    tvConfirm.setEnabled(true);
                     String yeePayRegisterJson = response.get();
                     UploadImgResponse yeePayRegister = getGson().fromJson(yeePayRegisterJson, UploadImgResponse.class);
                     LogUtils.d("SJHttp", yeePayRegister.getBackStatus());
@@ -349,6 +358,7 @@ public class BandCardActivity extends BaseActivity {
                     } else {
                         ToastUtil.show(yeePayRegister.getMessage());
                     }
+                    tvConfirm.setEnabled(true);
                     break;
             }
         }
@@ -430,10 +440,12 @@ public class BandCardActivity extends BaseActivity {
 //            if (data != null) {
         if (tempBitmap != null) {
             if (PHOTO_STEP == 0) {
+                DialogUtil.showLoading(this, "上传中...",false);
                 btTakePhotoTop.setText("重新上传");
                 btTakePhotoBottom.setVisibility(View.VISIBLE);
                 ivTakePhotoTop.setImageBitmap(tempBitmap);
 //                            ivTakePhotoTop.setImageURI(u);
+                isCanUpload = true;
                 imageFrontPath = path;
                 imageFrontBitmap = tempBitmap;
                 //涉及I/O操作，子线程运行
@@ -442,25 +454,32 @@ public class BandCardActivity extends BaseActivity {
                     public void run() {
                         imageFront = null;
                         imageFront = BitmapUtil.saveBitmap(tempBitmap, getCacheDir().getAbsolutePath(), "jiebang1.png");
+                        Message message = new Message();
+                        message.what = 1;
+                        handler.sendMessage(message);
                     }
                 }).start();
 
             } else if (PHOTO_STEP == 1) {
-                btTakePhotoTop.setText("重新上传");
-                btTakePhotoBottom.setVisibility(View.VISIBLE);
-                btTakePhotoBottom.setText("重新上传");
-                ivTakePhotoBottom.setImageBitmap(tempBitmap);
-                isCanUpload = true;
-                imageBackPath = path;
-                imageBackmap = tempBitmap;
-                //涉及I/O操作，子线程运行
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        imageBack = null;
-                        imageBack = BitmapUtil.saveBitmap(tempBitmap, getCacheDir().getAbsolutePath(), "jiebang2.png");
-                    }
-                }).start();
+//                DialogUtil.showLoading(this, false);
+//                btTakePhotoTop.setText("重新上传");
+//                btTakePhotoBottom.setVisibility(View.VISIBLE);
+//                btTakePhotoBottom.setText("重新上传");
+//                ivTakePhotoBottom.setImageBitmap(tempBitmap);
+//                isCanUpload = true;
+//                imageBackPath = path;
+//                imageBackmap = tempBitmap;
+//                //涉及I/O操作，子线程运行
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        imageBack = null;
+//                        imageBack = BitmapUtil.saveBitmap(tempBitmap, getCacheDir().getAbsolutePath(), "jiebang2.png");
+//                        Message message = new Message();
+//                        message.what = 1;
+//                        handler.sendMessage(message);
+//                    }
+//                }).start();
             }
         }
     }

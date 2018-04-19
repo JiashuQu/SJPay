@@ -6,8 +6,8 @@ package com.sujin.sjpay.android;
 
 public interface ApiConstants {
 
-//    String APP_URL = "http://testapi.sujintech.com/itapi/";
-    String APP_URL = "http://api.sujintech.com/itapi/";
+    String APP_URL = "http://testapi.sujintech.com/itapi/";
+//    String APP_URL = "http://api.sujintech.com/itapi/";
 
     String API_USERS = "Users/";
     String API_FORGET = "Forget/";

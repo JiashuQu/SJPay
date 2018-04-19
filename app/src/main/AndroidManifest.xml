@@ -51,7 +51,8 @@
         <activity android:name=".activity.BandCardActivity" />
         <activity android:name=".activity.SelectAddressActivity" />
         <activity android:name=".activity.SelectBankActivity" />
-        <activity android:name=".activity.WebActivity" />
+        <activity android:name=".activity.WebActivity"
+            android:launchMode="singleTop"/>
         <activity android:name=".activity.ChoseBankCardActivity" />
         <activity android:name=".activity.SelectPayBankActivity" />
         <activity

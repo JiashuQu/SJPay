@@ -85,11 +85,13 @@
                 <View
                     style="@style/view_45dp_line_vertical"
                     android:layout_width="1dp"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:visibility="gone"/>
 
                 <LinearLayout
                     android:id="@+id/ll_take_photo_bottom"
-                    style="@style/ll_take_photo">
+                    style="@style/ll_take_photo"
+                    android:visibility="gone">
 
                     <ImageView
                         android:id="@+id/iv_take_photo_bottom"
@@ -125,7 +127,8 @@
                 <TextView
                     android:id="@+id/tv_take_photo_bottom"
                     style="@style/tv_take_photo"
-                    android:text="@string/user_id_bank" />
+                    android:text="@string/user_id_bank"
+                    android:visibility="gone"/>
 
             </LinearLayout>
 

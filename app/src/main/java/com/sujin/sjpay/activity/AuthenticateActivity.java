@@ -10,6 +10,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
@@ -28,6 +30,7 @@ import com.sujin.sjpay.android.SJApplication;
 import com.sujin.sjpay.nohttp.HttpListener;
 import com.sujin.sjpay.protocol.UploadImgResponse;
 import com.sujin.sjpay.util.BitmapUtil;
+import com.sujin.sjpay.util.DialogUtil;
 import com.sujin.sjpay.util.StringUtil;
 import com.sujin.sjpay.util.ToastUtil;
 import com.sujin.sjpay.view.dialog.AuthenticateDialog;
@@ -90,6 +93,14 @@ public class AuthenticateActivity extends BaseActivity {
     private File imageFront;
     private File imageBack;
     private String userId, name, idCard;
+
+    private final Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            DialogUtil.dismisLoading();
+            super.handleMessage(msg);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -283,6 +294,7 @@ public class AuthenticateActivity extends BaseActivity {
 //            if (data != null) {
             if (tempBitmap != null) {
                 if (PHOTO_STEP == 0) {
+                    DialogUtil.showLoading(this, "上传中...",false);
                     btTakePhotoTop.setText("重新上传");
                     btTakePhotoBottom.setVisibility(View.VISIBLE);
                     ivTakePhotoTop.setImageBitmap(tempBitmap);
@@ -295,10 +307,13 @@ public class AuthenticateActivity extends BaseActivity {
                         public void run() {
                             imageFront = null;
                             imageFront = BitmapUtil.saveBitmap(tempBitmap, getCacheDir().getAbsolutePath(), "jiebang1.png");
+                            Message message = new Message();
+                            message.what = 1;
+                            handler.sendMessage(message);
                         }
                     }).start();
-
                 } else if (PHOTO_STEP == 1) {
+                    DialogUtil.showLoading(this, "上传中...",false);
                     btTakePhotoTop.setText("重新上传");
                     btTakePhotoBottom.setVisibility(View.VISIBLE);
                     btTakePhotoBottom.setText("重新上传");
@@ -312,6 +327,9 @@ public class AuthenticateActivity extends BaseActivity {
                         public void run() {
                             imageBack = null;
                             imageBack = BitmapUtil.saveBitmap(tempBitmap, getCacheDir().getAbsolutePath(), "jiebang2.png");
+                            Message message = new Message();
+                            message.what = 1;
+                            handler.sendMessage(message);
                         }
                     }).start();
                 }
@@ -335,7 +353,6 @@ public class AuthenticateActivity extends BaseActivity {
     private HttpListener<String> httpListener = new HttpListener<String>() {
         @Override
         public void onSucceed(int what, Response<String> response) {
-            tvConfirm.setEnabled(true);
             String registerJson = response.get();
             UploadImgResponse uploadImgResponse = getGson().fromJson(registerJson, UploadImgResponse.class);
             LogUtils.d("SJHttp", uploadImgResponse.getBackStatus());
@@ -355,6 +372,7 @@ public class AuthenticateActivity extends BaseActivity {
                     intent.putExtra("IdCardPhoto", IdCardPhoto);
                     intent.putExtra("IdCardBackPhoto", IdCardBackPhoto);
                     startActivity(intent);
+                    tvConfirm.setEnabled(true);
                     finish();
                 }
             }else {
