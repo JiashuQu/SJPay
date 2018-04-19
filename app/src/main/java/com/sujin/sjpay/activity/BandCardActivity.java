@@ -99,7 +99,7 @@ public class BandCardActivity extends BaseActivity {
     private Bitmap imageBackmap;
     private String imageFrontPath;
     private String imageBackPath;
-    private int BankCardPhoto;
+    private int BankCardPhoto = 0;
     private int PersonPhoto;
     private int idCardPhoto;
     private int idCardBackPhoto;
@@ -110,7 +110,9 @@ public class BandCardActivity extends BaseActivity {
     private final Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
-            DialogUtil.dismisLoading();
+            if (imageFront != null) {
+                upLoad(imageFrontBitmap);
+            }
             super.handleMessage(msg);
         }
     };
@@ -159,9 +161,10 @@ public class BandCardActivity extends BaseActivity {
                     return;
                 }
 
-                if (isCanUpload && imageFront != null) {
-                    tvConfirm.setEnabled(false);
-                    upLoad(imageFrontBitmap);
+                if (BankCardPhoto != 0) {
+//                    tvConfirm.setEnabled(false);
+//                    upLoad(imageFrontBitmap);
+                    yeePayRegister(userId, idCard, realName, bankName, bankCardNumber, cityCode, BankCardPhoto, idCardPhoto, idCardBackPhoto, 0);
                 } else {
                     ToastUtil.show("请您先上传照片");
                 }
@@ -284,7 +287,7 @@ public class BandCardActivity extends BaseActivity {
         String md5 = StringUtil.MD5(ApiConstants.UpImg, s, ApiConstants.API_UPLOAD);
         request.add("UserId", userId);
         request.add("base64", imgBase64);
-        request(0, request, httpListener, md5, false, true);
+        request(0, request, httpListener, md5, false, false);
         com.lidroid.xutils.util.LogUtils.d("UserId=" + userId);
     }
 
@@ -319,7 +322,7 @@ public class BandCardActivity extends BaseActivity {
         request.add("IdCardBackPhoto", idCardBackPhoto);
         request.add("PersonPhoto", personPhoto);
         com.lidroid.xutils.util.LogUtils.d("---" + s + "---"  + md5);
-        request(1, request, httpListener, md5, true, true);
+        request(1, request, httpListener, md5, false, false);
     }
 
     private HttpListener<String> httpListener = new HttpListener<String>() {
@@ -341,11 +344,12 @@ public class BandCardActivity extends BaseActivity {
 //                        } else if (UPLOAD_STEP == 2) {
 //                            UPLOAD_STEP = 0;
 //                            PersonPhoto = id;
-                            yeePayRegister(userId, idCard, realName, bankName, bankCardNumber, cityCode, BankCardPhoto, idCardPhoto, idCardBackPhoto, 0);
+
 //                        }
                     } else {
                         ToastUtil.show(uploadImgResponse.getMessage());
                     }
+                    DialogUtil.dismisLoading();
                     break;
                 case 1:
                     String yeePayRegisterJson = response.get();
@@ -359,6 +363,7 @@ public class BandCardActivity extends BaseActivity {
                         ToastUtil.show(yeePayRegister.getMessage());
                     }
                     tvConfirm.setEnabled(true);
+                    DialogUtil.dismisLoading();
                     break;
             }
         }
@@ -367,6 +372,7 @@ public class BandCardActivity extends BaseActivity {
         public void onFailed(int what, Response<String> response) {
             String json = response.get();
             tvConfirm.setEnabled(true);
+            DialogUtil.dismisLoading();
             LogUtils.d("SJHttp", json);
         }
     };

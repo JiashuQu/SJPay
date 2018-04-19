@@ -93,11 +93,25 @@ public class AuthenticateActivity extends BaseActivity {
     private File imageFront;
     private File imageBack;
     private String userId, name, idCard;
+    private int IdCardPhoto = 0, IdCardBackPhoto = 0;
 
     private final Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
-            DialogUtil.dismisLoading();
+            switch (msg.what){
+                case 1:
+                    if (imageFront != null) {
+                        upLoad(imageFrontBitmap);
+                        UPLOAD_STEP = 1;
+                    }
+                    break;
+                case 2:
+                    if (imageBack != null) {
+                        upLoad(imageFrontBitmap);
+                        UPLOAD_STEP = 2;
+                    }
+                    break;
+            }
             super.handleMessage(msg);
         }
     };
@@ -138,10 +152,20 @@ public class AuthenticateActivity extends BaseActivity {
                     return;
                 }
 
-                if (isCanUpload && imageBack != null && imageFront != null) {
-                    tvConfirm.setEnabled(false);
-                    upLoad(imageFrontBitmap);
-                    UPLOAD_STEP = 1;
+//                if (isCanUpload && imageBack != null && imageFront != null) {
+//                    tvConfirm.setEnabled(false);
+//                    upLoad(imageFrontBitmap);
+//                    UPLOAD_STEP = 1;
+//                } else {
+//                    ToastUtil.show("请您先上传照片");
+//                }
+                if (IdCardBackPhoto != 0 && IdCardPhoto != 0) {
+                    Intent intent = new Intent(AuthenticateActivity.this, BandCardActivity.class);
+                    intent.putExtra("IdCard", idCard);
+                    intent.putExtra("RealName", name);
+                    intent.putExtra("IdCardPhoto", IdCardPhoto);
+                    intent.putExtra("IdCardBackPhoto", IdCardBackPhoto);
+                    startActivity(intent);
                 } else {
                     ToastUtil.show("请您先上传照片");
                 }
@@ -328,7 +352,7 @@ public class AuthenticateActivity extends BaseActivity {
                             imageBack = null;
                             imageBack = BitmapUtil.saveBitmap(tempBitmap, getCacheDir().getAbsolutePath(), "jiebang2.png");
                             Message message = new Message();
-                            message.what = 1;
+                            message.what = 2;
                             handler.sendMessage(message);
                         }
                     }).start();
@@ -345,11 +369,10 @@ public class AuthenticateActivity extends BaseActivity {
         String md5 = StringUtil.MD5(ApiConstants.UpImg, s, ApiConstants.API_UPLOAD);
         request.add("UserId", userId);
         request.add("base64", imgBase64);
-        request(0, request, httpListener, md5, false, true);
+        request(0, request, httpListener, md5, false, false);
         com.lidroid.xutils.util.LogUtils.d("UserId=" + userId);
     }
 
-    private int IdCardPhoto, IdCardBackPhoto;
     private HttpListener<String> httpListener = new HttpListener<String>() {
         @Override
         public void onSucceed(int what, Response<String> response) {
@@ -361,29 +384,31 @@ public class AuthenticateActivity extends BaseActivity {
                 int id = data.getID();
                 if (UPLOAD_STEP == 1) {
                     IdCardPhoto = id;
-                    upLoad(imageBackmap);
-                    UPLOAD_STEP = 2;
+//                    upLoad(imageBackmap);
+//                    UPLOAD_STEP = 2;
                 } else if (UPLOAD_STEP == 2) {
-                    UPLOAD_STEP = 0;
                     IdCardBackPhoto = id;
-                    Intent intent = new Intent(AuthenticateActivity.this, BandCardActivity.class);
-                    intent.putExtra("IdCard", idCard);
-                    intent.putExtra("RealName", name);
-                    intent.putExtra("IdCardPhoto", IdCardPhoto);
-                    intent.putExtra("IdCardBackPhoto", IdCardBackPhoto);
-                    startActivity(intent);
-                    tvConfirm.setEnabled(true);
-                    finish();
+//                    Intent intent = new Intent(AuthenticateActivity.this, BandCardActivity.class);
+//                    intent.putExtra("IdCard", idCard);
+//                    intent.putExtra("RealName", name);
+//                    intent.putExtra("IdCardPhoto", IdCardPhoto);
+//                    intent.putExtra("IdCardBackPhoto", IdCardBackPhoto);
+//                    startActivity(intent);
+//                    tvConfirm.setEnabled(true);
+//                    DialogUtil.dismisLoading();
+//                    finish();
                 }
             }else {
                 ToastUtil.show(uploadImgResponse.getMessage());
             }
+            DialogUtil.dismisLoading();
         }
 
         @Override
         public void onFailed(int what, Response<String> response) {
             String json = response.get();
             tvConfirm.setEnabled(true);
+            DialogUtil.dismisLoading();
             LogUtils.d("SJHttp", json);
         }
     };

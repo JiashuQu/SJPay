@@ -61,6 +61,7 @@ public class MainActivity extends BaseActivity implements TabLayoutView.OnTabLay
     private String des;
     private String appUrl;
     private int isMustUpdate;
+    private int isRealState;
 
     Handler exitHandler = new Handler() {
         @Override
@@ -267,7 +268,7 @@ public class MainActivity extends BaseActivity implements TabLayoutView.OnTabLay
                     MyInfoResponse myInfoResponse = getGson().fromJson(registerJson, MyInfoResponse.class);
                     if (TextUtils.equals(myInfoResponse.getBackStatus(), "0")) {
                         MyInfoResponse.MyInfo data = myInfoResponse.getData();
-                        int isRealState = data.getIsRealState();
+                        isRealState = data.getIsRealState();
                         SharedPreferences.Editor spUserInfo = getSharedPreferences(AppConstants.SP_NAME_USER_INFO, MODE_PRIVATE).edit();
                         spUserInfo.putInt(AppConstants.SP_DATA_IS_REAL_STATE, isRealState);
                         spUserInfo.commit();

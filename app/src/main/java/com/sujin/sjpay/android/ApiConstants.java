@@ -6,8 +6,8 @@ package com.sujin.sjpay.android;
 
 public interface ApiConstants {
 
-    String APP_URL = "http://testapi.sujintech.com/itapi/";
-//    String APP_URL = "http://api.sujintech.com/itapi/";
+//    String APP_URL = "http://testapi.sujintech.com/itapi/";
+    String APP_URL = "http://api.sujintech.com/itapi/";
 
     String API_USERS = "Users/";
     String API_FORGET = "Forget/";
@@ -40,6 +40,7 @@ public interface ApiConstants {
     String PayType = "GetPayType";
     String BankCardActivate = "BankCardActivate";
     String BankCardSubmitActivateCode = "BankCardSubmitActivateCode";
+    String UpdateBankMobile = "UpdateBankMobile";
     //接口名URL
     String getImgCode = APP_URL + API_USERS + GetImgCode;
     String getSmsCode = APP_URL + API_USERS  + SendMsgCode;
@@ -54,6 +55,7 @@ public interface ApiConstants {
     String getBankBind = APP_URL + API_USERS  + BankBind;
     String getBankCardActivate = APP_URL + API_USERS  + BankCardActivate;
     String getBankCardSubmitActivateCode = APP_URL + API_USERS  + BankCardSubmitActivateCode;
+    String getUpdateBankMobile = APP_URL + API_USERS  + UpdateBankMobile;
 
     String getForgetImgCode = APP_URL + API_FORGET  + GetImgCode;
     String getForgetSmsCode = APP_URL + API_FORGET  + SendMsgCode;

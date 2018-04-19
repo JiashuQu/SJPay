@@ -123,74 +123,81 @@ public class PayFragment extends BaseFragment {
         if (getActivity().getSharedPreferences(AppConstants.SP_NAME_USER_INFO, MODE_PRIVATE).getInt(AppConstants.SP_DATA_IS_REAL_STATE, -1) != 1) {
             ToastUtil.show("实名认证后才可以收款哦~");
             startActivity(new Intent(getActivity(), AuthenticateActivity.class));
-        } else {
-            getPayType();
         }
+        getPayType();
+
         final MyInfoResponse.MyInfo user = SJApplication.getInstance().getUser();
         etPayMoney.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
-        etPayMoney.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                if (s.toString().contains(".")) {
-                    if (s.length() - 1 - s.toString().indexOf(".") > 2) {
-                        s = s.toString().subSequence(0,
-                                s.toString().indexOf(".") + 3);
-                        etPayMoney.setText(s);
-                        etPayMoney.setSelection(s.length());
-                    }
-                }
-
-                if (s.toString().trim().substring(0).equals("0")) {
-                    s = "";
-                    etPayMoney.setText(s);
-                }
-
-                if (s.toString().trim().substring(0).equals(".")) {
-                    s = "0" + s;
-                    etPayMoney.setText(s);
-                    etPayMoney.setSelection(2);
-                }
-
-                if (s.toString().startsWith("0")
-                        && s.toString().trim().length() > 1) {
-                    if (!s.toString().substring(1, 2).equals(".")) {
-                        etPayMoney.setText(s.subSequence(0, 1));
-                        etPayMoney.setSelection(1);
-                        return;
-                    }
-                }
-                String s1 = s.toString();
-                if (s1.length() >= 1) {
-                    if (s1.substring(s1.length() - 1).equals(".")) {
-                        s1 = s1.replace(".", "");
-                    }
-                }
-
-                if (getActivity().getSharedPreferences(AppConstants.SP_NAME_USER_INFO, MODE_PRIVATE).getInt(AppConstants.SP_DATA_IS_REAL_STATE, -1) != 1) {
+        int state = getActivity().getSharedPreferences(AppConstants.SP_NAME_USER_INFO, MODE_PRIVATE).getInt(AppConstants.SP_DATA_IS_REAL_STATE, -1);
+        if (state != 1) {
+            etPayMoney.setFocusable(false);//让EditText失去焦点，然后获取点击事件
+            etPayMoney.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
                     ToastUtil.show("实名认证后才可以收款哦~");
                     startActivity(new Intent(getActivity(), AuthenticateActivity.class));
-                    return;
+                }
+            });
+        }else {
+            etPayMoney.setFocusable(true);
+            etPayMoney.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
                 }
 
-                if (s1.length() >= 3) {
-                    getPayFeeTool(userId, s1, 0);
-                    getPayFeeToolNo(userId, s1, 1);
-                } else {
-                    tvIntegralFeeMoney.setText("费用：" + 0.00 + "元");
-                    tvNoIntegralFeeMoney.setText("费用：" + 0.00 + "元");
-                }
-            }
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });
+                    if (s.toString().contains(".")) {
+                        if (s.length() - 1 - s.toString().indexOf(".") > 2) {
+                            s = s.toString().subSequence(0,
+                                    s.toString().indexOf(".") + 3);
+                            etPayMoney.setText(s);
+                            etPayMoney.setSelection(s.length());
+                        }
+                    }
+
+                    if (s.toString().trim().substring(0).equals("0")) {
+                        s = "";
+                        etPayMoney.setText(s);
+                    }
+
+                    if (s.toString().trim().substring(0).equals(".")) {
+                        s = "0" + s;
+                        etPayMoney.setText(s);
+                        etPayMoney.setSelection(2);
+                    }
+
+                    if (s.toString().startsWith("0")
+                            && s.toString().trim().length() > 1) {
+                        if (!s.toString().substring(1, 2).equals(".")) {
+                            etPayMoney.setText(s.subSequence(0, 1));
+                            etPayMoney.setSelection(1);
+                            return;
+                        }
+                    }
+                    String s1 = s.toString();
+                    if (s1.length() >= 1) {
+                        if (s1.substring(s1.length() - 1).equals(".")) {
+                            s1 = s1.replace(".", "");
+                        }
+                    }
+
+                    if (s1.length() >= 3) {
+                        getPayFeeTool(userId, s1, 0);
+                        getPayFeeToolNo(userId, s1, 1);
+                    } else {
+                        tvIntegralFeeMoney.setText("费用：" + 0.00 + "元");
+                        tvNoIntegralFeeMoney.setText("费用：" + 0.00 + "元");
+                    }
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                }
+            });
+        }
 
         tbPayTitle.setOnClick2RightText(new View.OnClickListener() {
             @Override
@@ -340,11 +347,11 @@ public class PayFragment extends BaseFragment {
                         intent.putExtra("payUrl", payUrl);
                         intent.putExtra("title", "付款");
                         startActivity(intent);
-                    } else if (TextUtils.equals(receiveApiResponse.getBackStatus(), "-200")) {
+                    } else if (TextUtils.equals(receiveApiResponse.getBackStatus(), "-200")) {//未开通快捷协议
                         bankID = data.getBankID();
                         channelType = data.getChannelType();
                         getBankCardActivate(userId, bankID);
-                    } else if (TextUtils.equals(receiveApiResponse.getBackStatus(), "-8401")) {
+                    } else if (TextUtils.equals(receiveApiResponse.getBackStatus(), "-8401")) {//通道无额度
                         ToastUtil.show("通道额度已用完:(");
                     } else {
                         ToastUtil.show(receiveApiResponse.getMessage());

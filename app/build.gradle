@@ -2,11 +2,11 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.sujin.sjpa"
+        applicationId "com.sujin.sjpay"
         minSdkVersion 14
         targetSdkVersion 26
         versionCode 4
-        versionName "1.1.1"
+        versionName "1.2.0"
     }
     buildTypes {
         release {

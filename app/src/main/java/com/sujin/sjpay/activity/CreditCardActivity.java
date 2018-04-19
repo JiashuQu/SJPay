@@ -50,6 +50,7 @@ public class CreditCardActivity extends BaseActivity {
 
     private String bankName, bankCardNumber, phoneNum, bankDate, bankCvn, title, bankCode;
     private int bankId = 0;
+    private int state = -1;
     private GetHistoryPayBankCardListResponse.DataBean.ListBean creditCardInfo;
 
     @Override
@@ -78,7 +79,7 @@ public class CreditCardActivity extends BaseActivity {
             String expiresMouth = creditCardInfo.getExpiresMouth();
             String expiresYear = creditCardInfo.getExpiresYear();
             String mobile = creditCardInfo.getMobile();
-            int state = creditCardInfo.getState();
+            state = creditCardInfo.getState();
             etBankCardNumber.setText(bankCard);
             bankcellBandCard.setData(bankName, "", "");
             etBankDate.setText(expiresMouth + expiresYear);
@@ -121,9 +122,12 @@ public class CreditCardActivity extends BaseActivity {
                 phoneNum = etBankPhoneNumber.getText().toString();
                 if (StringUtil.checkPhoneNumber(phoneNum)) {
                     tvConfirm.setEnabled(false);
-                    if (bankId != 0) {
+//                    if (bankId != 0) {
+                    if (state == 1) {//只能修改手机号
+                        changeCreditCard(phoneNum, bankId);
+                    }else if(state == 0){
                         bankCreditCard(bankCardNumber, phoneNum, bankDate, bankCvn, bankCode, bankId);
-                    }else {
+                    }else{
                         bankCreditCard(bankCardNumber, phoneNum, bankDate, bankCvn, bankCode, 0);
                     }
                 }
@@ -161,6 +165,24 @@ public class CreditCardActivity extends BaseActivity {
         request(0, request, httpListener, md5, false, true);
     }
 
+    /**
+     * 修改银行卡手机号
+     * @param phoneNum
+     * @param bankId
+     */
+    private void changeCreditCard(String phoneNum, int bankId) {
+        String userId = SJApplication.getInstance().getUserId();
+        Request<String> request = NoHttp.createStringRequest(ApiConstants.getUpdateBankMobile, RequestMethod.GET);
+        char[] chars = ("UserId=" + userId + "&mobile=" + phoneNum + "&BankID=" + bankId).toCharArray();
+        String s = StringUtil.sort(chars);
+        String md5 = StringUtil.MD5(ApiConstants.UpdateBankMobile, s, ApiConstants.API_USERS);
+        request.add("UserId", userId);
+        request.add("mobile", phoneNum);
+        request.add("BankID", bankId);
+        com.lidroid.xutils.util.LogUtils.d("UserId=" + userId + "&mobile=" + phoneNum + bankId + "---" + s + "---" + md5);
+        request(1, request, httpListener, md5, false, true);
+    }
+
     private HttpListener<String> httpListener = new HttpListener<String>() {
 
         @Override
@@ -176,6 +198,17 @@ public class CreditCardActivity extends BaseActivity {
                         finish();
                     } else {
                         ToastUtil.show(registerResponse.getMessage());
+                    }
+                    break;
+                case 1:
+                    String updateJson = response.get();
+                    RegisterResponse updateResponse = getGson().fromJson(updateJson, RegisterResponse.class);
+                    LogUtils.d("SJHttp", updateResponse.getBackStatus());
+                    if (TextUtils.equals(updateResponse.getBackStatus(), "0")) {
+                        ToastUtil.show(updateResponse.getMessage());
+                        finish();
+                    } else {
+                        ToastUtil.show(updateResponse.getMessage());
                     }
                     break;
             }
