@@ -204,7 +204,7 @@ public class RegisterActivity extends BaseActivity implements SJApplication.OnTi
                         isGetSms = true;
                         getSmsCode(phoneNum, imgCode, uuId);
                     }else {
-                        ToastUtil.show("图形验证码有误");
+                        ToastUtil.show(getResources().getString(R.string.image_code_error));
                     }
                 }
 
@@ -233,7 +233,7 @@ public class RegisterActivity extends BaseActivity implements SJApplication.OnTi
                             }
                             checkInvite(baseUserId);
                         }else {
-                            ToastUtil.show("验证码有误");
+                            ToastUtil.show(getResources().getString(R.string.sms_code_error));
                         }
                     }
                 }else {

@@ -83,7 +83,7 @@ public class QuickAgreementActivity extends BaseActivity implements SJApplicatio
                 if (forgetSms.length() == 6) {
                     getBankCardSubmitActivateCode(userId, channelType, forgetSms, bankId);
                 }else {
-                    ToastUtil.show("验证码有误");
+                    ToastUtil.show(getResources().getString(R.string.sms_code_error));
                 }
                 break;
         }

@@ -432,7 +432,7 @@ public class PayFragment extends BaseFragment {
                 break;
             case R.id.ll_no_integral_aisle:
                 if (getActivity().getSharedPreferences(AppConstants.SP_NAME_USER_INFO, MODE_PRIVATE).getInt(AppConstants.SP_DATA_IS_REAL_STATE, -1) != 1) {
-                    ToastUtil.show("请您先实名认证");
+                    ToastUtil.show("实名认证后才可以收款哦~");
                     startActivity(new Intent(getActivity(), AuthenticateActivity.class));
                     return;
                 }
@@ -458,7 +458,7 @@ public class PayFragment extends BaseFragment {
                 break;
             case R.id.ll_integral_aisle:
                 if (getActivity().getSharedPreferences(AppConstants.SP_NAME_USER_INFO, MODE_PRIVATE).getInt(AppConstants.SP_DATA_IS_REAL_STATE, -1) != 1) {
-                    ToastUtil.show("请您先实名认证");
+                    ToastUtil.show("实名认证后才可以收款哦~");
                     startActivity(new Intent(getActivity(), AuthenticateActivity.class));
                     return;
                 }

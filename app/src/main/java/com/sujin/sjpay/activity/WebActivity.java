@@ -54,15 +54,6 @@ public class WebActivity extends BaseActivity implements WebViewBase.OnWebViewJa
                 }
                 return super.shouldOverrideUrlLoading(view, url);
             }
-
-//            @Override
-//            public void onLoadResource(WebView view, String url) {
-//                if (url.contains("backState=0")) {
-//                    ToastUtil.show("收款成功，款项将很快到您的储蓄卡中:)");
-//                    finish();
-//                }
-//                super.onLoadResource(view, url);
-//            }
         });
     }
 

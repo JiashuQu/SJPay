@@ -95,6 +95,8 @@
     <string name="pay_raiders">收款攻略</string>
     <string name="my_fee">我的费率</string>
     <string name="fee_info">费率信息</string>
+    <string name="image_code_error">图形验证码有误</string>
+    <string name="sms_code_error">验证码有误</string>
 
     <!-- Download status -->
     <string name="download_progress">已下载：%1$d&#037;&#037;，速度：%2$skb&#047;s</string>
@@ -128,4 +130,6 @@
     <string name="open">开通</string>
     <string name="integral_aisle">有积分</string>
     <string name="no_integral_aisle">无积分</string>
+    <string name="please_input_id_card">请您输入正确的身份证号</string>
+    <string name="please_ouload_photo">请您先上传照片</string>
 </resources>

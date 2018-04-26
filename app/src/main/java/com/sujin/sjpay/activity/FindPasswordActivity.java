@@ -161,7 +161,7 @@ public class FindPasswordActivity extends BaseActivity implements SJApplication.
                         isGetSms = true;
                         getSmsCode(phoneNum, imgCode, uuId);
                     }else {
-                        ToastUtil.show("图形验证码有误");
+                        ToastUtil.show(getResources().getString(R.string.image_code_error));
                     }
                 }
                 break;
@@ -174,7 +174,7 @@ public class FindPasswordActivity extends BaseActivity implements SJApplication.
                         if (forgetSms.length() == 6) {
                             validateMobileCode(phoneNum, forgetSms);
                         }else {
-                            ToastUtil.show("验证码有误");
+                            ToastUtil.show(getResources().getString(R.string.sms_code_error));
                         }
                     }else {
                         ToastUtil.show("请先获取验证码");

@@ -148,7 +148,7 @@ public class AuthenticateActivity extends BaseActivity {
 
                 idCard = etBandCardPhone.getText().toString().trim().replace(" ", "");
                 if (!StringUtil.isLegalIdNum(idCard)) {
-                    ToastUtil.show("请您输入正确的身份证号");
+                    ToastUtil.show(getResources().getString(R.string.please_input_id_card));
                     return;
                 }
 
@@ -167,7 +167,7 @@ public class AuthenticateActivity extends BaseActivity {
                     intent.putExtra("IdCardBackPhoto", IdCardBackPhoto);
                     startActivity(intent);
                 } else {
-                    ToastUtil.show("请您先上传照片");
+                    ToastUtil.show(getResources().getString(R.string.please_ouload_photo));
                 }
                 break;
         }

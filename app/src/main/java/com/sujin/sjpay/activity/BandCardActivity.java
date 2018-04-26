@@ -29,7 +29,6 @@ import com.sujin.sjpay.android.ApiConstants;
 import com.sujin.sjpay.android.AppConstants;
 import com.sujin.sjpay.android.SJApplication;
 import com.sujin.sjpay.nohttp.HttpListener;
-import com.sujin.sjpay.protocol.GetPayBankQuotaList;
 import com.sujin.sjpay.protocol.UploadImgResponse;
 import com.sujin.sjpay.util.BitmapUtil;
 import com.sujin.sjpay.util.DialogUtil;
@@ -45,7 +44,6 @@ import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 
 import java.io.File;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -164,6 +162,7 @@ public class BandCardActivity extends BaseActivity {
                 if (BankCardPhoto != 0) {
 //                    tvConfirm.setEnabled(false);
 //                    upLoad(imageFrontBitmap);
+                    DialogUtil.showLoading(this, false);
                     yeePayRegister(userId, idCard, realName, bankName, bankCardNumber, cityCode, BankCardPhoto, idCardPhoto, idCardBackPhoto, 0);
                 } else {
                     ToastUtil.show("请您先上传照片");
