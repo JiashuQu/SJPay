@@ -3,14 +3,23 @@ package com.sujin.sjpay.fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.android.sohu.sdk.common.toolbox.LogUtils;
+import com.scwang.smartrefresh.header.MaterialHeader;
+import com.scwang.smartrefresh.header.WaterDropHeader;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
+import com.scwang.smartrefresh.layout.footer.BallPulseFooter;
+import com.scwang.smartrefresh.layout.header.BezierRadarHeader;
+import com.scwang.smartrefresh.layout.header.ClassicsHeader;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.sujin.sjpay.R;
 import com.sujin.sjpay.activity.AboutUsActivity;
 import com.sujin.sjpay.activity.AuthenticateActivity;
@@ -50,6 +59,10 @@ public class MyFragment extends BaseFragment {
     TextView tvAboutUs;
     @BindView(R.id.tv_my_credit_card)
     TextView tvMyCreditCard;
+    @BindView(R.id.srl_my)
+    SmartRefreshLayout srlMy;
+
+    private String userId;
 
     public MyFragment() {
     }
@@ -66,7 +79,16 @@ public class MyFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_my, container, false);
         unbinder = ButterKnife.bind(this, view);
+        SharedPreferences spUserInfo = getActivity().getSharedPreferences(AppConstants.SP_NAME_USER_INFO, MODE_PRIVATE);
+        userId = spUserInfo.getString(AppConstants.SP_DATA_USER_ID, "");
         tbLoginTitle.hideBackButton();
+        srlMy.setRefreshHeader(new MaterialHeader(getContext()));
+        srlMy.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                getMyInfo(userId, false);
+            }
+        });
         return view;
     }
 
@@ -85,13 +107,11 @@ public class MyFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_my_info:
-                SharedPreferences spUserInfo = getActivity().getSharedPreferences(AppConstants.SP_NAME_USER_INFO, MODE_PRIVATE);
-                String userId = spUserInfo.getString(AppConstants.SP_DATA_USER_ID, "");
-                getMyInfo(userId);
+                getMyInfo(userId, true);
                 break;
             case R.id.tv_my_credit_card:
                 Intent intent = new Intent(getActivity(), ChoseBankCardActivity.class);
-                intent.putExtra("title","支付卡管理");
+                intent.putExtra("title", "支付卡管理");
                 startActivity(intent);
                 break;
             case R.id.tv_my_secret:
@@ -106,14 +126,14 @@ public class MyFragment extends BaseFragment {
         }
     }
 
-    private void getMyInfo(String userId) {
+    private void getMyInfo(String userId, boolean isLoading) {
         Request<String> request = NoHttp.createStringRequest(ApiConstants.getSingleInfo, RequestMethod.GET);
         char[] chars = ("UserId=" + userId).toCharArray();
         String s = StringUtil.sort(chars);
         String md5 = StringUtil.MD5(ApiConstants.Single, s, ApiConstants.API_USERS);
         request.add("UserId", userId);
         com.lidroid.xutils.util.LogUtils.d(userId + "---" + s + "---" + md5);
-        request(0, request, httpListener, md5, true, true);
+        request(0, request, httpListener, md5, true, isLoading);
     }
 
     private HttpListener<String> httpListener = new HttpListener<String>() {
@@ -143,6 +163,7 @@ public class MyFragment extends BaseFragment {
                     } else {
                         ToastUtil.show(myInfoResponse.getMessage());
                     }
+                    srlMy.finishRefresh(2000, true);
                     break;
             }
 
@@ -151,7 +172,7 @@ public class MyFragment extends BaseFragment {
         @Override
         public void onFailed(int what, Response<String> response) {
             String json = response.get();
-
+            srlMy.finishRefresh(2000, false);
             LogUtils.d("SJHttp", json);
         }
     };

@@ -11,15 +11,22 @@
         android:layout_height="@dimen/title_height"
         app:bar_title="@string/pay_list" />
 
-    <ListView
-        android:id="@+id/list_pay_list"
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/srl_pay_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:listSelector="@drawable/selector_press_gray"
-        android:dividerHeight="@dimen/_0dp"
-        android:divider="@color/transparent"
-        android:scrollbars="none"
-        android:overScrollMode="never"
-        />
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/list_pay_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:listSelector="@drawable/selector_press_gray"
+            android:dividerHeight="@dimen/_0dp"
+            android:divider="@color/transparent"
+            android:scrollbars="none"
+            android:overScrollMode="never"
+            />
+
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
 </LinearLayout>
