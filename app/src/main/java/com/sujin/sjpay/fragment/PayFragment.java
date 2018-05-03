@@ -31,6 +31,7 @@ import com.sujin.sjpay.protocol.PayFeeToolResponse;
 import com.sujin.sjpay.protocol.PayTypeResponse;
 import com.sujin.sjpay.protocol.ReceiveApiResponse;
 import com.sujin.sjpay.protocol.RegisterResponse;
+import com.sujin.sjpay.util.DialogUtil;
 import com.sujin.sjpay.util.StringUtil;
 import com.sujin.sjpay.util.ToastUtil;
 import com.sujin.sjpay.view.TitleBarView;
@@ -184,7 +185,7 @@ public class PayFragment extends BaseFragment {
                         }
                     }
 
-                    if (s1.length() >= 3) {
+                    if (s1.length() >= 3 && Double.parseDouble(s1) >= 500) {
                         getPayFeeTool(userId, s1, 0);
                         getPayFeeToolNo(userId, s1, 1);
                     } else {
@@ -217,6 +218,11 @@ public class PayFragment extends BaseFragment {
     @Override
     public void lazyLoad() {
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 
     /**
@@ -287,7 +293,7 @@ public class PayFragment extends BaseFragment {
         request.add("BankID", bankID);
         request.add("PayType", payType);
         LogUtils.d("SJHttp", "UserId=" + userId + "&Amount=" + amount + "&BankID=" + bankID + "---" + s + "---" + md5);
-        request(2, request, httpListener, md5, false, true);
+        request(2, request, httpListener, md5, false, false);
     }
 
     /**
@@ -335,6 +341,7 @@ public class PayFragment extends BaseFragment {
                     } else {
                         ToastUtil.show(ayFeeToolNoResponse.getMessage());
                     }
+
                     break;
                 case 2:
                     String receiveApiJson = response.get();
@@ -347,16 +354,20 @@ public class PayFragment extends BaseFragment {
                         intent.putExtra("payUrl", payUrl);
                         intent.putExtra("title", "付款");
                         startActivity(intent);
+                        etPayMoney.setText("");
+                        etBankCardNumber.setText("");
                     } else if (TextUtils.equals(receiveApiResponse.getBackStatus(), "-200")) {//未开通快捷协议
                         bankID = data.getBankID();
                         channelType = data.getChannelType();
                         getBankCardActivate(userId, bankID);
+                        DialogUtil.dismissLoading();
                     } else if (TextUtils.equals(receiveApiResponse.getBackStatus(), "-8401")) {//通道无额度
-                        ToastUtil.show("通道额度已用完:(");
+                        DialogUtil.dismissLoading();
                     } else {
                         ToastUtil.show(receiveApiResponse.getMessage());
                     }
                     click = true;
+                    DialogUtil.dismissLoading();
                     break;
                 case 3:
                     String payTypeJson = response.get();
@@ -411,6 +422,7 @@ public class PayFragment extends BaseFragment {
         @Override
         public void onFailed(int what, Response<String> response) {
             String json = response.get();
+            DialogUtil.dismissLoading();
             click = true;
             LogUtils.d("SJHttp", json);
         }
@@ -453,6 +465,7 @@ public class PayFragment extends BaseFragment {
                 }
                 payType = noIntegralPayType;
                 if (click) {
+                    DialogUtil.showLoading(getContext(), false);
                     getReceiveApi(userId, payMoney, bankID, payType);
                 }
                 break;
@@ -479,6 +492,7 @@ public class PayFragment extends BaseFragment {
                 }
                 payType = integralPayType;
                 if (click) {
+                    DialogUtil.showLoading(getContext(), false);
                     getReceiveApi(userId, payMoney, bankID, payType);
                 }
                 break;

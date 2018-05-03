@@ -107,7 +107,7 @@ public class AuthenticateActivity extends BaseActivity {
                     break;
                 case 2:
                     if (imageBack != null) {
-                        upLoad(imageFrontBitmap);
+                        upLoad(imageBackmap);
                         UPLOAD_STEP = 2;
                     }
                     break;
@@ -309,7 +309,7 @@ public class AuthenticateActivity extends BaseActivity {
                     }
                 }
             }
-//            DialogUtil.dismisLoading();
+//            DialogUtil.dismissLoading();
             if (authenticateDialog != null) {
                 authenticateDialog.dismiss();
             }
@@ -395,20 +395,20 @@ public class AuthenticateActivity extends BaseActivity {
 //                    intent.putExtra("IdCardBackPhoto", IdCardBackPhoto);
 //                    startActivity(intent);
 //                    tvConfirm.setEnabled(true);
-//                    DialogUtil.dismisLoading();
+//                    DialogUtil.dismissLoading();
 //                    finish();
                 }
             }else {
                 ToastUtil.show(uploadImgResponse.getMessage());
             }
-            DialogUtil.dismisLoading();
+            DialogUtil.dismissLoading();
         }
 
         @Override
         public void onFailed(int what, Response<String> response) {
             String json = response.get();
             tvConfirm.setEnabled(true);
-            DialogUtil.dismisLoading();
+            DialogUtil.dismissLoading();
             LogUtils.d("SJHttp", json);
         }
     };

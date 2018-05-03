@@ -63,6 +63,7 @@ public class MyFragment extends BaseFragment {
     SmartRefreshLayout srlMy;
 
     private String userId;
+    private boolean isJump = true;
 
     public MyFragment() {
     }
@@ -86,6 +87,7 @@ public class MyFragment extends BaseFragment {
         srlMy.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                isJump = false;
                 getMyInfo(userId, false);
             }
         });
@@ -107,6 +109,7 @@ public class MyFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_my_info:
+                isJump = true;
                 getMyInfo(userId, true);
                 break;
             case R.id.tv_my_credit_card:
@@ -148,14 +151,16 @@ public class MyFragment extends BaseFragment {
                     if (TextUtils.equals(myInfoResponse.getBackStatus(), "0")) {
                         MyInfoResponse.MyInfo data = myInfoResponse.getData();
                         int isRealState = data.getIsRealState();
-                        if (isRealState == 0) {
-                            // 去认证
-                            Intent intent = new Intent(getActivity(), AuthenticateActivity.class);
-                            startActivity(intent);
-                        } else {
-                            Intent intent = new Intent(getActivity(), MyInfoActivity.class);
-                            intent.putExtra("myInfo", myInfoResponse);
-                            startActivity(intent);
+                        if(isJump){
+                            if (isRealState == 0) {
+                                // 去认证
+                                Intent intent = new Intent(getActivity(), AuthenticateActivity.class);
+                                startActivity(intent);
+                            } else {
+                                Intent intent = new Intent(getActivity(), MyInfoActivity.class);
+                                intent.putExtra("myInfo", myInfoResponse);
+                                startActivity(intent);
+                            }
                         }
                         SharedPreferences.Editor spUserInfo = getActivity().getSharedPreferences(AppConstants.SP_NAME_USER_INFO, MODE_PRIVATE).edit();
                         spUserInfo.putInt(AppConstants.SP_DATA_IS_REAL_STATE, isRealState);

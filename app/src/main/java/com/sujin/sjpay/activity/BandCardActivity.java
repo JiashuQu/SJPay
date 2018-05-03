@@ -348,7 +348,7 @@ public class BandCardActivity extends BaseActivity {
                     } else {
                         ToastUtil.show(uploadImgResponse.getMessage());
                     }
-                    DialogUtil.dismisLoading();
+                    DialogUtil.dismissLoading();
                     break;
                 case 1:
                     String yeePayRegisterJson = response.get();
@@ -362,7 +362,7 @@ public class BandCardActivity extends BaseActivity {
                         ToastUtil.show(yeePayRegister.getMessage());
                     }
                     tvConfirm.setEnabled(true);
-                    DialogUtil.dismisLoading();
+                    DialogUtil.dismissLoading();
                     break;
             }
         }
@@ -371,7 +371,7 @@ public class BandCardActivity extends BaseActivity {
         public void onFailed(int what, Response<String> response) {
             String json = response.get();
             tvConfirm.setEnabled(true);
-            DialogUtil.dismisLoading();
+            DialogUtil.dismissLoading();
             LogUtils.d("SJHttp", json);
         }
     };

@@ -19,6 +19,7 @@ import com.sujin.sjpay.android.SJApplication;
 import com.sujin.sjpay.nohttp.HttpListener;
 import com.sujin.sjpay.protocol.GetSMSResponse;
 import com.sujin.sjpay.protocol.RegisterResponse;
+import com.sujin.sjpay.util.AppVersionUtil;
 import com.sujin.sjpay.util.StringUtil;
 import com.sujin.sjpay.util.ToastUtil;
 import com.sujin.sjpay.view.PasswordEditText;
@@ -80,7 +81,7 @@ public class RegisterActivity extends BaseActivity implements SJApplication.OnTi
         request.add("itormName", "itormandroid");
         request.add("sign", md5);
         request.add("guid", uuId);
-        request.add("version", "1.0.0");
+        request.add("version", AppVersionUtil.getAppVersion(this));
 //        request(0, request, httpListener, md5, true, true);
         Glide.with(this).load(request.url()).into(tvRegisterCodeGet);
         com.lidroid.xutils.util.LogUtils.d(uuId + "---" + s + "---"  + md5 + "===" + request.url());

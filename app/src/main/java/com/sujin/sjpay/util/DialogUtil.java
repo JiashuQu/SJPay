@@ -29,7 +29,7 @@ public class DialogUtil {
      */
     public static void showLoading(Context context, String text, boolean isCanCancel) {
         if (mProgressDialog != null) {
-            dismisLoading();
+            dismissLoading();
         }
         mProgressDialog = null;
 
@@ -71,7 +71,7 @@ public class DialogUtil {
     /**
      * @Description: 关闭加载提示框
      */
-    public static void dismisLoading() {
+    public static void dismissLoading() {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
             mProgressDialog = null;

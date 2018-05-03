@@ -44,6 +44,7 @@ public class HttpResponseListener<T> implements OnResponseListener<T> {
      * Request.
      */
     private Request<?> mRequest;
+    private boolean isLoading;
     /**
      * 结果回调.
      */
@@ -59,6 +60,7 @@ public class HttpResponseListener<T> implements OnResponseListener<T> {
     public HttpResponseListener(Activity activity, Request<?> request, HttpListener<T> httpCallback, boolean canCancel, boolean isLoading) {
         this.mActivity = activity;
         this.mRequest = request;
+        this.isLoading = isLoading;
         if (activity != null && isLoading) {
                 DialogUtil.showLoading(activity, canCancel);
         }
@@ -77,7 +79,9 @@ public class HttpResponseListener<T> implements OnResponseListener<T> {
      */
     @Override
     public void onFinish(int what) {
-        DialogUtil.dismisLoading();
+        if (isLoading) {
+            DialogUtil.dismissLoading();
+        }
     }
 
     /**
