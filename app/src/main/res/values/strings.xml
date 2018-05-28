@@ -15,7 +15,7 @@
     <string name="hint_login_password">请输入密码</string>
     <string name="hint_login_error_tip">密码位数小于6位</string>
     <string name="hint_register_password">请设置您的密码</string>
-    <string name="hint_invite_code">填写邀请码(必填)</string>
+    <string name="hint_invite_code">填写邀请码(填写邀请人手机号)</string>
     <string name="forget_password">忘记密码？</string>
     <string name="quick_register">还没有账号？手机快速注册</string>
     <string name="login">登录</string>
@@ -40,6 +40,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="my_info">基本信息</string>
+    <string name="invite_income">邀请收益</string>
     <string name="name">姓名</string>
     <string name="phone">手机号码</string>
     <string name="id_card">身份证号</string>
@@ -97,6 +98,11 @@
     <string name="fee_info">费率信息</string>
     <string name="image_code_error">图形验证码有误</string>
     <string name="sms_code_error">验证码有误</string>
+    <string name="total_income">总收益(元)</string>
+    <string name="last_month_income">上月收益(元)</string>
+    <string name="this_month_income">当月收益(元)</string>
+    <string name="invite">邀请好友</string>
+    <string name="invite_short">邀请</string>
 
     <!-- Download status -->
     <string name="download_progress">已下载：%1$d&#037;&#037;，速度：%2$skb&#047;s</string>

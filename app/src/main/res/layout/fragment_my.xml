@@ -36,6 +36,28 @@
                 android:layout_width="@dimen/margin"
                 android:background="@color/white" />
 
+
+            <TextView
+                android:id="@+id/tv_invite"
+                style="@style/tv_my"
+                android:text="@string/invite" />
+
+            <View
+                style="@style/view_1px_line_horizontal"
+                android:layout_width="@dimen/margin"
+                android:background="@color/white" />
+
+
+            <TextView
+                android:id="@+id/tv_invite_income"
+                style="@style/tv_my"
+                android:text="@string/invite_income" />
+
+            <View
+                style="@style/view_1px_line_horizontal"
+                android:layout_width="@dimen/margin"
+                android:background="@color/white" />
+
             <TextView
                 android:id="@+id/tv_fee_info"
                 style="@style/tv_my"

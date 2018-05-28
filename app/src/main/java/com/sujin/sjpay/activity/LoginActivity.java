@@ -68,6 +68,7 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        tvLoginQuick.setText(StringUtil.changeStringColor(this, getResources().getString(R.string.quick_register), 7, R.color.black_333333, R.color.blue_3BA8FF));
         tbLoginTitle.hideBackButton();
         ImageView imgTitlebarBack = tbLoginTitle.getImgTitlebarBack();
         imgTitlebarBack.setOnClickListener(new View.OnClickListener() {

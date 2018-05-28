@@ -361,6 +361,8 @@ public class PayFragment extends BaseFragment {
                         channelType = data.getChannelType();
                         getBankCardActivate(userId, bankID);
                         DialogUtil.dismissLoading();
+                        etPayMoney.setText("");
+                        etBankCardNumber.setText("");
                     } else if (TextUtils.equals(receiveApiResponse.getBackStatus(), "-8401")) {//通道无额度
                         DialogUtil.dismissLoading();
                     } else {

@@ -109,7 +109,7 @@
         <item name="android:layout_centerVertical">true</item>
         <item name="android:paddingLeft">12dp</item>
         <item name="android:paddingRight">20dp</item>
-        <item name="android:src">@drawable/btn_back</item>
+        <item name="android:src">@drawable/btn_white_back</item>
     </style>
 
     <!-- TitleBar 标题专用 -->
@@ -117,7 +117,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:textSize">@dimen/textSize_34px</item>
-        <item name="android:textColor">@color/black_262626</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:layout_centerInParent">true</item>
         <item name="android:ellipsize">end</item>
         <item name="android:maxLines">1</item>

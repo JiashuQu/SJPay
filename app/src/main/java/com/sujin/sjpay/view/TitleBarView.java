@@ -115,7 +115,7 @@ public class TitleBarView extends RelativeLayout {
                 break;
         }
 
-        setBackgroundColor(context.getResources().getColor(R.color.gray_F9F9F9));
+        setBackgroundColor(context.getResources().getColor(R.color.red_FE2D55));
         viewLine = new View(context);
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, 1);
         params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);

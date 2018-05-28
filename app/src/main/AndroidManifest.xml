@@ -51,8 +51,9 @@
         <activity android:name=".activity.BandCardActivity" />
         <activity android:name=".activity.SelectAddressActivity" />
         <activity android:name=".activity.SelectBankActivity" />
-        <activity android:name=".activity.WebActivity"
-            android:launchMode="singleTop"/>
+        <activity
+            android:name=".activity.WebActivity"
+            android:launchMode="singleTop" />
         <activity android:name=".activity.ChoseBankCardActivity" />
         <activity android:name=".activity.SelectPayBankActivity" />
         <activity
@@ -63,7 +64,9 @@
         <activity android:name=".activity.PayListActivity" />
         <activity android:name=".activity.CreditCardActivity" />
         <activity android:name=".activity.FeeInfoActivity" />
-        <activity android:name=".activity.QuickAgreementActivity"></activity>
+        <activity android:name=".activity.QuickAgreementActivity" />
+        <activity android:name=".activity.InviteIncomeActivity" />
+        <activity android:name=".activity.InviteActivity"></activity>
     </application>
 
 </manifest>

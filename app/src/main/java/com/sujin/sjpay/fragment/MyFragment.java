@@ -26,6 +26,8 @@ import com.sujin.sjpay.activity.AuthenticateActivity;
 import com.sujin.sjpay.activity.ChangePasswordActivity;
 import com.sujin.sjpay.activity.ChoseBankCardActivity;
 import com.sujin.sjpay.activity.FeeInfoActivity;
+import com.sujin.sjpay.activity.InviteActivity;
+import com.sujin.sjpay.activity.InviteIncomeActivity;
 import com.sujin.sjpay.activity.MyInfoActivity;
 import com.sujin.sjpay.android.ApiConstants;
 import com.sujin.sjpay.android.AppConstants;
@@ -105,7 +107,8 @@ public class MyFragment extends BaseFragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.tv_my_info, R.id.tv_my_secret, R.id.tv_about_us, R.id.tv_my_credit_card, R.id.tv_fee_info})
+    @OnClick({R.id.tv_my_info, R.id.tv_my_secret, R.id.tv_about_us, R.id.tv_my_credit_card,
+            R.id.tv_fee_info, R.id.tv_invite_income, R.id.tv_invite})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_my_info:
@@ -125,6 +128,12 @@ public class MyFragment extends BaseFragment {
                 break;
             case R.id.tv_fee_info:
                 startActivity(new Intent(getActivity(), FeeInfoActivity.class));
+                break;
+            case R.id.tv_invite_income:
+                startActivity(new Intent(getActivity(), InviteIncomeActivity.class));
+                break;
+            case R.id.tv_invite:
+                startActivity(new Intent(getActivity(), InviteActivity.class));
                 break;
         }
     }
