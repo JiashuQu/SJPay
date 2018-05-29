@@ -119,7 +119,7 @@ public class TitleBarView extends RelativeLayout {
         viewLine = new View(context);
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, 1);
         params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        viewLine.setBackgroundColor(context.getResources().getColor(R.color.color_titlebar_line));
+        viewLine.setBackgroundColor(context.getResources().getColor(R.color.red_FE2D55));
         this.addView(viewLine, params);
 
         tvTitlebarTitle = findViewById(R.id.tv_titlebar_title);

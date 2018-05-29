@@ -42,4 +42,9 @@ dependencies {
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-5'
     implementation files('libs/common-toolbox_1.0.jar')
     implementation files('libs/xUtils-2.6.14.jar')
+    compile 'com.umeng.sdk:common:1.5.0'
+    compile 'com.umeng.sdk:utdid:1.1.5.3'
+    implementation 'com.umeng.sdk:share-core:latest.integration'
+    implementation 'com.umeng.sdk:share-wechat:latest.integration'
+    implementation 'com.umeng.sdk:shareboard-widget:latest.integration'
 }

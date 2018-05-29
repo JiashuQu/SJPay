@@ -11,6 +11,9 @@ import android.text.TextUtils;
 
 import com.android.sohu.sdk.common.toolbox.LogUtils;
 import com.sujin.sjpay.protocol.MyInfoResponse;
+import com.umeng.commonsdk.UMConfigure;
+import com.umeng.socialize.PlatformConfig;
+import com.umeng.socialize.UMShareConfig;
 import com.yanzhenjie.nohttp.InitializationConfig;
 import com.yanzhenjie.nohttp.Logger;
 import com.yanzhenjie.nohttp.NoHttp;
@@ -61,6 +64,10 @@ public class SJApplication extends Application {
                 .networkExecutor(new URLConnectionNetworkExecutor())
                 .build()
         );
+
+        UMConfigure.init(this,"5b0cf452f43e484a14000025"
+                ,"umeng",UMConfigure.DEVICE_TYPE_PHONE,"");
+        PlatformConfig.setWeixin("wxdc1e388c3822c80b", "3baf1193c85774b3fd9d18447d76cab0");
     }
 
     /**

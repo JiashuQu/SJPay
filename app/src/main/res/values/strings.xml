@@ -99,10 +99,14 @@
     <string name="image_code_error">图形验证码有误</string>
     <string name="sms_code_error">验证码有误</string>
     <string name="total_income">总收益(元)</string>
-    <string name="last_month_income">上月收益(元)</string>
+    <string name="last_month_income">上月收益(元)&#160;&#160;</string>
     <string name="this_month_income">当月收益(元)</string>
     <string name="invite">邀请好友</string>
     <string name="invite_short">邀请</string>
+    <string name="invite_list">好友列表</string>
+    <string name="my_count">我的账户</string>
+    <string name="my_balance">可用余额(元)</string>
+    <string name="withdraw">提现</string>
 
     <!-- Download status -->
     <string name="download_progress">已下载：%1$d&#037;&#037;，速度：%2$skb&#047;s</string>
@@ -138,4 +142,5 @@
     <string name="no_integral_aisle">无积分</string>
     <string name="please_input_id_card">请您输入正确的身份证号</string>
     <string name="please_ouload_photo">请您先上传照片</string>
+    <string name="rule_detail">详细规则&#160;&#160;</string>
 </resources>

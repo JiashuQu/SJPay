@@ -66,7 +66,13 @@
         <activity android:name=".activity.FeeInfoActivity" />
         <activity android:name=".activity.QuickAgreementActivity" />
         <activity android:name=".activity.InviteIncomeActivity" />
-        <activity android:name=".activity.InviteActivity"></activity>
+        <activity android:name=".activity.InviteActivity" />
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name=".activity.MyCountActivity"></activity>
     </application>
 
 </manifest>

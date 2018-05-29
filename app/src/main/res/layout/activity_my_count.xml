@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.MyCountActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:orientation="vertical"
+        android:background="@drawable/invite_income_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/_15dp"
+            android:layout_marginLeft="@dimen/_20dp"
+            android:layout_marginRight="@dimen/_20dp">
+
+            <ImageView
+                android:id="@+id/img_titlebar_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/btn_white_back"/>
+
+            <TextView
+                android:id="@+id/tv_titlebar_right"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:textSize="@dimen/textSize_36px"
+                android:textColor="@color/white"
+                android:text="@string/my_count"
+                android:textStyle="bold"
+                android:gravity="center"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/btn_white_back"
+                android:visibility="invisible"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_balance"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize_26px"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_20dp"/>
+
+        <TextView
+            android:id="@+id/tv_my_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1,000.00"
+            android:textColor="@color/white"
+            android:textSize="35dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_10dp"/>
+
+        <TextView
+            android:id="@+id/tv_frozen_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="冻结金额：100  "
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/_10dp"
+            android:drawableRight="@drawable/income_info"
+            android:textSize="13dp"/>
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/withdraw"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_20dp"
+            android:textSize="17dp"
+            android:paddingBottom="@dimen/_10dp"
+            android:paddingTop="@dimen/_10dp"
+            android:paddingRight="25dp"
+            android:paddingLeft="25dp"
+            android:background="@drawable/bg_coner_10_stroke_white"/>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_invite_income"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/_20dp"
+        android:textSize="14dp"
+        android:text="@string/invite_income"/>
+
+</LinearLayout>

@@ -32,6 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
                 android:textSize="@dimen/textSize_36px"
+                android:textStyle="bold"
                 android:textColor="@color/white"
                 android:text="@string/invite_income"
                 android:gravity="center"/>

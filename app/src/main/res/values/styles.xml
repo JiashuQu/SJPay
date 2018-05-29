@@ -278,4 +278,19 @@
         <item name="android:textSize">@dimen/_16sp</item>
         <item name="android:textColor">@color/gray_A3A3A3</item>
     </style>
+
+    <style name="invite_rule">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">13dp</item>
+    </style>
+
+    <style name="invite_rule_line" parent="view_1px_line_horizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:layout_marginRight">@dimen/_20dp</item>
+        <item name="android:layout_marginLeft">@dimen/_20dp</item>
+        <item name="android:layout_marginTop">@dimen/_15dp</item>
+    </style>
 </resources>
