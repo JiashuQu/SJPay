@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="white">#FFFFFFFF</color>
+    <color name="white_FFF2F2F2">#FFF2F2F2</color>
     <color name="white_77FFFFFF">#77FFFFFF</color>
+    <color name="white_FFF0FAF8">#FFF0FAF8</color>
     <color name="transparent">#00000000</color> //透明
     <color name="transparent_770000">#77000000</color> //透明
     <color name="color_titlebar_line">#FFB1B1B1</color>
@@ -33,6 +35,7 @@
     <color name="blue_3BA8FF">#FF3BA8FF</color>
     <color name="color_white_F4F4F4">#FFF4F4F4</color>
     <color name="black_262626">#FF262626</color>
+    <color name="black_666666">#FF666666</color>
     <color name="black_333333">#FF333333</color>
     <color name="red_FF653B">#FFFF653B</color>
     <color name="red_E85045">#FFE85045</color>
@@ -50,6 +53,7 @@
     <color name="orange_F86B23">#FFF86B23</color>
     <color name="orange_FFA336">#FFFFA336</color>
     <color name="grey_f5f5f5">#f5f5f5</color>
+    <color name="purple_FF560D94">#FF560D94</color>
 
     <!-- ↓手势密码↓-->
     <color name="grey_f6f6f6">#f6f6f6</color>

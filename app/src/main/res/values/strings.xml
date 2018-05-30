@@ -107,6 +107,9 @@
     <string name="my_count">我的账户</string>
     <string name="my_balance">可用余额(元)</string>
     <string name="withdraw">提现</string>
+    <string name="get_vip">开通会员</string>
+    <string name="wx_pay">微信扫码支付</string>
+    <string name="vip_interests">会员尊享权益</string>
 
     <!-- Download status -->
     <string name="download_progress">已下载：%1$d&#037;&#037;，速度：%2$skb&#047;s</string>
@@ -143,4 +146,7 @@
     <string name="please_input_id_card">请您输入正确的身份证号</string>
     <string name="please_ouload_photo">请您先上传照片</string>
     <string name="rule_detail">详细规则&#160;&#160;</string>
+    <string name="svip_forever">SVIP终身会员</string>
+    <string name="vip_forever">VIP终身会员</string>
+    <string name="vip_svip">VIP升级SVIP</string>
 </resources>
