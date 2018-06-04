@@ -3,6 +3,7 @@ package com.sujin.sjpay.view;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -30,7 +31,8 @@ public class TabLayoutView extends LinearLayout implements TabView.OnTabClickLis
     public TabLayoutView(Context context, AttributeSet attrs) {
         super(context, attrs);
         setOrientation(LinearLayout.HORIZONTAL);
-        setBackgroundColor(context.getResources().getColor(R.color.gray_F9F9F9));
+//        setBackgroundResource(R.drawable.icon_shadow);
+//        setBackgroundColor(context.getResources().getColor(R.color.gray_F9F9F9));
         tabViews = new ArrayList<>();
     }
 

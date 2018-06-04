@@ -72,7 +72,8 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity android:name=".activity.MyCountActivity"></activity>
+        <activity android:name=".activity.MyCountActivity" />
+        <activity android:name=".activity.GetVipActivity"></activity>
     </application>
 
 </manifest>

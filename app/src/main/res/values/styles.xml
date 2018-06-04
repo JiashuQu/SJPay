@@ -293,4 +293,113 @@
         <item name="android:layout_marginLeft">@dimen/_20dp</item>
         <item name="android:layout_marginTop">@dimen/_15dp</item>
     </style>
+
+    <style name="vip_price_list">
+        <item name="android:layout_width">@dimen/_0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1.0</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@drawable/bg_coner_10_stroke_full_white</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="vip_type">
+        <item name="android:layout_width">41dp</item>
+        <item name="android:layout_height">29dp</item>
+        <item name="android:layout_marginTop">@dimen/_10dp</item>
+    </style>
+
+    <style name="vip_type_info">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">3dp</item>
+        <item name="android:textColor">@color/black_333333</item>
+        <item name="android:textSize">13dp</item>
+    </style>
+
+    <style name="vip_price_view">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/red_FE2D55</item>
+        <item name="android:textSize">13dp</item>
+    </style>
+
+    <style name="vip_price_large_view" parent="vip_price_view">
+        <item name="android:textSize">22dp</item>
+    </style>
+
+    <style name="vip_old_price">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/_11sp</item>
+        <item name="android:textColor">@color/gray_999999</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">11dp</item>
+    </style>
+
+    <style name="base_linear_wwh">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="base_linear_mwh">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="base_linear_wmh">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="base_linear_mmh">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="base_linear_wwv">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="base_linear_mwv">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="base_linear_wmv">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="base_linear_mmv">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="main_btn">
+        <item name="android:layout_width">171dp</item>
+        <item name="android:layout_height">161dp</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@drawable/btn_main</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
+    <style name="main_btn_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/gray_999999</item>
+        <item name="android:layout_marginTop">@dimen/_15dp</item>
+        <item name="android:textSize">@dimen/_14sp</item>
+    </style>
+
 </resources>
