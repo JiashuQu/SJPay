@@ -6,139 +6,145 @@
     tools:context="com.sujin.sjpay.fragment.HomeFragment"
     android:background="@color/white">
 
-    <com.youth.banner.Banner
-        android:id="@+id/banner"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="258dp" />
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_150dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="-35dp"
-        android:gravity="center_horizontal">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
         <LinearLayout
-            style="@style/main_btn"
-            android:layout_marginRight="@dimen/_15dp">
+            style="@style/base_linear_mmv">
 
-            <ImageView
-                android:id="@+id/iv_invite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icon_get_card" />
+            <com.youth.banner.Banner
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="258dp" />
 
-            <TextView
-                style="@style/main_btn_text"
-                android:text="@string/loan"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="-35dp"
+                android:gravity="center_horizontal">
+
+                <LinearLayout
+                    style="@style/main_btn"
+                    android:layout_marginRight="@dimen/_15dp">
+
+                    <ImageView
+                        android:id="@+id/iv_invite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/icon_get_card" />
+
+                    <TextView
+                        style="@style/main_btn_text"
+                        android:text="@string/loan"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/main_btn"
+                    android:layout_marginLeft="@dimen/_15dp">
+
+                    <ImageView
+                        android:id="@+id/iv_my_income"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/icon_get_card"/>
+
+                    <TextView
+                        style="@style/main_btn_text"
+                        android:text="@string/get_card"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_15dp"
+                android:gravity="center_horizontal">
+
+                <LinearLayout
+                    style="@style/main_btn"
+                    android:layout_marginRight="@dimen/_15dp">
+
+                    <ImageView
+                        android:id="@+id/iv_loan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/icon_get_card" />
+
+                    <TextView
+                        style="@style/main_btn_text"
+                        android:text="@string/loan"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/main_btn"
+                    android:layout_marginLeft="@dimen/_15dp">
+
+                    <ImageView
+                        android:id="@+id/iv_get_card"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/icon_get_card"/>
+
+                    <TextView
+                        style="@style/main_btn_text"
+                        android:text="@string/get_card"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150dp"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_15dp">
+                <LinearLayout
+                    style="@style/main_btn"
+                    android:layout_marginRight="@dimen/_15dp">
+
+                    <ImageView
+                        android:id="@+id/iv_card_raiders"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/icon_get_card_ways"/>
+
+                    <TextView
+                        style="@style/main_btn_text"
+                        android:text="@string/card_raiders" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/main_btn"
+                    android:layout_marginLeft="@dimen/_15dp">
+
+
+                    <ImageView
+                        android:id="@+id/iv_pay_raiders"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/icon_pay_ways"/>
+
+                    <TextView
+                        style="@style/main_btn_text"
+                        android:text="@string/pay_raiders"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
 
-        <LinearLayout
-            style="@style/main_btn"
-            android:layout_marginLeft="@dimen/_15dp">
-
-            <ImageView
-                android:id="@+id/iv_my_income"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icon_get_card"/>
-
-            <TextView
-                style="@style/main_btn_text"
-                android:text="@string/get_card"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_150dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/_15dp"
-        android:gravity="center_horizontal">
-
-        <LinearLayout
-            style="@style/main_btn"
-            android:layout_marginRight="@dimen/_15dp">
-
-            <ImageView
-                android:id="@+id/iv_loan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icon_get_card" />
-
-            <TextView
-                style="@style/main_btn_text"
-                android:text="@string/loan"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            style="@style/main_btn"
-            android:layout_marginLeft="@dimen/_15dp">
-
-            <ImageView
-                android:id="@+id/iv_get_card"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icon_get_card"/>
-
-            <TextView
-                style="@style/main_btn_text"
-                android:text="@string/get_card"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_150dp"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="@dimen/_15dp">
-        <LinearLayout
-            style="@style/main_btn"
-            android:layout_marginRight="@dimen/_15dp">
-
-            <ImageView
-                android:id="@+id/iv_card_raiders"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icon_get_card_ways"/>
-
-            <TextView
-                style="@style/main_btn_text"
-                android:text="@string/card_raiders" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            style="@style/main_btn"
-            android:layout_marginLeft="@dimen/_15dp">
-
-
-            <ImageView
-                android:id="@+id/iv_pay_raiders"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icon_pay_ways"/>
-
-            <TextView
-                style="@style/main_btn_text"
-                android:text="@string/pay_raiders"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-
-    <!--<TextView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/activity"/>-->
+    </ScrollView>
 
 </LinearLayout>

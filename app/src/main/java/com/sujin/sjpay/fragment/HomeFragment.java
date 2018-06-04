@@ -68,7 +68,7 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
 //        list_title.add("热爱劳动");
 //        list_title.add("不搞对象");
         //设置内置样式，共有六种可以点入方法内逐一体验使用。
-        banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
+        banner.setBannerStyle(BannerConfig.NOT_INDICATOR);
         //设置图片加载器，图片加载器在下方
         banner.setImageLoader(new MyLoader());
         //设置图片网址或地址的集合
