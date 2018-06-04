@@ -385,4 +385,21 @@
         <item name="android:orientation">vertical</item>
     </style>
 
+    <style name="main_btn">
+        <item name="android:layout_width">171dp</item>
+        <item name="android:layout_height">161dp</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@drawable/btn_main</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
+    <style name="main_btn_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/gray_999999</item>
+        <item name="android:layout_marginTop">@dimen/_15dp</item>
+        <item name="android:textSize">@dimen/_14sp</item>
+    </style>
+
 </resources>

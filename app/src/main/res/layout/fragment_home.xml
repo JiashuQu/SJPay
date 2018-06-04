@@ -9,68 +9,45 @@
     <com.youth.banner.Banner
         android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="165dp" />
+        android:layout_height="258dp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_50dp"
-        android:background="@color/gray_EFEFEF"
-        android:gravity="center_vertical"
-        android:paddingLeft="@dimen/_20dp"
-        android:text="@string/activity"
-        android:textSize="@dimen/_16sp"
-        android:textColor="@color/orange"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/_150dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="-35dp"
+        android:gravity="center_horizontal">
 
         <LinearLayout
-            android:layout_width="@dimen/_0dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="1.0">
+            style="@style/main_btn"
+            android:layout_marginRight="@dimen/_15dp">
 
             <ImageView
-                android:id="@+id/iv_loan"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.0"
-                android:padding="@dimen/_10dp"
-                android:src="@drawable/online_loan" />
+                android:id="@+id/iv_invite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_get_card" />
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:background="#88DBDBDB"
-                android:text="@string/loan"
-                android:padding="6dp"/>
+                style="@style/main_btn_text"
+                android:text="@string/loan"/>
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="@dimen/_0dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="1.0">
+            style="@style/main_btn"
+            android:layout_marginLeft="@dimen/_15dp">
 
             <ImageView
-                android:id="@+id/iv_get_card"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.0"
-                android:padding="@dimen/_10dp"
-                android:src="@drawable/get_card"/>
+                android:id="@+id/iv_my_income"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_get_card"/>
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:background="#88DBDBDB"
-                android:text="@string/get_card"
-                android:padding="6dp"/>
+                style="@style/main_btn_text"
+                android:text="@string/get_card"/>
 
         </LinearLayout>
 
@@ -79,53 +56,80 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/_150dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/_15dp"
+        android:gravity="center_horizontal">
+
         <LinearLayout
-            android:layout_width="@dimen/_0dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="1.0">
+            style="@style/main_btn"
+            android:layout_marginRight="@dimen/_15dp">
+
+            <ImageView
+                android:id="@+id/iv_loan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_get_card" />
+
+            <TextView
+                style="@style/main_btn_text"
+                android:text="@string/loan"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/main_btn"
+            android:layout_marginLeft="@dimen/_15dp">
+
+            <ImageView
+                android:id="@+id/iv_get_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_get_card"/>
+
+            <TextView
+                style="@style/main_btn_text"
+                android:text="@string/get_card"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_150dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="@dimen/_15dp">
+        <LinearLayout
+            style="@style/main_btn"
+            android:layout_marginRight="@dimen/_15dp">
 
             <ImageView
                 android:id="@+id/iv_card_raiders"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.0"
-                android:padding="@dimen/_10dp"
-                android:src="@drawable/card_raiders"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_get_card_ways"/>
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#88DBDBDB"
-                android:gravity="center"
-                android:padding="6dp"
+                style="@style/main_btn_text"
                 android:text="@string/card_raiders" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="@dimen/_0dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="1.0">
+            style="@style/main_btn"
+            android:layout_marginLeft="@dimen/_15dp">
 
 
             <ImageView
                 android:id="@+id/iv_pay_raiders"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.0"
-                android:padding="@dimen/_10dp"
-                android:src="@drawable/pay_raiders"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_pay_ways"/>
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:background="#88DBDBDB"
-                android:text="@string/pay_raiders"
-                android:padding="6dp"/>
+                style="@style/main_btn_text"
+                android:text="@string/pay_raiders"/>
 
         </LinearLayout>
 
