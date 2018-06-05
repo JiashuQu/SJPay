@@ -41,6 +41,8 @@ public interface ApiConstants {
     String BankCardActivate = "BankCardActivate";
     String BankCardSubmitActivateCode = "BankCardSubmitActivateCode";
     String UpdateBankMobile = "UpdateBankMobile";
+    String BannerList = "BannerList";
+    String GetIndexData = "GetIndexData";
     //接口名URL
     String getImgCode = APP_URL + API_USERS + GetImgCode;
     String getSmsCode = APP_URL + API_USERS  + SendMsgCode;
@@ -72,4 +74,6 @@ public interface ApiConstants {
 
     String getVersion = APP_URL + API_CONFIG  + Version;
     String getPayType = APP_URL + API_CONFIG  + PayType;
+    String getBannerList = APP_URL + API_CONFIG  + BannerList;
+    String getGetIndexData = APP_URL + API_CONFIG  + GetIndexData;
 }

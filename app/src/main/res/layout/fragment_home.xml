@@ -35,7 +35,7 @@
                         android:id="@+id/iv_invite"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/icon_get_card" />
+                        android:src="@drawable/icon_home_invite" />
 
                     <TextView
                         style="@style/main_btn_text"
@@ -51,7 +51,7 @@
                         android:id="@+id/iv_my_income"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/icon_get_card"/>
+                        android:src="@drawable/icon_invite_income"/>
 
                     <TextView
                         style="@style/main_btn_text"
