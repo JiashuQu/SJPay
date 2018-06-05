@@ -102,7 +102,7 @@ public class MainActivity extends BaseActivity implements TabLayoutView.OnTabLay
     protected void initView() {
         manager = getSupportFragmentManager();
         tabData = new ArrayList<>();
-        tabData.add(new TabData(AppConstants.TAB_TAG_HOME, AppConstants.TAB_NAME_HOME, R.drawable.icon_home_se, R.drawable.icon_home_se));
+        tabData.add(new TabData(AppConstants.TAB_TAG_HOME, AppConstants.TAB_NAME_HOME, R.drawable.icon_home, R.drawable.icon_home_se));
         tabData.add(new TabData(AppConstants.TAB_TAG_PAY, AppConstants.TAB_NAME_PAY, R.drawable.icon_pay, R.drawable.icon_pay_se));
         tabData.add(new TabData(AppConstants.TAB_TAG_MY, AppConstants.TAB_NAME_MY, R.drawable.icon_my, R.drawable.icon_my_se));
 

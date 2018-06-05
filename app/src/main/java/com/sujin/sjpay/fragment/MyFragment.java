@@ -53,8 +53,6 @@ public class MyFragment extends BaseFragment {
     @BindView(R.id.tv_my_info)
     TextView tvMyInfo;
     Unbinder unbinder;
-    @BindView(R.id.tb_login_title)
-    TitleBarView tbLoginTitle;
     @BindView(R.id.tv_my_secret)
     TextView tvMySecret;
     @BindView(R.id.tv_about_us)
@@ -84,7 +82,6 @@ public class MyFragment extends BaseFragment {
         unbinder = ButterKnife.bind(this, view);
         SharedPreferences spUserInfo = getActivity().getSharedPreferences(AppConstants.SP_NAME_USER_INFO, MODE_PRIVATE);
         userId = spUserInfo.getString(AppConstants.SP_DATA_USER_ID, "");
-        tbLoginTitle.hideBackButton();
         srlMy.setRefreshHeader(new MaterialHeader(getContext()));
         srlMy.setOnRefreshListener(new OnRefreshListener() {
             @Override

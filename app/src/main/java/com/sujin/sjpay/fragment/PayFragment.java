@@ -386,6 +386,11 @@ public class PayFragment extends BaseFragment {
                         tvIntegralClearing.setText("结算：" + dataBean.getWithDraw());
                         tvIntegralTime.setText("时间：" + timeIntegral);
                         tvIntegralTip.setText("提示：" + dataBean.getRemark());
+                        tvIntegralTip.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+                        tvIntegralTip.setSingleLine(true);
+                        tvIntegralTip.setSelected(true);
+                        tvIntegralTip.setFocusable(true);
+                        tvIntegralTip.setFocusableInTouchMode(true);
 
                         PayTypeResponse.DataBean noIntegral = payTypeData.get(0);
                         timeNoIntegral = noIntegral.getTime();
@@ -396,6 +401,11 @@ public class PayFragment extends BaseFragment {
                         tvNoIntegralClearing.setText("结算：" + noIntegral.getWithDraw());
                         tvNoIntegralTime.setText("时间：" + timeNoIntegral);
                         tvNoIntegralTip.setText("提示：" + noIntegral.getRemark());
+                        tvNoIntegralTip.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+                        tvNoIntegralTip.setSingleLine(true);
+                        tvNoIntegralTip.setSelected(true);
+                        tvNoIntegralTip.setFocusable(true);
+                        tvNoIntegralTip.setFocusableInTouchMode(true);
 
                     } else {
                         ToastUtil.show(payTypeResponse.getMessage());

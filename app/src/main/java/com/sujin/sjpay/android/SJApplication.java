@@ -67,7 +67,8 @@ public class SJApplication extends Application {
 
         UMConfigure.init(this,"5b0cf452f43e484a14000025"
                 ,"umeng",UMConfigure.DEVICE_TYPE_PHONE,"");
-        PlatformConfig.setWeixin("wxdc1e388c3822c80b", "3baf1193c85774b3fd9d18447d76cab0");
+        UMConfigure.setLogEnabled(true);
+        PlatformConfig.setWeixin("wxd3b80ecb7649662f", "4f24f464a168ff261f7a564853bc4b58");
     }
 
     /**
