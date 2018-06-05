@@ -12,8 +12,25 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
     }
+
+    signingConfigs {
+        debug {
+            storeFile file('SJPay.jks')
+            storePassword "Aa1234"
+            keyAlias "key0"
+            keyPassword "Aa1234"
+        }
+    }
+
     sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
 }
 

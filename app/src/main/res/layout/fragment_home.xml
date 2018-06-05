@@ -39,7 +39,7 @@
 
                     <TextView
                         style="@style/main_btn_text"
-                        android:text="@string/loan"/>
+                        android:text="@string/invite"/>
 
                 </LinearLayout>
 
@@ -55,7 +55,7 @@
 
                     <TextView
                         style="@style/main_btn_text"
-                        android:text="@string/get_card"/>
+                        android:text="@string/invite_income"/>
 
                 </LinearLayout>
 
@@ -76,7 +76,7 @@
                         android:id="@+id/iv_loan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/icon_get_card" />
+                        android:src="@drawable/icon_loan" />
 
                     <TextView
                         style="@style/main_btn_text"

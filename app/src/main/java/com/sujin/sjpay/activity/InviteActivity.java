@@ -1,5 +1,6 @@
 package com.sujin.sjpay.activity;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -10,6 +11,10 @@ import com.sujin.sjpay.view.TitleBarView;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.yanzhenjie.permission.Action;
+import com.yanzhenjie.permission.AndPermission;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -45,8 +50,25 @@ public class InviteActivity extends BaseActivity {
 
     @OnClick(R.id.iv_invite_share)
     public void onViewClicked() {
-        new ShareAction(this).withText("hello").setDisplayList(SHARE_MEDIA.WEIXIN,SHARE_MEDIA.WEIXIN_CIRCLE)
+        new ShareAction(InviteActivity.this).withText("hello").setDisplayList(SHARE_MEDIA.WEIXIN,SHARE_MEDIA.WEIXIN_CIRCLE)
                 .setCallback(shareListener).open();
+//        AndPermission.with(this)
+//                .permission(Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.ACCESS_FINE_LOCATION,
+//                        Manifest.permission.CALL_PHONE,Manifest.permission.READ_LOGS,Manifest.permission.READ_PHONE_STATE,
+//                        Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.SET_DEBUG_APP,Manifest.permission.SYSTEM_ALERT_WINDOW,
+//                        Manifest.permission.GET_ACCOUNTS,Manifest.permission.WRITE_APN_SETTINGS)
+//                .onGranted(new Action() {
+//                    @Override
+//                    public void onAction(List<String> permissions) {
+//                        new ShareAction(InviteActivity.this).withText("hello").setDisplayList(SHARE_MEDIA.WEIXIN,SHARE_MEDIA.WEIXIN_CIRCLE)
+//                                .setCallback(shareListener).open();
+//                    }
+//                }).onDenied(new Action() {
+//            @Override
+//            public void onAction(List<String> permissions) {
+//                ToastUtil.show("拒绝访问将不能分享");
+//            }
+//        }).start();
     }
 
     private UMShareListener shareListener = new UMShareListener() {

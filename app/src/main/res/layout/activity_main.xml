@@ -10,10 +10,14 @@
         android:layout_height="0dp"
         android:layout_weight="1"></FrameLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#FFD4D4D4"
+        />
     <com.sujin.sjpay.view.TabLayoutView
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/tab_layout_height"
-        android:background="@drawable/icon_shadow"/>
+        android:layout_height="@dimen/tab_layout_height"/>
 
 </LinearLayout>

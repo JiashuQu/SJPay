@@ -15,7 +15,7 @@
         android:paddingRight="@dimen/margin"
         android:paddingLeft="@dimen/margin"
         android:textSize="@dimen/textSize_28px"
-        android:textColor="@color/gray_262626"
+        android:textColor="@color/white"
         android:layout_alignParentRight="true"
         android:text="@string/pay_list"
         android:gravity="center"/>
