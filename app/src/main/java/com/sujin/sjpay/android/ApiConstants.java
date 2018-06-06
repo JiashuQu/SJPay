@@ -14,6 +14,7 @@ public interface ApiConstants {
     String API_UPLOAD = "Upload/";
     String API_YEEPAY = "Yeepay/";
     String API_CONFIG = "Config/";
+    String API_PROFIT = "Profit/";
 
     String appType = "itormandroide";
     String firstPassword = "61671437de57573b4ec9c66ef39a615";
@@ -43,6 +44,7 @@ public interface ApiConstants {
     String UpdateBankMobile = "UpdateBankMobile";
     String BannerList = "BannerList";
     String GetIndexData = "GetIndexData";
+    String QRcode = "QRcode";
     //接口名URL
     String getImgCode = APP_URL + API_USERS + GetImgCode;
     String getSmsCode = APP_URL + API_USERS  + SendMsgCode;
@@ -76,4 +78,6 @@ public interface ApiConstants {
     String getPayType = APP_URL + API_CONFIG  + PayType;
     String getBannerList = APP_URL + API_CONFIG  + BannerList;
     String getGetIndexData = APP_URL + API_CONFIG  + GetIndexData;
+
+    String getQRcode = APP_URL + API_PROFIT  + QRcode;
 }
