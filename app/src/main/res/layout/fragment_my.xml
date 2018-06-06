@@ -11,103 +11,207 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:scrollbars="none">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:orientation="vertical"
-            android:background="@drawable/invite_income_bg">
-
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginTop="@dimen/_40dp"
-                android:layout_marginLeft="@dimen/_30dp"
-                android:src="@drawable/user_icon"/>
-
-        </LinearLayout>
-
-            <View
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="10dp" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_my_info"
-                style="@style/tv_my"
-                android:text="@string/my_info" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/invite_income_bg">
 
-            <View
-                style="@style/view_1px_line_horizontal"
-                android:layout_width="@dimen/margin"
-                android:background="@color/white" />
+                    <LinearLayout
+                        style="@style/base_linear_mwh"
+                        android:layout_marginTop="@dimen/_40dp"
+                        android:layout_marginLeft="@dimen/_30dp">
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/user_icon"/>
+
+                        <LinearLayout
+                            android:id="@+id/ll_my_info"
+                            style="@style/base_linear_wwv">
+
+                            <TextView
+                                android:id="@+id/tv_user_name"
+                                style="@style/tv_my_top"
+                                android:text="渠嘉树"
+                                android:layout_marginTop="@dimen/_5dp" />
+
+                            <TextView
+                                android:id="@+id/tv_user_phone"
+                                style="@style/tv_my_top"
+                                android:text="18506120807"
+                                android:layout_marginTop="10dp"/>
+
+                            <TextView
+                                android:id="@+id/tv_get_vip"
+                                style="@style/tv_my_top"
+                                android:text="@string/get_svip"
+                                android:layout_marginTop="7dp"
+                                android:textSize="@dimen/_11sp"
+                                android:drawableRight="@drawable/icon_right"
+                                android:drawablePadding="@dimen/_5dp"/>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1.0"/>
+
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="22dp"
+                            android:src="@drawable/icon_right_arrow"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="@dimen/_20dp"/>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1dp"
+                        android:background="@color/white"
+                        android:layout_margin="@dimen/_20dp"
+                        android:layout_marginBottom="@dimen/_10dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_15dp"
+                        android:text="邀请人：大帅哥  18888888888"
+                        android:textColor="@color/gray_EEF8FF"
+                        android:textSize="12dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/base_linear_mwv"
+                    android:background="@drawable/bg_my_item"
+                    android:layout_marginTop="-30dp">
+
+                    <TextView
+                        android:id="@+id/tv_fee_info"
+                        style="@style/tv_my"
+                        android:text="@string/my_info"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:drawableLeft="@drawable/icon_my_info"/>
+
+                    <View
+                        style="@style/view_1px_line_horizontal"
+                        android:background="@color/gray_F2F2F2"
+                        android:layout_marginRight="@dimen/_10dp"
+                        android:layout_marginLeft="@dimen/_20dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_my_account"
+                        style="@style/tv_my"
+                        android:text="@string/my_count"
+                        android:drawableLeft="@drawable/icon_my_amount"/>
+
+                    <View
+                        style="@style/view_1px_line_horizontal"
+                        android:background="@color/gray_F2F2F2"
+                        android:layout_marginRight="@dimen/_10dp"
+                        android:layout_marginLeft="@dimen/_20dp"/>
 
 
-            <TextView
-                android:id="@+id/tv_invite"
-                style="@style/tv_my"
-                android:text="@string/invite" />
+                    <TextView
+                        android:id="@+id/tv_invite"
+                        style="@style/tv_my"
+                        android:text="@string/invite"
+                        android:drawableLeft="@drawable/icon_my_invite"/>
 
-            <View
-                style="@style/view_1px_line_horizontal"
-                android:layout_width="@dimen/margin"
-                android:background="@color/white" />
+                    <View
+                        style="@style/view_1px_line_horizontal"
+                        android:background="@color/gray_F2F2F2"
+                        android:layout_marginRight="@dimen/_10dp"
+                        android:layout_marginLeft="@dimen/_20dp"/>
 
 
-            <TextView
-                android:id="@+id/tv_invite_income"
-                style="@style/tv_my"
-                android:text="@string/invite_income" />
+                    <TextView
+                        android:id="@+id/tv_invite_income"
+                        style="@style/tv_my"
+                        android:text="@string/invite_income"
+                        android:drawableLeft="@drawable/icon_invite_income_small"/>
 
-            <View
-                style="@style/view_1px_line_horizontal"
-                android:layout_width="@dimen/margin"
-                android:background="@color/white" />
+                    <View
+                        style="@style/view_1px_line_horizontal"
+                        android:background="@color/gray_F2F2F2"
+                        android:layout_marginRight="@dimen/_10dp"
+                        android:layout_marginLeft="@dimen/_20dp"/>
 
-            <TextView
-                android:id="@+id/tv_fee_info"
-                style="@style/tv_my"
-                android:text="@string/fee_info" />
-            <View
-                style="@style/view_1px_line_horizontal"
-                android:layout_width="@dimen/margin"
-                android:background="@color/white" />
+                    <TextView
+                        android:id="@+id/tv_my_credit_card"
+                        style="@style/tv_my"
+                        android:text="@string/credit_card_list"
+                        android:drawableLeft="@drawable/icon_my_card"/>
 
-            <TextView
-                android:id="@+id/tv_my_credit_card"
-                style="@style/tv_my"
-                android:text="@string/credit_card_list" />
+                    <View
+                        style="@style/view_1px_line_horizontal"
+                        android:background="@color/gray_F2F2F2"
+                        android:layout_marginRight="@dimen/_10dp"
+                        android:layout_marginLeft="@dimen/_20dp"/>
 
-            <View
-                style="@style/view_1px_line_horizontal"
-                android:layout_width="@dimen/margin"
-                android:background="@color/white" />
+                    <TextView
+                        android:id="@+id/tv_guide_user"
+                        style="@style/tv_my"
+                        android:text="@string/user_guide"
+                        android:drawableLeft="@drawable/icon_user_guide"/>
 
-            <TextView
-                android:id="@+id/tv_my_secret"
-                style="@style/tv_my"
-                android:layout_height="47dp"
-                android:text="@string/change_password" />
+                    <View
+                        style="@style/view_1px_line_horizontal"
+                        android:background="@color/gray_F2F2F2"
+                        android:layout_marginRight="@dimen/_10dp"
+                        android:layout_marginLeft="@dimen/_20dp"/>
 
-            <View
-                style="@style/view_1px_line_horizontal"
-                android:layout_width="@dimen/margin"
-                android:background="@color/white" />
+                    <TextView
+                        android:id="@+id/tv_my_secret"
+                        style="@style/tv_my"
+                        android:text="@string/change_password"
+                        android:drawableLeft="@drawable/icon_change_password"/>
 
-            <TextView
-                android:id="@+id/tv_about_us"
-                style="@style/tv_my"
-                android:text="@string/about_us" />
+                    <View
+                        style="@style/view_1px_line_horizontal"
+                        android:background="@color/gray_F2F2F2"
+                        android:layout_marginRight="@dimen/_10dp"
+                        android:layout_marginLeft="@dimen/_20dp"/>
 
-            <View
-                style="@style/view_1px_line_horizontal"
-                android:layout_width="@dimen/margin"
-                android:background="@color/white" />
+                    <TextView
+                        android:id="@+id/tv_contact_us"
+                        style="@style/tv_my"
+                        android:text="@string/contact_us"
+                        android:drawableLeft="@drawable/icon_contect_us"/>
 
-        </LinearLayout>
+                    <View
+                        style="@style/view_1px_line_horizontal"
+                        android:background="@color/gray_F2F2F2"
+                        android:layout_marginRight="@dimen/_10dp"
+                        android:layout_marginLeft="@dimen/_20dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_about_us"
+                        style="@style/tv_my"
+                        android:layout_marginBottom="@dimen/_15dp"
+                        android:text="@string/about_us"
+                        android:drawableLeft="@drawable/icon_about_us"/>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
 
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 

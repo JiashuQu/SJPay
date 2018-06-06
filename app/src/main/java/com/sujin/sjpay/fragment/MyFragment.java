@@ -50,8 +50,6 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class MyFragment extends BaseFragment {
 
-    @BindView(R.id.tv_my_info)
-    TextView tvMyInfo;
     Unbinder unbinder;
     @BindView(R.id.tv_my_secret)
     TextView tvMySecret;
@@ -104,7 +102,7 @@ public class MyFragment extends BaseFragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.tv_my_info, R.id.tv_my_secret, R.id.tv_about_us, R.id.tv_my_credit_card,
+    @OnClick({R.id.ll_my_info, R.id.tv_my_secret, R.id.tv_about_us, R.id.tv_my_credit_card,
             R.id.tv_fee_info, R.id.tv_invite_income, R.id.tv_invite})
     public void onViewClicked(View view) {
         switch (view.getId()) {

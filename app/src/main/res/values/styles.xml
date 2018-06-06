@@ -149,16 +149,17 @@
     <style name="tv_my">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/black_262626</item>
-        <item name="android:textSize">@dimen/textSize_28px</item>
+        <item name="android:textColor">@color/black_666666</item>
+        <item name="android:textSize">@dimen/_16sp</item>
         <item name="android:layout_centerVertical">true</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:background">@drawable/selector_press_gray</item>
+        <!--<item name="android:background">@drawable/selector_press_gray</item>-->
         <item name="android:paddingTop">15dp</item>
         <item name="android:paddingBottom">15dp</item>
-        <item name="android:paddingLeft">@dimen/margin</item>
-        <item name="android:paddingRight">@dimen/margin</item>
+        <item name="android:paddingLeft">25dp</item>
+        <item name="android:paddingRight">25dp</item>
         <item name="android:drawableRight">@drawable/next_arrow_tip</item>
+        <item name="android:drawablePadding">7dp</item>
     </style>
 
     <!-- 高度为1px的横线 -->
@@ -478,5 +479,13 @@
         <item name="android:text">提示：</item>
         <item name="android:textColor">@color/gray_999999</item>
         <item name="android:textSize">13dp</item>
+    </style>
+    <!-- 我的页面用户名和手机号样式 -->
+    <style name="tv_my_top">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/_18sp</item>
+        <item name="android:textColor">@color/gray_EEF8FF</item>
+        <item name="android:layout_marginLeft">@dimen/_20dp</item>
     </style>
 </resources>

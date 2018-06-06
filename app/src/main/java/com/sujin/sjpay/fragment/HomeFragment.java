@@ -141,7 +141,7 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
                     UploadImgResponse yeePayRegister = getGson().fromJson(yeePayRegisterJson, UploadImgResponse.class);
                     LogUtils.d("SJHttp", yeePayRegister.getBackStatus());
                     if (TextUtils.equals(yeePayRegister.getBackStatus(), "0")) {
-                        ToastUtil.show("实名认证成功");
+//                        ToastUtil.show("实名认证成功");
 //                        startActivity(new Intent(BandCardActivity.this, MyInfoActivity.class));
                     } else {
                         ToastUtil.show(yeePayRegister.getMessage());

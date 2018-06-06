@@ -39,7 +39,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="my_info">基本信息</string>
+    <string name="my_info">会员信息</string>
     <string name="invite_income">邀请收益</string>
     <string name="name">姓名</string>
     <string name="phone">手机号码</string>
@@ -110,6 +110,9 @@
     <string name="get_vip">开通会员</string>
     <string name="wx_pay">微信扫码支付</string>
     <string name="vip_interests">会员尊享权益</string>
+    <string name="contact_us">联系客服</string>
+    <string name="user_guide">新手入门</string>
+    <string name="get_svip">点击开通会员</string>
 
     <!-- Download status -->
     <string name="download_progress">已下载：%1$d&#037;&#037;，速度：%2$skb&#047;s</string>
