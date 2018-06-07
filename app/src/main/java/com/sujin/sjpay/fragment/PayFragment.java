@@ -127,7 +127,7 @@ public class PayFragment extends BaseFragment {
         }
         getPayType();
 
-        final MyInfoResponse.MyInfo user = SJApplication.getInstance().getUser();
+        final MyInfoResponse.DataBean user = SJApplication.getInstance().getUser();
         etPayMoney.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
         int state = getActivity().getSharedPreferences(AppConstants.SP_NAME_USER_INFO, MODE_PRIVATE).getInt(AppConstants.SP_DATA_IS_REAL_STATE, -1);
         if (state != 1) {

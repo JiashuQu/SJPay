@@ -37,7 +37,7 @@ public class MyInfoActivity extends BaseActivity {
     @Override
     protected void initView() {
         MyInfoResponse myInfo = (MyInfoResponse) getIntent().getSerializableExtra("myInfo");
-        MyInfoResponse.MyInfo data = myInfo.getData();
+        MyInfoResponse.DataBean data = myInfo.getData();
         String vipTypeTxt = data.getVipTypeTxt();
         String bankCard = data.getBankCard();
         String bankName = data.getBankName();

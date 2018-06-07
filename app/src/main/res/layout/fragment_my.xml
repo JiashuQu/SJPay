@@ -44,7 +44,7 @@
                             <TextView
                                 android:id="@+id/tv_user_name"
                                 style="@style/tv_my_top"
-                                android:text="渠嘉树"
+                                android:text="帅又美"
                                 android:layout_marginTop="@dimen/_5dp"
                                 android:drawableRight="@drawable/icon_certified"
                                 android:drawablePadding="@dimen/_10dp"/>
@@ -52,7 +52,7 @@
                             <TextView
                                 android:id="@+id/tv_user_phone"
                                 style="@style/tv_my_top"
-                                android:text="18506120807"
+                                android:text="18888888888"
                                 android:layout_marginTop="10dp"/>
 
                             <TextView
@@ -88,6 +88,7 @@
                         android:layout_marginBottom="@dimen/_10dp"/>
 
                     <TextView
+                        android:id="@+id/tv_invite_by"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/_15dp"
@@ -102,12 +103,41 @@
                     android:background="@drawable/bg_my_item"
                     android:layout_marginTop="-30dp">
 
-                    <TextView
-                        android:id="@+id/tv_fee_info"
-                        style="@style/tv_my"
-                        android:text="@string/my_info"
-                        android:layout_marginTop="@dimen/_10dp"
-                        android:drawableLeft="@drawable/icon_my_info"/>
+                    <LinearLayout
+                        style="@style/base_linear_wwh">
+
+                        <TextView
+                            android:id="@+id/tv_fee_info"
+                            style="@style/tv_my"
+                            android:text="@string/my_info"
+                            android:layout_marginTop="@dimen/_10dp"
+                            android:drawableLeft="@drawable/icon_my_info"
+                            android:drawableRight="@color/transparent"/>
+
+                        <View
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="@dimen/_0dp"
+                            android:layout_weight="1.0"/>
+
+                        <TextView
+                            android:id="@+id/tv_vip_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textColor="@color/black_666666"
+                            android:layout_marginRight="@dimen/_15dp"
+                            android:layout_marginTop="@dimen/_5dp"
+                            android:textSize="14dp"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/next_arrow_tip"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/_5dp"
+                            android:layout_marginRight="25dp"/>
+
+                    </LinearLayout>
 
                     <View
                         style="@style/view_1px_line_horizontal"

@@ -266,8 +266,8 @@ public class MainActivity extends BaseActivity implements TabLayoutView.OnTabLay
                 case 0:
                     String registerJson = response.get();
                     MyInfoResponse myInfoResponse = getGson().fromJson(registerJson, MyInfoResponse.class);
-                    if (TextUtils.equals(myInfoResponse.getBackStatus(), "0")) {
-                        MyInfoResponse.MyInfo data = myInfoResponse.getData();
+                    if (myInfoResponse.getBackStatus() ==0) {
+                        MyInfoResponse.DataBean data = myInfoResponse.getData();
                         isRealState = data.getIsRealState();
                         SharedPreferences.Editor spUserInfo = getSharedPreferences(AppConstants.SP_NAME_USER_INFO, MODE_PRIVATE).edit();
                         spUserInfo.putInt(AppConstants.SP_DATA_IS_REAL_STATE, isRealState);

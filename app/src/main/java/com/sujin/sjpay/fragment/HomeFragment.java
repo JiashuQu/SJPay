@@ -43,9 +43,8 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 
 public class HomeFragment extends BaseFragment implements OnBannerListener {
-    private static final int WHAT_HOME_INFI = 0;
+    private static final int WHAT_HOME_INFO = 0;
     private static final int WHAT_BANNER = 1;
-    private static final int WHAT_QR = 2;
 
     @BindView(R.id.banner)
     Banner banner;
@@ -97,7 +96,7 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
         String s = StringUtil.sort(chars);
         String md5 = StringUtil.MD5(ApiConstants.GetIndexData, s, ApiConstants.API_CONFIG);
         request.add("UserId", userId);
-        request(WHAT_HOME_INFI, request, httpListener, md5, false, false);
+        request(WHAT_HOME_INFO, request, httpListener, md5, false, false);
         com.lidroid.xutils.util.LogUtils.d("UserId=" + userId);
     }
 
@@ -131,7 +130,7 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
         @Override
         public void onSucceed(int what, Response<String> response) {
             switch (what) {
-                case WHAT_HOME_INFI:
+                case WHAT_HOME_INFO:
                     String homeInfoJson = response.get();
                     IndexDataResponse indexDataResponse = getGson().fromJson(homeInfoJson, IndexDataResponse.class);
                     LogUtils.d("SJHttp", indexDataResponse.getBackStatus() + "");

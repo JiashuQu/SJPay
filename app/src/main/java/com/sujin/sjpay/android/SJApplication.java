@@ -32,7 +32,7 @@ public class SJApplication extends Application {
     private static SJApplication instance = null;
 
     private ArrayList<Activity> oList;
-    private MyInfoResponse.MyInfo user;
+    private MyInfoResponse.DataBean user;
 
     public SJApplication() {
         super();
@@ -221,7 +221,7 @@ public class SJApplication extends Application {
      *
      * @param u
      */
-    public void setUser(MyInfoResponse.MyInfo u) {
+    public void setUser(MyInfoResponse.DataBean u) {
         if (u != null) {
             user = u;
         }
@@ -232,7 +232,7 @@ public class SJApplication extends Application {
      *
      * @return
      */
-    public MyInfoResponse.MyInfo getUser() {
+    public MyInfoResponse.DataBean getUser() {
         return user;
     }
 }
