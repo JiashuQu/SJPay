@@ -1,11 +1,8 @@
 package com.sujin.sjpay.activity;
 
 import android.os.Bundle;
-import android.view.MotionEvent;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.sohu.sdk.common.toolbox.LogUtils;
 import com.example.library.banner.BannerLayout;
@@ -19,6 +16,7 @@ import com.sujin.sjpay.util.DialogUtil;
 import com.sujin.sjpay.util.StringUtil;
 import com.sujin.sjpay.util.ToastUtil;
 import com.sujin.sjpay.view.TitleBarView;
+import com.sujin.sjpay.view.dialog.GetTopVipDialog;
 import com.yanzhenjie.nohttp.NoHttp;
 import com.yanzhenjie.nohttp.RequestMethod;
 import com.yanzhenjie.nohttp.rest.Request;
@@ -58,6 +56,7 @@ public class GetVipActivity extends BaseActivity {
 
     private String userId;
     private ArrayList<String> list_path, list_title;
+    private List<GetVipResponse.DataBean.ListBean> listVIPQr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +70,13 @@ public class GetVipActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-
+        recycler.setBannerScrollListener(new BannerLayout.BannerScrollListener() {
+            @Override
+            public void onBannerPosition(int position) {
+                tvVipType.setText(listVIPQr.get(position).getTitle());
+                tvPriceTop.setText(listVIPQr.get(position).getCurrentPrice());
+            }
+        });
     }
 
     //获得首页数据
@@ -94,7 +99,7 @@ public class GetVipActivity extends BaseActivity {
                     GetVipResponse getVipResponse = getGson().fromJson(getVipJson, GetVipResponse.class);
                     LogUtils.d("SJHttp", getVipResponse.getBackStatus() + "");
                     if (getVipResponse.getBackStatus() == 0) {
-                        List<GetVipResponse.DataBean.ListBean> listVIPQr = getVipResponse.getData().getList();
+                        listVIPQr = getVipResponse.getData().getList();
                         parseBannerUrl(listVIPQr);
                     } else {
                         ToastUtil.show(getVipResponse.getMessage());
@@ -135,5 +140,13 @@ public class GetVipActivity extends BaseActivity {
 
     @OnClick(R.id.iv_get_vip)
     public void onViewClicked() {
+        final GetTopVipDialog getTopVipDialog = new GetTopVipDialog(GetVipActivity.this);
+        getTopVipDialog.setLiftBankCardListener(new GetTopVipDialog.LiftBankCardListener() {
+            @Override
+            public void cancel() {
+                getTopVipDialog.dismiss();
+            }
+        });
+        getTopVipDialog.show();
     }
 }

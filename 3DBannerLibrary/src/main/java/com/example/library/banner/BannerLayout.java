@@ -50,9 +50,20 @@ public class BannerLayout extends FrameLayout {
     private boolean isPlaying = false;
 
     private boolean isAutoPlaying = true;
+    private BannerScrollListener scrollListener;
     int itemSpace;
     float centerScale;
     float moveSpeed;
+
+    public interface BannerScrollListener{
+        void onBannerPosition(int position);
+    }
+
+    public void setBannerScrollListener(BannerScrollListener scrollListener){
+        this.scrollListener = scrollListener;
+    }
+
+
     protected Handler mHandler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
@@ -60,6 +71,9 @@ public class BannerLayout extends FrameLayout {
                 if (currentIndex == mLayoutManager.getCurrentPosition()) {
                     ++currentIndex;
                     mRecyclerView.smoothScrollToPosition(currentIndex);
+                    if(scrollListener!=null){
+                        scrollListener.onBannerPosition(currentIndex);
+                    }
                     mHandler.sendEmptyMessageDelayed(WHAT_AUTO_PLAY, autoPlayDuration);
                     refreshIndicator();
                 }
@@ -240,6 +254,9 @@ public class BannerLayout extends FrameLayout {
                 Log.d("xxx", "onScrollStateChanged");
                 if (currentIndex != first) {
                     currentIndex = first;
+                }
+                if(scrollListener!=null){
+                    scrollListener.onBannerPosition(currentIndex);
                 }
                 if (newState == SCROLL_STATE_IDLE) {
                     setPlaying(true);

@@ -114,6 +114,7 @@
     <string name="user_guide">新手入门</string>
     <string name="get_svip">点击开通会员</string>
     <string name="invite_face_to_face">面对面邀请</string>
+    <string name="contact">联系我们</string>
 
     <!-- Download status -->
     <string name="download_progress">已下载：%1$d&#037;&#037;，速度：%2$skb&#047;s</string>
@@ -153,4 +154,5 @@
     <string name="svip_forever">SVIP终身会员</string>
     <string name="vip_forever">VIP终身会员</string>
     <string name="vip_svip">VIP升级SVIP</string>
+    <string name="confirm">确定</string>
 </resources>

@@ -32,6 +32,7 @@
                 android:text="@string/svip_forever"
                 android:layout_marginTop="@dimen/_10dp"
                 android:textColor="@color/black_333333"
+                android:textStyle="bold"
                 android:textSize="@dimen/_15dp"/>
 
             <LinearLayout
@@ -62,7 +63,7 @@
                 android:layout_marginTop="@dimen/_20dp"
                 app:autoPlaying="false"
                 app:centerScale="1.3"
-                app:itemSpace="20"
+                app:itemSpace="25"
                 app:showIndicator="false"
                 app:moveSpeed="1.4"/>
 
@@ -235,7 +236,9 @@
                     style="@style/base_linear_mwv"
                     android:background="@drawable/bg_coner_10_stroke_full_white"
                     android:gravity="center_horizontal"
-                    android:layout_marginTop="@dimen/_15dp">
+                    android:layout_marginTop="@dimen/_15dp"
+                    android:layout_marginRight="@dimen/_10dp"
+                    android:layout_marginLeft="@dimen/_10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -246,7 +249,98 @@
                         android:textColor="@color/purple_FF560D94"/>
 
                     <LinearLayout
-                        style="@style/base_linear_mwh"></LinearLayout>
+                        style="@style/base_linear_mwh"
+                        android:gravity="center"
+                        android:layout_height="70dp">
+
+                        <TextView
+                            style="@style/tv_get_vip_three_lines"
+                            android:text="1.超低费率"/>
+
+                        <View
+                            style="@style/line_get_vip"/>
+
+                        <LinearLayout
+                            style="@style/base_linear_wmv"
+                            android:layout_width="0dp"
+                            android:layout_weight="1.0"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="SVIP有积分0.43%，无积分0.39%"
+                                android:textColor="@color/black_666666"
+                                android:textSize="13dp"
+                                android:layout_marginBottom="@dimen/_5dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="SVIP有积分0.43%，无积分0.39%"
+                                android:textColor="@color/black_666666"
+                                android:textSize="13dp"
+                                android:layout_marginTop="@dimen/_5dp"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        style="@style/view_1px_line_horizontal"
+                        android:background="@color/gray_F2F2F2"
+                        android:layout_marginRight="@dimen/_10dp"
+                        android:layout_marginLeft="@dimen/_20dp"/>
+
+                    <LinearLayout
+                        style="@style/base_linear_mwh"
+                        android:gravity="center"
+                        android:layout_height="70dp">
+
+                        <TextView
+                            style="@style/tv_get_vip_three_lines"
+                            android:text="2.邀请好友&#x000A;&#x0020;&#x0020;&#x0020;超高返佣"/>
+
+                        <View
+                            style="@style/line_get_vip"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1.0"
+                            android:layout_height="wrap_content"
+                            android:text="好友开通SVIP一次性最高返现50元"
+                            android:textColor="@color/black_666666"
+                            android:textSize="13dp"/>
+
+                    </LinearLayout>
+
+                    <View
+                        style="@style/view_1px_line_horizontal"
+                        android:background="@color/gray_F2F2F2"
+                        android:layout_marginRight="@dimen/_10dp"
+                        android:layout_marginLeft="@dimen/_20dp"/>
+
+                    <LinearLayout
+                        style="@style/base_linear_mwh"
+                        android:gravity="center"
+                        android:layout_height="70dp">
+
+                        <TextView
+                            style="@style/tv_get_vip_three_lines"
+                            android:text="3.单单分润"/>
+
+                        <View
+                            style="@style/line_get_vip"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1.0"
+                            android:layout_height="wrap_content"
+                            android:text="好友每次刷卡，即可享受&#x000A;高达 0.1%的利润返现"
+                            android:textColor="@color/black_666666"
+                            android:textSize="13dp"/>
+
+                    </LinearLayout>
 
                 </LinearLayout>
             </LinearLayout>

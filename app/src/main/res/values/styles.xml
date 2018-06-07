@@ -488,4 +488,24 @@
         <item name="android:textColor">@color/gray_EEF8FF</item>
         <item name="android:layout_marginLeft">@dimen/_20dp</item>
     </style>
+
+    <!-- 开通vip介绍的三条字体样式 -->
+    <style name="tv_get_vip_three_lines">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">0.5</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/_15dp</item>
+        <item name="android:textColor">@color/black_333333</item>
+        <item name="android:layout_marginLeft">30dp</item>
+    </style>
+
+    <!-- 开通vip介绍的三条右边的分割线-->
+    <style name="line_get_vip">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_margin">@dimen/_15dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:background">@color/gray_F2F2F2</item>
+    </style>
 </resources>
