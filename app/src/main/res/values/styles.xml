@@ -287,6 +287,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">13dp</item>
+        <item name="android:layout_marginLeft">30dp</item>
     </style>
 
     <!-- 邀请规则线 -->

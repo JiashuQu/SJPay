@@ -46,6 +46,8 @@ public interface ApiConstants {
     String GetIndexData = "GetIndexData";
     String QRcode = "QRcode";
     String OpenVipRule = "OpenVipRule";
+    String InviteRule = "InviteRule";
+    String InviteList = "InviteList";
     //接口名URL
     String getImgCode = APP_URL + API_USERS + GetImgCode;
     String getSmsCode = APP_URL + API_USERS  + SendMsgCode;
@@ -82,4 +84,6 @@ public interface ApiConstants {
 
     String getQRcode = APP_URL + API_PROFIT  + QRcode;
     String getOpenVipRule = APP_URL + API_PROFIT  + OpenVipRule;
+    String getInviteRule = APP_URL + API_PROFIT  + InviteRule;
+    String getInviteList = APP_URL + API_PROFIT  + InviteList;
 }

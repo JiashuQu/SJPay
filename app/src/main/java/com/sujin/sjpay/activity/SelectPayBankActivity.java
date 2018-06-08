@@ -109,40 +109,4 @@ public class SelectPayBankActivity extends BaseActivity {
         }
     };
 
-//    private void request() {
-//        Request<String> request = NoHttp.createStringRequest(ApiConstants.getPayBankQuotaList, RequestMethod.GET);
-//        String md5 = StringUtil.MD5(ApiConstants.PayBankQuotaList, "", ApiConstants.API_YEEPAY);
-//        com.lidroid.xutils.util.LogUtils.d(md5);
-//        request(0, request, httpListener, md5, true, true);
-//    }
-//
-//    private HttpListener<String> httpListener = new HttpListener<String>() {
-//
-//        @Override
-//        public void onSucceed(int what, Response<String> response) {
-//            switch (what) {
-//                case 0:
-//                    String registerJson = response.get();
-//                    GetPayBankQuotaListResponse getPayBankQuotaListResponse = getGson().fromJson(registerJson, GetPayBankQuotaListResponse.class);
-//                    Log.d("SJHttp", getPayBankQuotaListResponse.getBackStatus());
-//                    if (TextUtils.equals(getPayBankQuotaListResponse.getBackStatus(), "0")) {
-//                        ArrayList<GetPayBankQuotaList> data = getPayBankQuotaListResponse.getData();
-//                        adapter.setData(data);
-//                        listSelectBankBelong.setSelection(0);
-//                    } else {
-//                        ToastUtil.show(getPayBankQuotaListResponse.getMessage());
-//                    }
-//                    break;
-//            }
-//
-//        }
-//
-//        @Override
-//        public void onFailed(int what, Response<String> response) {
-//            String json = response.get();
-//
-//            LogUtils.d("SJHttp", json);
-//        }
-//    };
-
 }
