@@ -33,6 +33,7 @@
                         android:layout_marginLeft="@dimen/_30dp">
 
                         <ImageView
+                            android:id="@+id/iv_user_icon"
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:src="@drawable/user_icon"/>

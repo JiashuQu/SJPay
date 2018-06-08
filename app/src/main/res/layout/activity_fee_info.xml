@@ -1,77 +1,292 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/gray_EFEFEF">
 
-    <com.sujin.sjpay.view.TitleBarView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/title_height"
-        app:bar_title="@string/fee_info" />
-
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/_20dp"
-        >
+        android:layout_height="185dp"
+        android:orientation="vertical"
+        android:background="@drawable/invite_income_bg">
 
-        <TextView
-            style="@style/fee_info"
-            android:text="@string/transaction_type"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/_15dp"
+            android:layout_marginLeft="@dimen/_20dp"
+            android:layout_marginRight="@dimen/_20dp">
 
-        <TextView
-            style="@style/fee_info"
-            android:text="@string/normal_fee"/>
+            <ImageView
+                android:id="@+id/img_titlebar_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/btn_white_back"/>
 
-        <TextView
-            style="@style/fee_info"
-            android:text="@string/vip_fee"/>
+            <TextView
+                android:id="@+id/tv_titlebar_right"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:textSize="@dimen/textSize_36px"
+                android:textColor="@color/white"
+                android:text="@string/fee_info"
+                android:textStyle="bold"
+                android:gravity="center"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/btn_white_back"
+                android:visibility="invisible"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/base_linear_mwh"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="@dimen/_30dp">
+
+            <ImageView
+                android:id="@+id/iv_user_icon"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/user_icon"/>
+
+            <LinearLayout
+                android:id="@+id/ll_my_info"
+                style="@style/base_linear_wwv">
+
+                <TextView
+                    android:id="@+id/tv_user_name"
+                    style="@style/tv_my_top"
+                    android:text="帅又美"
+                    android:layout_marginTop="@dimen/_5dp"
+                    android:drawableRight="@drawable/user_svip"
+                    android:drawablePadding="@dimen/_10dp"/>
+
+                <TextView
+                    android:id="@+id/tv_get_vip"
+                    style="@style/tv_my_top"
+                    android:text="@string/get_svip"
+                    android:layout_marginTop="10dp"
+                    android:drawableRight="@drawable/icon_right"
+                    android:drawablePadding="@dimen/_5dp"/>
+
+                <TextView
+                    android:id="@+id/tv_get_proxy"
+                    style="@style/tv_my_top"
+                    android:text="@string/get_proxy"
+                    android:layout_marginTop="7dp"
+                    android:textSize="@dimen/_11sp"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/_20dp"
-        >
+        style="@style/base_linear_mwh">
 
         <TextView
-            style="@style/fee_info2"
-            android:text="@string/have_integral"/>
+            android:id="@+id/tv_vip_one"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="@dimen/_60dp"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="普通会员"
+            android:textSize="16dp"
+            android:textColor="@color/black_666666"
+            android:background="@drawable/bg_vip_info_light"/>
 
         <TextView
-            style="@style/fee_info2"
-            android:text="@string/normal_fee_num"/>
+            android:id="@+id/tv_vip_two"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="@dimen/_60dp"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="VIP"
+            android:textSize="16dp"
+            android:textColor="@color/black_666666"
+            android:background="@drawable/bg_vip_info_dark"/>
 
         <TextView
-            style="@style/fee_info2"
-            android:text="@string/vip_fee_num"/>
+            android:id="@+id/tv_vip_three"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="@dimen/_60dp"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="SVIP"
+            android:textSize="16dp"
+            android:textColor="@color/black_666666"
+            android:background="@drawable/bg_vip_info_dark"/>
 
+    </LinearLayout>
+    
+
+    <LinearLayout
+        style="@style/base_linear_mmv"
+        android:layout_height="140dp"
+        android:layout_marginTop="@dimen/_10dp"
+        android:background="@drawable/bg_vip_info_bar"
+        android:gravity="center_horizontal">
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20dp"
+            android:text="有积分"
+            android:textSize="@dimen/_18sp"
+            android:textColor="@color/black_666666"/>
+
+        <View style="@style/view_1px_line_horizontal"
+            android:layout_marginTop="@dimen/_10dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginLeft="13dp"/>
+
+        <LinearLayout
+            style="@style/base_linear_mwh"
+            android:layout_height="55dp"
+            android:layout_marginTop="@dimen/_10dp"
+            android:gravity="center">
+
+            <LinearLayout
+                style="@style/base_linear_wmv"
+                android:gravity="center"
+                android:layout_weight="1.0">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/quota"
+                    android:textSize="14dp"
+                    android:textColor="@color/black_666666"/>
+
+                <TextView
+                    android:id="@+id/tv_integral_quota"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:text="500-20000"
+                    android:textSize="16dp"
+                    android:textColor="@color/black_333333"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/_1dp"
+                android:layout_height="match_parent"
+                android:background="@color/gray_F2F2F2"/>
+
+            <LinearLayout
+                style="@style/base_linear_wmv"
+                android:gravity="center"
+                android:layout_weight="1.0">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fee"
+                    android:textSize="14dp"
+                    android:textColor="@color/black_666666"/>
+
+                <TextView
+                    android:id="@+id/tv_integral_fee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:text="0.5%+2元/笔"
+                    android:textSize="16dp"
+                    android:textColor="@color/black_333333"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+        
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/_20dp"
-        >
+        style="@style/base_linear_mmv"
+        android:layout_height="140dp"
+        android:layout_marginTop="@dimen/_10dp"
+        android:background="@drawable/bg_vip_info_bar"
+        android:gravity="center_horizontal">
 
         <TextView
-            style="@style/fee_info2"
-            android:text="@string/no_integral"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20dp"
+            android:text="无积分"
+            android:textSize="@dimen/_18sp"
+            android:textColor="@color/black_666666"/>
 
-        <TextView
-            style="@style/fee_info2"
-            android:text="@string/normal_no_integral_fee_num"/>
+        <View style="@style/view_1px_line_horizontal"
+            android:layout_marginTop="@dimen/_10dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginLeft="13dp"/>
 
-        <TextView
-            style="@style/fee_info2"
-            android:text="@string/vip_no_integral_fee_num"/>
+        <LinearLayout
+            style="@style/base_linear_mwh"
+            android:layout_height="55dp"
+            android:layout_marginTop="@dimen/_10dp"
+            android:gravity="center">
+
+            <LinearLayout
+                style="@style/base_linear_wmv"
+                android:gravity="center"
+                android:layout_weight="1.0">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/quota"
+                    android:textSize="14dp"
+                    android:textColor="@color/black_666666"/>
+
+                <TextView
+                    android:id="@+id/tv_no_integral_quota"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:text="500-20000"
+                    android:textSize="16dp"
+                    android:textColor="@color/black_333333"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/_1dp"
+                android:layout_height="match_parent"
+                android:background="@color/gray_F2F2F2"/>
+
+            <LinearLayout
+                style="@style/base_linear_wmv"
+                android:gravity="center"
+
+                android:layout_weight="1.0">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fee"
+                    android:textSize="14dp"
+                    android:textColor="@color/black_666666"/>
+
+                <TextView
+                    android:id="@+id/tv_no_integral_fee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:text="0.5%+2元/笔"
+                    android:textSize="16dp"
+                    android:textColor="@color/black_333333"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 

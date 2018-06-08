@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.android.sohu.sdk.common.toolbox.LogUtils;
 import com.sujin.sjpay.R;
 import com.sujin.sjpay.adapter.InviteListAdapter;
+import com.sujin.sjpay.adapter.PayListAdapter;
 import com.sujin.sjpay.android.ApiConstants;
 import com.sujin.sjpay.android.SJApplication;
 import com.sujin.sjpay.nohttp.HttpListener;

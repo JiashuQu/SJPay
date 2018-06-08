@@ -95,7 +95,7 @@
     <string name="card_raiders">办卡攻略</string>
     <string name="pay_raiders">收款攻略</string>
     <string name="my_fee">我的费率</string>
-    <string name="fee_info">费率信息</string>
+    <string name="fee_info">会员信息</string>
     <string name="image_code_error">图形验证码有误</string>
     <string name="sms_code_error">验证码有误</string>
     <string name="total_income">总收益(元)</string>
@@ -113,8 +113,10 @@
     <string name="contact_us">联系客服</string>
     <string name="user_guide">新手入门</string>
     <string name="get_svip">点击开通会员</string>
+    <string name="get_proxy">我要做顶级代理</string>
     <string name="invite_face_to_face">面对面邀请</string>
     <string name="contact">联系我们</string>
+    <string name="quota">额度</string>
 
     <!-- Download status -->
     <string name="download_progress">已下载：%1$d&#037;&#037;，速度：%2$skb&#047;s</string>
@@ -155,4 +157,5 @@
     <string name="vip_forever">VIP终身会员</string>
     <string name="vip_svip">VIP升级SVIP</string>
     <string name="confirm">确定</string>
+    <string name="fee">费率</string>
 </resources>
