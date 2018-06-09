@@ -102,6 +102,7 @@ public class MyFragment extends BaseFragment {
         unbinder = ButterKnife.bind(this, view);
         this.userId = SJApplication.getInstance().getUserId();
         MyInfoResponse.DataBean user = SJApplication.getInstance().getUser();
+        vipType(user.getVipType());
         initView(user);
         srlMy.setRefreshHeader(new MaterialHeader(getContext()));
         srlMy.setOnRefreshListener(new OnRefreshListener() {
@@ -210,6 +211,8 @@ public class MyFragment extends BaseFragment {
                     if (myInfoResponse.getBackStatus() == 0) {
                         MyInfoResponse.DataBean data = myInfoResponse.getData();
                         int isRealState = data.getIsRealState();
+                        int vipType = data.getVipType();
+                        vipType(vipType);
                         if (isJump) {
                             if (isRealState == 0) {
                                 // 去认证
@@ -240,4 +243,28 @@ public class MyFragment extends BaseFragment {
             LogUtils.d("SJHttp", json);
         }
     };
+
+    private void vipType(int vipType){
+        if (vipType == 0 || vipType == 1) {
+            setGetVip("", false);
+        }else if (vipType == 2) {
+            setGetVip(getResources().getString(R.string.get_svip), false);
+        }else if (vipType == 3) {
+            setGetVip("点击升级会员", true);
+        }else if (vipType == 4) {
+            setGetVip(getResources().getString(R.string.get_svip), true);
+        }
+    }
+
+    /**
+     * 出来获取会员的显示
+     *
+     * @param isShowGetVip
+     */
+    private void setGetVip(String tip, boolean isShowGetVip) {
+        tvGetVip.setText(tip);
+        if (!isShowGetVip) {
+            tvGetVip.setVisibility(View.GONE);
+        }
+    }
 }

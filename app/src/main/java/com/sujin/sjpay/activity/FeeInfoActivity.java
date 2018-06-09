@@ -226,6 +226,7 @@ public class FeeInfoActivity extends BaseActivity {
         Drawable userType = null;
         if (whichIcon == 1 || whichIcon == 0) {
             userType = null;
+            tvGetVip.setEnabled(false);
         }else if (whichIcon == 2 ) {
             userType = getResources().getDrawable(R.drawable.user_svip);
         }else if (whichIcon == 3) {
