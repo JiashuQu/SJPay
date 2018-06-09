@@ -21,6 +21,7 @@ import com.sujin.sjpay.protocol.IncomeListResponse;
 import com.sujin.sjpay.protocol.IncomeTotalResponse;
 import com.sujin.sjpay.util.StringUtil;
 import com.sujin.sjpay.util.ToastUtil;
+import com.sujin.sjpay.view.dialog.GetTopVipDialog;
 import com.yanzhenjie.nohttp.NoHttp;
 import com.yanzhenjie.nohttp.RequestMethod;
 import com.yanzhenjie.nohttp.rest.Request;
@@ -47,7 +48,9 @@ public class InviteIncomeActivity extends BaseActivity {
     @BindView(R.id.tv_income_total)
     TextView tvIncomeTotal;
 
+    private IncomeTotalResponse.DataBean data;
     private String userId;
+    private String lastMounthIncomeTip;
     private int page = 1;
     private static int pageSize = 10;
     private int pages = 10;
@@ -118,6 +121,7 @@ public class InviteIncomeActivity extends BaseActivity {
                         tvIncomeTotal.setText(data.getTotalIncome());
                         tvLastMonthIncome.setText(data.getLastMounthIncome());
                         tvThisMonthIncome.setText(data.getCurrentMounthIncome());
+                        lastMounthIncomeTip = data.getLastMounthIncomeTip();
                     } else {
                         ToastUtil.show(incomeTotalResponse.getMessage());
                     }
@@ -149,6 +153,14 @@ public class InviteIncomeActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.tv_invite_info:
+                final GetTopVipDialog getTopVipDialog = new GetTopVipDialog(this, lastMounthIncomeTip);
+                getTopVipDialog.setLiftBankCardListener(new GetTopVipDialog.LiftBankCardListener() {
+                    @Override
+                    public void cancel() {
+                        getTopVipDialog.dismiss();
+                    }
+                });
+                getTopVipDialog.show();
                 break;
         }
     }

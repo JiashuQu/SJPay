@@ -8,36 +8,66 @@
     android:gravity="center"
     android:padding="@dimen/_15dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/_15dp"
-        android:text="@string/contact"
-        android:textColor="@color/black_333333"
-        android:textSize="18dp"/>
+    <LinearLayout
+        android:id="@+id/ll_contact_us"
+        style="@style/base_linear_wwv"
+        android:gravity="center">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="客户经理：186 1012 2058"
-        android:textColor="@color/black_333333"
-        android:textSize="14dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_15dp"
+            android:text="@string/contact"
+            android:textColor="@color/black_333333"
+            android:textSize="18dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="客户经理：185 0612 0807"
-        android:layout_marginTop="@dimen/_10dp"
-        android:textColor="@color/black_333333"
-        android:textSize="14dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="客户经理：186 1012 2058"
+            android:textColor="@color/black_333333"
+            android:textSize="14dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/wx_service"
-        android:layout_marginTop="@dimen/_10dp"
-        android:textColor="@color/black_333333"
-        android:textSize="14dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="客户经理：185 0612 0807"
+            android:layout_marginTop="@dimen/_10dp"
+            android:textColor="@color/black_333333"
+            android:textSize="14dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wx_service"
+            android:layout_marginTop="@dimen/_10dp"
+            android:textColor="@color/black_333333"
+            android:textSize="14dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_my_account_tip"
+        style="@style/base_linear_wwv"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_15dp"
+            android:text="@string/invite_income"
+            android:textColor="@color/black_333333"
+            android:textSize="18dp"/>
+
+        <TextView
+            android:id="@+id/tv_my_account_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="客户经理：186 1012 2058"
+            android:textColor="@color/black_333333"
+            android:textSize="14dp"/>
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_confirm"

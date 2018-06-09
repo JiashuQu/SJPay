@@ -190,7 +190,7 @@ public class FeeInfoActivity extends BaseActivity {
 
                 break;
             case R.id.tv_get_proxy:
-                final GetTopVipDialog getTopVipDialog = new GetTopVipDialog(this);
+                final GetTopVipDialog getTopVipDialog = new GetTopVipDialog(this, "");
                     getTopVipDialog.setLiftBankCardListener(new GetTopVipDialog.LiftBankCardListener() {
                         @Override
                         public void cancel() {
