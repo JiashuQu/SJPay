@@ -25,6 +25,7 @@ import com.sujin.sjpay.activity.FeeInfoActivity;
 import com.sujin.sjpay.activity.GetVipActivity;
 import com.sujin.sjpay.activity.InviteActivity;
 import com.sujin.sjpay.activity.InviteIncomeActivity;
+import com.sujin.sjpay.activity.MyAccountActivity;
 import com.sujin.sjpay.activity.MyInfoActivity;
 import com.sujin.sjpay.android.ApiConstants;
 import com.sujin.sjpay.android.AppConstants;
@@ -151,7 +152,7 @@ public class MyFragment extends BaseFragment {
     }
 
     @OnClick({R.id.ll_my_info, R.id.tv_my_secret, R.id.tv_about_us, R.id.tv_my_credit_card,
-            R.id.tv_fee_info, R.id.tv_invite_income, R.id.tv_invite, R.id.tv_get_vip})
+            R.id.tv_fee_info, R.id.tv_invite_income, R.id.tv_invite, R.id.tv_get_vip, R.id.tv_my_account})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_my_info:
@@ -180,6 +181,9 @@ public class MyFragment extends BaseFragment {
                 break;
             case R.id.tv_get_vip:
                 startActivity(new Intent(getActivity(), GetVipActivity.class));
+                break;
+            case R.id.tv_my_account:
+                startActivity(new Intent(getActivity(), MyAccountActivity.class));
                 break;
         }
     }

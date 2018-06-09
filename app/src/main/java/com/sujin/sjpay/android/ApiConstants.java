@@ -49,6 +49,8 @@ public interface ApiConstants {
     String InviteRule = "InviteRule";
     String InviteList = "InviteList";
     String GetVipTypeIntroduce = "GetVipTypeIntroduce";
+    String IncomeTotal = "IncomeTotal";
+    String IncomeList = "IncomeList";
     //接口名URL
     String getImgCode = APP_URL + API_USERS + GetImgCode;
     String getSmsCode = APP_URL + API_USERS  + SendMsgCode;
@@ -88,4 +90,6 @@ public interface ApiConstants {
     String getOpenVipRule = APP_URL + API_PROFIT  + OpenVipRule;
     String getInviteRule = APP_URL + API_PROFIT  + InviteRule;
     String getInviteList = APP_URL + API_PROFIT  + InviteList;
+    String getIncomeTotal = APP_URL + API_PROFIT  + IncomeTotal;
+    String getIncomeList = APP_URL + API_PROFIT  + IncomeList;
 }

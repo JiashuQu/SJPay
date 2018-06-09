@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import com.sujin.sjpay.R;
 
-public class MyCountActivity extends BaseActivity {
+public class MyAccountActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

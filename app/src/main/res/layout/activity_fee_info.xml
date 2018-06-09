@@ -63,7 +63,6 @@
                     style="@style/tv_my_top"
                     android:text="帅又美"
                     android:layout_marginTop="@dimen/_5dp"
-                    android:drawableRight="@drawable/user_svip"
                     android:drawablePadding="@dimen/_10dp"/>
 
                 <TextView
@@ -71,7 +70,6 @@
                     style="@style/tv_my_top"
                     android:text="@string/get_svip"
                     android:layout_marginTop="10dp"
-                    android:drawableRight="@drawable/icon_right"
                     android:drawablePadding="@dimen/_5dp"/>
 
                 <TextView

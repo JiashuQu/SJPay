@@ -6,143 +6,151 @@
     android:layout_height="match_parent"
     tools:context=".activity.InviteIncomeActivity">
 
-    <LinearLayout
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/srl_income_list"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:orientation="vertical"
-        android:background="@drawable/invite_income_bg">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="@dimen/_15dp"
-            android:layout_marginLeft="@dimen/_20dp"
-            android:layout_marginRight="@dimen/_20dp">
+            android:layout_height="220dp"
+            android:orientation="vertical"
+            android:background="@drawable/invite_income_bg">
 
-            <ImageView
-                android:id="@+id/img_titlebar_back"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/btn_white_back"/>
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_15dp"
+                android:layout_marginLeft="@dimen/_20dp"
+                android:layout_marginRight="@dimen/_20dp">
+
+                <ImageView
+                    android:id="@+id/img_titlebar_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/btn_white_back"/>
+
+                <TextView
+                    android:id="@+id/tv_titlebar_right"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:textSize="@dimen/textSize_36px"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:text="@string/invite_income"
+                    android:gravity="center"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/btn_white_back"
+                    android:visibility="invisible"/>
+
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/tv_titlebar_right"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.0"
-                android:textSize="@dimen/textSize_36px"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:text="@string/invite_income"
-                android:gravity="center"/>
-
-            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/btn_white_back"
-                android:visibility="invisible"/>
+                android:text="@string/total_income"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSize_26px"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_20dp"/>
 
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/total_income"
-            android:textColor="@color/white"
-            android:textSize="@dimen/textSize_26px"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_20dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1,000.00"
-            android:textColor="@color/white"
-            android:textSize="35dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_10dp"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_1dp"
-            android:background="@color/white"
-            android:layout_margin="@dimen/_20dp"
-            android:layout_marginBottom="@dimen/_10dp"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="@dimen/_10dp"
-            android:gravity="center">
-
-            <LinearLayout
-                android:layout_width="0dp"
+            <TextView
+                android:id="@+id/tv_income_total"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.0"
-                android:orientation="vertical"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/tv_invite_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/last_month_income"
-                    android:textColor="@color/white"
-                    android:drawableRight="@drawable/income_info"
-                    android:textSize="13dp"/>
-
-                <TextView
-                    android:id="@+id/tv_last_month_income"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="999.00"
-                    android:textColor="@color/white"
-                    android:textSize="13dp"/>
-
-            </LinearLayout>
+                android:text="1,000.00"
+                android:textColor="@color/white"
+                android:textSize="35dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_10dp"/>
 
             <View
-                android:layout_width="@dimen/_1dp"
-                android:layout_height="57dp"
-                android:background="@color/white"/>
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1dp"
+                android:background="@color/white"
+                android:layout_margin="@dimen/_20dp"
+                android:layout_marginBottom="@dimen/_10dp"/>
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.0"
-                android:orientation="vertical"
+                android:orientation="horizontal"
+                android:layout_marginBottom="@dimen/_10dp"
                 android:gravity="center">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/this_month_income"
-                    android:textColor="@color/white"
-                    android:textSize="13dp"/>
+                    android:layout_weight="1.0"
+                    android:orientation="vertical"
+                    android:gravity="center">
 
-                <TextView
-                    android:id="@+id/tv_this_month_income"
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/tv_invite_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/last_month_income"
+                        android:textColor="@color/white"
+                        android:drawableRight="@drawable/income_info"
+                        android:textSize="13dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_last_month_income"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="999.00"
+                        android:textColor="@color/white"
+                        android:textSize="13dp"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="@dimen/_1dp"
+                    android:layout_height="57dp"
+                    android:background="@color/white"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="999.00"
-                    android:textColor="@color/white"
-                    android:textSize="13dp"/>
+                    android:layout_weight="1.0"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/this_month_income"
+                        android:textColor="@color/white"
+                        android:textSize="13dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_this_month_income"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="999.00"
+                        android:textColor="@color/white"
+                        android:textSize="13dp"/>
+
+                </LinearLayout>
 
             </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_invite_income"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/_20dp"
+            android:textSize="13dp"
+            android:text="@string/invite_income"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/bg_invite_income"
-        android:gravity="center_vertical"
-        android:paddingLeft="@dimen/_20dp"
-        android:textSize="13dp"
-        android:text="@string/invite_income"/>
-    
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
 </LinearLayout>

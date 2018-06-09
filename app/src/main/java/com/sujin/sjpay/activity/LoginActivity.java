@@ -129,9 +129,10 @@ public class LoginActivity extends BaseActivity {
                     ToastUtil.show("密码必须为6~16位字母，数字，部分符号");
                     return;
                 }
-                if (StringUtil.checkPhoneNumber(phoneNum)) {
+                // FIXME
+//                if (StringUtil.checkPhoneNumber(phoneNum)) {
                     login(phoneNum, password);
-                }
+//                }
                 break;
             case R.id.tv_login_quick:
                 intent = new Intent(this, RegisterActivity.class);
