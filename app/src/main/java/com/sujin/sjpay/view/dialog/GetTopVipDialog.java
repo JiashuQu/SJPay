@@ -22,10 +22,11 @@ public class GetTopVipDialog extends Dialog {
     private LinearLayout llContact_us;
     private LinearLayout llMyAccountTip;
     private TextView tvMyAccountTip;
+    private TextView tvMyAccountTitle;
     private Context context;
     private String showWhat;
 
-    public GetTopVipDialog(Context context, String showWhat) {
+    public GetTopVipDialog(Context context, String showWhat, String title) {
         super(context, R.style.SercurityDialogTheme);
         this.context = context;
         this.showWhat = showWhat;
@@ -61,6 +62,7 @@ public class GetTopVipDialog extends Dialog {
         llContact_us = findViewById(R.id.ll_contact_us);
         llMyAccountTip = findViewById(R.id.ll_my_account_tip);
         tvMyAccountTip = findViewById(R.id.tv_my_account_tip);
+        tvMyAccountTitle = findViewById(R.id.tv_my_account_title);
 
         if (TextUtils.isEmpty(showWhat)) {
             llContact_us.setVisibility(View.VISIBLE);

@@ -52,10 +52,10 @@
         android:gravity="center">
 
         <TextView
+            android:id="@+id/tv_my_account_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/_15dp"
-            android:text="@string/invite_income"
             android:textColor="@color/black_333333"
             android:textSize="18dp"/>
 
@@ -63,7 +63,6 @@
             android:id="@+id/tv_my_account_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="客户经理：186 1012 2058"
             android:textColor="@color/black_333333"
             android:textSize="14dp"/>
 

@@ -52,6 +52,9 @@ public interface ApiConstants {
     String IncomeTotal = "IncomeTotal";
     String IncomeList = "IncomeList";
     String Share = "Share";
+    String AccountTotal = "AccountTotal";
+    String AccountRecord = "AccountRecord";
+    String AvatarImg = "AvatarImg";
     //接口名URL
     String getImgCode = APP_URL + API_USERS + GetImgCode;
     String getSmsCode = APP_URL + API_USERS  + SendMsgCode;
@@ -67,6 +70,9 @@ public interface ApiConstants {
     String getBankCardActivate = APP_URL + API_USERS  + BankCardActivate;
     String getBankCardSubmitActivateCode = APP_URL + API_USERS  + BankCardSubmitActivateCode;
     String getUpdateBankMobile = APP_URL + API_USERS  + UpdateBankMobile;
+    String getAccountTotal = APP_URL + API_USERS  + AccountTotal;
+    String getAccountRecord = APP_URL + API_USERS  + AccountRecord;
+    String setAvatarImg = APP_URL + API_USERS  + AvatarImg;
 
     String getForgetImgCode = APP_URL + API_FORGET  + GetImgCode;
     String getForgetSmsCode = APP_URL + API_FORGET  + SendMsgCode;

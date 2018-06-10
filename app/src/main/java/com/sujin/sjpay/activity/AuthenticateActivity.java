@@ -152,13 +152,6 @@ public class AuthenticateActivity extends BaseActivity {
                     return;
                 }
 
-//                if (isCanUpload && imageBack != null && imageFront != null) {
-//                    tvConfirm.setEnabled(false);
-//                    upLoad(imageFrontBitmap);
-//                    UPLOAD_STEP = 1;
-//                } else {
-//                    ToastUtil.show("请您先上传照片");
-//                }
                 if (IdCardBackPhoto != 0 && IdCardPhoto != 0) {
                     Intent intent = new Intent(AuthenticateActivity.this, BandCardActivity.class);
                     intent.putExtra("IdCard", idCard);

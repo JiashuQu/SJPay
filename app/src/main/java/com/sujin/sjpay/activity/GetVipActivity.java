@@ -140,7 +140,7 @@ public class GetVipActivity extends BaseActivity {
 
     @OnClick(R.id.iv_get_vip)
     public void onViewClicked() {
-        final GetTopVipDialog getTopVipDialog = new GetTopVipDialog(GetVipActivity.this, "");
+        final GetTopVipDialog getTopVipDialog = new GetTopVipDialog(GetVipActivity.this, "", "");
         getTopVipDialog.setLiftBankCardListener(new GetTopVipDialog.LiftBankCardListener() {
             @Override
             public void cancel() {

@@ -153,7 +153,7 @@ public class InviteIncomeActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.tv_invite_info:
-                final GetTopVipDialog getTopVipDialog = new GetTopVipDialog(this, lastMounthIncomeTip);
+                final GetTopVipDialog getTopVipDialog = new GetTopVipDialog(this, lastMounthIncomeTip, "邀请收益");
                 getTopVipDialog.setLiftBankCardListener(new GetTopVipDialog.LiftBankCardListener() {
                     @Override
                     public void cancel() {
