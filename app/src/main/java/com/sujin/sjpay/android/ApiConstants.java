@@ -51,6 +51,7 @@ public interface ApiConstants {
     String GetVipTypeIntroduce = "GetVipTypeIntroduce";
     String IncomeTotal = "IncomeTotal";
     String IncomeList = "IncomeList";
+    String Share = "Share";
     //接口名URL
     String getImgCode = APP_URL + API_USERS + GetImgCode;
     String getSmsCode = APP_URL + API_USERS  + SendMsgCode;
@@ -92,4 +93,5 @@ public interface ApiConstants {
     String getInviteList = APP_URL + API_PROFIT  + InviteList;
     String getIncomeTotal = APP_URL + API_PROFIT  + IncomeTotal;
     String getIncomeList = APP_URL + API_PROFIT  + IncomeList;
+    String getShare = APP_URL + API_PROFIT  + Share;
 }

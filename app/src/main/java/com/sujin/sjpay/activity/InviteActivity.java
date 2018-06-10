@@ -15,6 +15,7 @@ import com.sujin.sjpay.android.SJApplication;
 import com.sujin.sjpay.nohttp.HttpListener;
 import com.sujin.sjpay.protocol.InviteListResponse;
 import com.sujin.sjpay.protocol.InviteRuleResponse;
+import com.sujin.sjpay.protocol.ShareResponse;
 import com.sujin.sjpay.util.DialogUtil;
 import com.sujin.sjpay.util.StringUtil;
 import com.sujin.sjpay.util.ToastUtil;
@@ -23,6 +24,8 @@ import com.sujin.sjpay.view.dialog.InviteDetailDialog;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.media.UMImage;
+import com.umeng.socialize.media.UMWeb;
 import com.yanzhenjie.nohttp.NoHttp;
 import com.yanzhenjie.nohttp.RequestMethod;
 import com.yanzhenjie.nohttp.rest.Request;
@@ -38,6 +41,7 @@ import butterknife.OnClick;
 public class InviteActivity extends BaseActivity {
     private static final int WHAT_INVITE_RULE = 0;
     private static final int WHAT_INVITE_LIST = 1;
+    private static final int WHAT_SHARE = 2;
 
     @BindView(R.id.tb_login_title)
     TitleBarView tbLoginTitle;
@@ -61,6 +65,7 @@ public class InviteActivity extends BaseActivity {
 
     private List<InviteListResponse.DataBean.ListBean> data;
     private InviteListAdapter adapter;
+    private ShareResponse.DataBean shareInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +75,7 @@ public class InviteActivity extends BaseActivity {
         userId = SJApplication.getInstance().getUserId();
         getInviteRule();
         getInviteList();
+        getShare();
         initView();
     }
 
@@ -95,7 +101,11 @@ public class InviteActivity extends BaseActivity {
                 inviteDetailDialog.show();
                 break;
             case R.id.iv_invite_share:
-                new ShareAction(InviteActivity.this).withText("hello").setDisplayList(SHARE_MEDIA.WEIXIN, SHARE_MEDIA.WEIXIN_CIRCLE)
+                UMWeb  web = new UMWeb(shareInfo.getShareUrl());
+                web.setTitle(shareInfo.getTitle());//标题
+                web.setThumb(new UMImage(this, shareInfo.getImageUrl()));  //缩略图
+                web.setDescription(shareInfo.getContext());//描述
+                new ShareAction(InviteActivity.this).withMedia(web).setDisplayList(SHARE_MEDIA.WEIXIN, SHARE_MEDIA.WEIXIN_CIRCLE)
                         .setCallback(shareListener).open();
                 break;
         }
@@ -109,6 +119,18 @@ public class InviteActivity extends BaseActivity {
         String md5 = StringUtil.MD5(ApiConstants.InviteRule, s, ApiConstants.API_PROFIT);
         request.add("UserId", userId);
         request(WHAT_INVITE_RULE, request, httpListener, md5, false, false);
+        com.lidroid.xutils.util.LogUtils.d("UserId=" + userId);
+    }
+
+    //获取分享内容
+    public void getShare() {
+        Request<String> request = NoHttp.createStringRequest(ApiConstants.getShare, RequestMethod.GET);
+        char[] chars = ("UserId=" + userId + "&Soure=" + 1).toCharArray();
+        String s = StringUtil.sort(chars);
+        String md5 = StringUtil.MD5(ApiConstants.Share, s, ApiConstants.API_PROFIT);
+        request.add("UserId", userId);
+        request.add("Soure", 1);
+        request(WHAT_SHARE, request, httpListener, md5, false, false);
         com.lidroid.xutils.util.LogUtils.d("UserId=" + userId);
     }
 
@@ -152,10 +174,20 @@ public class InviteActivity extends BaseActivity {
                             adapter.setData(data);
                             adapter.notifyDataSetChanged();
                         } else {
-                            ToastUtil.show("暂可用银行卡");
+                            ToastUtil.show("您还没有邀请过好友");
                         }
                     } else {
                         ToastUtil.show(inviteListResponse.getMessage());
+                    }
+                    break;
+                case WHAT_SHARE:
+                    String shareJson = response.get();
+                    ShareResponse shareResponse = getGson().fromJson(shareJson, ShareResponse.class);
+                    LogUtils.d("SJHttp", shareResponse.getBackStatus() + "");
+                    if (shareResponse.getBackStatus() == 0) {
+                        shareInfo = shareResponse.getData();
+                    } else {
+                        ToastUtil.show(shareResponse.getMessage());
                     }
                     break;
             }
