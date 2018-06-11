@@ -32,6 +32,7 @@ public class InviteListAdapter extends BaseAdapter {
     @Override
     public int getCount() {
         return data.size();
+
     }
 
     @Override
