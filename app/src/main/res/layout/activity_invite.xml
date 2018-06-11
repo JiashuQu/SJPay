@@ -13,7 +13,12 @@
         android:layout_height="@dimen/title_height"
         app:bar_title="@string/invite_short" />
 
-    <ScrollView
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/srl_my_invite"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="none">
@@ -130,5 +135,7 @@
         </LinearLayout>
 
     </ScrollView>
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
 </LinearLayout>

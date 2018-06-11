@@ -154,6 +154,17 @@
                 android:textSize="13dp"
                 android:text="@string/invite_income"/>
 
+            <ListView
+                android:id="@+id/list_my_invite_income"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:listSelector="@drawable/selector_press_gray"
+                android:dividerHeight="@dimen/_0dp"
+                android:divider="@color/transparent"
+                android:scrollbars="none"
+                android:overScrollMode="never"
+                />
+
         </LinearLayout>
 
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>

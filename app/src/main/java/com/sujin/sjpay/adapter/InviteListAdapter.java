@@ -19,24 +19,24 @@ import butterknife.ButterKnife;
 
 public class InviteListAdapter extends BaseAdapter {
     private Context context;
-    private List<InviteListResponse.DataBean.ListBean> datas;
+    private List<InviteListResponse.DataBean.ListBean> data;
     private Drawable arrow;
 
-    public InviteListAdapter(Context context, List<InviteListResponse.DataBean.ListBean> datas) {
+    public InviteListAdapter(Context context, List<InviteListResponse.DataBean.ListBean> data) {
         this.context = context;
-        this.datas = datas;
+        this.data = data;
         arrow = ContextCompat.getDrawable(context, R.drawable.next_arrow_tip);
         arrow.setBounds(0, 0, arrow.getMinimumWidth(), arrow.getMinimumHeight());
     }
 
     @Override
     public int getCount() {
-        return datas.size();
+        return data.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return datas.get(position);
+        return data.get(position);
     }
 
     @Override
@@ -46,19 +46,20 @@ public class InviteListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        InviteListAdapter.ViewHolder holder;
+        ViewHolder holder;
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.item_invite, null, false);
-            holder = new InviteListAdapter.ViewHolder(convertView);
+            holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         } else {
-            holder = (InviteListAdapter.ViewHolder) convertView.getTag();
+            holder = (ViewHolder) convertView.getTag();
         }
-        InviteListResponse.DataBean.ListBean data = datas.get(position);
-        holder.tvInviteName.setText(data.getRealName() + "  " + data.getMobile());
-        holder.tvInviteData.setText(data.getCTime());
-        int isRealState = data.getIsRealState();
-        String isRealStateTxt = data.getIsRealStateTxt();
+        InviteListResponse.DataBean.ListBean inviteList = data.get(position);
+        holder.tvInviteName.setText(inviteList.getRealName() + "  " + inviteList.getMobile());
+        holder.tvInviteData.setText(inviteList.getCTime());
+        int isRealState = inviteList.getIsRealState();
+        String isRealStateTxt = inviteList.getIsRealStateTxt();
+        holder.tvInviteStatus.setText(isRealStateTxt);
         if (isRealState == 0) {//未实名
             holder.tvInviteStatus.setTextColor(0xFF00BA76);
             holder.tvInviteStatus.setText(isRealStateTxt);
@@ -70,8 +71,8 @@ public class InviteListAdapter extends BaseAdapter {
     }
 
     public void setData(List<InviteListResponse.DataBean.ListBean> data) {
-        this.datas = data;
-//        notifyDataSetChanged();
+        this.data = data;
+        notifyDataSetChanged();
     }
 
     static class ViewHolder {

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        style="@style/base_linear_mmv"
+        android:layout_height="140dp"
+        android:layout_marginTop="@dimen/_10dp"
+        android:background="@drawable/bg_vip_info_bar"
+        android:gravity="center_horizontal">
+
+        <LinearLayout
+            style="@style/base_linear_mwh"
+            android:layout_height="45dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_money_type"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="@dimen/_40dp"
+                android:layout_weight="1.0"
+                android:text="提现到账"
+                android:textColor="@color/black_333333"/>
+
+            <TextView
+                android:id="@+id/tv_money_status"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1.0"
+                android:text="-300"/>
+
+        </LinearLayout>
+
+        <View style="@style/view_1px_line_horizontal"
+            android:layout_marginTop="@dimen/_10dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginLeft="13dp"/>
+
+        <LinearLayout
+            style="@style/base_linear_mwh"
+            android:layout_height="45dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="可用余额"
+                android:textColor="@color/gray_999999"
+                android:layout_marginLeft="40dp"/>
+
+            <TextView
+                android:id="@+id/tv_money_available"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_weight="1.0"
+                android:text="5000.00"
+                android:textColor="@color/black_333333"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1.0"
+                android:textColor="@color/gray_999999"
+                android:text="冻结金额"/>
+
+            <TextView
+                android:id="@+id/tv_frozen_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/_40dp"
+                android:text="0.00"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_money_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2018-09-09  21:12:21"
+            android:textColor="@color/gray_999999"
+            android:layout_marginLeft="28dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+

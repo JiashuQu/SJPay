@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.sohu.sdk.common.toolbox.LogUtils;
@@ -14,11 +15,14 @@ import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.sujin.sjpay.R;
+import com.sujin.sjpay.adapter.InviteIncomeAdapter;
+import com.sujin.sjpay.adapter.PayListAdapter;
 import com.sujin.sjpay.android.ApiConstants;
 import com.sujin.sjpay.android.SJApplication;
 import com.sujin.sjpay.nohttp.HttpListener;
 import com.sujin.sjpay.protocol.IncomeListResponse;
 import com.sujin.sjpay.protocol.IncomeTotalResponse;
+import com.sujin.sjpay.protocol.PayListResponse;
 import com.sujin.sjpay.util.StringUtil;
 import com.sujin.sjpay.util.ToastUtil;
 import com.sujin.sjpay.view.dialog.GetTopVipDialog;
@@ -26,6 +30,9 @@ import com.yanzhenjie.nohttp.NoHttp;
 import com.yanzhenjie.nohttp.RequestMethod;
 import com.yanzhenjie.nohttp.rest.Request;
 import com.yanzhenjie.nohttp.rest.Response;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -47,13 +54,16 @@ public class InviteIncomeActivity extends BaseActivity {
     SmartRefreshLayout srlIncomeList;
     @BindView(R.id.tv_income_total)
     TextView tvIncomeTotal;
+    @BindView(R.id.list_my_invite_income)
+    ListView listMyInviteIncome;
 
-    private IncomeTotalResponse.DataBean data;
     private String userId;
     private String lastMounthIncomeTip;
     private int page = 1;
     private static int pageSize = 10;
     private int pages = 10;
+    private ArrayList<IncomeListResponse.DataBean.ListBean> data;
+    private InviteIncomeAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,8 +115,16 @@ public class InviteIncomeActivity extends BaseActivity {
                 getIncomeList(SJApplication.getInstance().getUserId(), page, false);
             }
         });
+
+        data = new ArrayList<>();
+        adapter = new InviteIncomeAdapter(this, data);
+        listMyInviteIncome.setDividerHeight(0);
+        listMyInviteIncome.setOverScrollMode(View.OVER_SCROLL_NEVER);
+        listMyInviteIncome.setSelector(R.color.transparent);
+        listMyInviteIncome.setAdapter(adapter);
     }
 
+    private boolean hasMoreData = false;
     private HttpListener<String> httpListener = new HttpListener<String>() {
 
         @Override
@@ -131,9 +149,30 @@ public class InviteIncomeActivity extends BaseActivity {
                     IncomeListResponse incomeListResponse = getGson().fromJson(vipTypeIntroduceJson, IncomeListResponse.class);
                     LogUtils.d("SJHttp", incomeListResponse.getBackStatus() + "");
                     if (incomeListResponse.getBackStatus() == 0) {
+                        List<IncomeListResponse.DataBean.ListBean> incomeList = incomeListResponse.getData().getList();
+                        if (page == 1) {
+                            data.clear();
+                            hasMoreData = false;
+                        }
+                        page++;
+                        pages = incomeListResponse.getData().getPageCount();
+                        if (incomeList != null || incomeList.size() == 0) {
+                            for (int i = 0; i < incomeList.size(); i++) {
+                                data.add(incomeList.get(i));
+                            }
+                            adapter.setData(InviteIncomeActivity.this.data);
+                            adapter.notifyDataSetChanged();
+                        } else {
+                            ToastUtil.show("没有交易记录");
+                        }
                     } else {
                         ToastUtil.show(incomeListResponse.getMessage());
                     }
+                    if (page > pages){
+                        hasMoreData = true;
+                    }
+                    srlIncomeList.finishRefresh(1000, true);
+                    srlIncomeList.finishLoadMore(1000, true, hasMoreData);
                     break;
             }
 

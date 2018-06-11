@@ -1,19 +1,27 @@
 package com.sujin.sjpay.activity;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.sohu.sdk.common.toolbox.LogUtils;
+import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.sujin.sjpay.R;
+import com.sujin.sjpay.adapter.MyAccountAdapter;
 import com.sujin.sjpay.android.ApiConstants;
 import com.sujin.sjpay.android.SJApplication;
 import com.sujin.sjpay.nohttp.HttpListener;
+import com.sujin.sjpay.protocol.AccountRecordResponse;
 import com.sujin.sjpay.protocol.AccountTotalResponse;
-import com.sujin.sjpay.protocol.IncomeListResponse;
-import com.sujin.sjpay.protocol.IncomeTotalResponse;
+import com.sujin.sjpay.protocol.PayListResponse;
 import com.sujin.sjpay.util.StringUtil;
 import com.sujin.sjpay.util.ToastUtil;
 import com.sujin.sjpay.view.dialog.GetTopVipDialog;
@@ -21,6 +29,9 @@ import com.yanzhenjie.nohttp.NoHttp;
 import com.yanzhenjie.nohttp.RequestMethod;
 import com.yanzhenjie.nohttp.rest.Request;
 import com.yanzhenjie.nohttp.rest.Response;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,6 +51,11 @@ public class MyAccountActivity extends BaseActivity {
     TextView tvFrozenMoney;
     @BindView(R.id.srl_account_list)
     SmartRefreshLayout srlAccountList;
+    @BindView(R.id.list_my_account_list)
+    ListView listMyAccountList;
+
+    private ArrayList<AccountRecordResponse.DataBean.ListBean> data;
+    private MyAccountAdapter adapter;
 
     private String userId;
     private int page = 1;
@@ -59,6 +75,28 @@ public class MyAccountActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        srlAccountList.setRefreshHeader(new MaterialHeader(this));
+        srlAccountList.setRefreshFooter(new ClassicsFooter(this));
+        srlAccountList.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                page = 1;
+                getAccountRecord(userId, page, false);
+            }
+        });
+        srlAccountList.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                getAccountRecord(userId, page, false);
+            }
+        });
+
+        data = new ArrayList<>();
+        adapter = new MyAccountAdapter(this, data);
+        listMyAccountList.setDividerHeight(0);
+        listMyAccountList.setOverScrollMode(View.OVER_SCROLL_NEVER);
+        listMyAccountList.setSelector(R.color.transparent);
+        listMyAccountList.setAdapter(adapter);
 
     }
 
@@ -84,6 +122,7 @@ public class MyAccountActivity extends BaseActivity {
         request(WHAT_ACCOUNT_RECORD, request, httpListener, md5, true, isLoading);
     }
 
+    private boolean hasMoreData = false;
     private HttpListener<String> httpListener = new HttpListener<String>() {
 
         @Override
@@ -102,13 +141,34 @@ public class MyAccountActivity extends BaseActivity {
                     }
                     break;
                 case WHAT_ACCOUNT_RECORD:
-//                    String vipTypeIntroduceJson = response.get();
-//                    IncomeListResponse incomeListResponse = getGson().fromJson(vipTypeIntroduceJson, IncomeListResponse.class);
-//                    LogUtils.d("SJHttp", incomeListResponse.getBackStatus() + "");
-//                    if (incomeListResponse.getBackStatus() == 0) {
-//                    } else {
-//                        ToastUtil.show(incomeListResponse.getMessage());
-//                    }
+                    String accountRecordJson = response.get();
+                    AccountRecordResponse accountRecordResponse = getGson().fromJson(accountRecordJson, AccountRecordResponse.class);
+                    LogUtils.d("SJHttp", accountRecordResponse.getBackStatus() + "");
+                    if (accountRecordResponse.getBackStatus() == 0) {
+                        if (page == 1) {
+                            data.clear();
+                            hasMoreData = false;
+                        }
+                        page++;
+                        pages = accountRecordResponse.getData().getPageCount();
+                        List<AccountRecordResponse.DataBean.ListBean> list = accountRecordResponse.getData().getList();
+                        if (list != null || list.size() == 0) {
+                            for (int i = 0; i < list.size(); i++) {
+                                data.add(list.get(i));
+                            }
+                            adapter.setData(data);
+                            adapter.notifyDataSetChanged();
+                        } else {
+                            ToastUtil.show("没有记录");
+                        }
+                    } else {
+                        ToastUtil.show(accountRecordResponse.getMessage());
+                    }
+                    if (page > pages){
+                        hasMoreData = true;
+                    }
+                    srlAccountList.finishRefresh(1000, true);
+                    srlAccountList.finishLoadMore(1000, true, hasMoreData);
                     break;
             }
 
@@ -117,6 +177,8 @@ public class MyAccountActivity extends BaseActivity {
         @Override
         public void onFailed(int what, Response<String> response) {
             String json = response.get();
+            srlAccountList.finishRefresh(1000, true);
+            srlAccountList.finishLoadMore(1000, true, hasMoreData);
             LogUtils.d("SJHttp", json);
         }
     };
@@ -129,7 +191,7 @@ public class MyAccountActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.tv_frozen_money:
-                final GetTopVipDialog getTopVipDialog = new GetTopVipDialog(this, "冻结余额一般是指您提现未到账的金额，\n提现成功后冻结余额将会减少","冻结余额");
+                final GetTopVipDialog getTopVipDialog = new GetTopVipDialog(this, "冻结余额一般是指您提现未到账的金额，\n提现成功后冻结余额将会减少", "冻结余额");
                 getTopVipDialog.setLiftBankCardListener(new GetTopVipDialog.LiftBankCardListener() {
                     @Override
                     public void cancel() {

@@ -1,12 +1,19 @@
 package com.sujin.sjpay.activity;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.sohu.sdk.common.toolbox.LogUtils;
+import com.scwang.smartrefresh.header.MaterialHeader;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.sujin.sjpay.R;
 import com.sujin.sjpay.adapter.InviteListAdapter;
 import com.sujin.sjpay.adapter.PayListAdapter;
@@ -15,6 +22,7 @@ import com.sujin.sjpay.android.SJApplication;
 import com.sujin.sjpay.nohttp.HttpListener;
 import com.sujin.sjpay.protocol.InviteListResponse;
 import com.sujin.sjpay.protocol.InviteRuleResponse;
+import com.sujin.sjpay.protocol.PayListResponse;
 import com.sujin.sjpay.protocol.ShareResponse;
 import com.sujin.sjpay.util.DialogUtil;
 import com.sujin.sjpay.util.StringUtil;
@@ -59,6 +67,8 @@ public class InviteActivity extends BaseActivity {
     TextView tvInviteDetailBtn;
     @BindView(R.id.lv_invite)
     ListView lvInvite;
+    @BindView(R.id.srl_my_invite)
+    SmartRefreshLayout srlMyInvite;
     private String userId;
     private List<InviteRuleResponse.DataBean.ComplexBean> complex;
     private List<InviteRuleResponse.DataBean.SimpleBean> simple;
@@ -66,6 +76,9 @@ public class InviteActivity extends BaseActivity {
     private List<InviteListResponse.DataBean.ListBean> data;
     private InviteListAdapter adapter;
     private ShareResponse.DataBean shareInfo;
+    private int page = 1;
+    private static int pageSize = 10;
+    private int pages = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,13 +87,29 @@ public class InviteActivity extends BaseActivity {
         ButterKnife.bind(this);
         userId = SJApplication.getInstance().getUserId();
         getInviteRule();
-        getInviteList();
+        getInviteList(page, true);
         getShare();
         initView();
     }
 
     @Override
     protected void initView() {
+        srlMyInvite.setRefreshHeader(new MaterialHeader(this));
+        srlMyInvite.setRefreshFooter(new ClassicsFooter(this));
+        srlMyInvite.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                page = 1;
+                getInviteList(page, false);
+            }
+        });
+        srlMyInvite.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                getInviteList(page, false);
+            }
+        });
+
         data = new ArrayList<>();
         adapter = new InviteListAdapter(this, data);
         lvInvite.setDividerHeight(0);
@@ -101,7 +130,7 @@ public class InviteActivity extends BaseActivity {
                 inviteDetailDialog.show();
                 break;
             case R.id.iv_invite_share:
-                UMWeb  web = new UMWeb(shareInfo.getShareUrl());
+                UMWeb web = new UMWeb(shareInfo.getShareUrl());
                 web.setTitle(shareInfo.getTitle());//标题
                 web.setThumb(new UMImage(this, shareInfo.getImageUrl()));  //缩略图
                 web.setDescription(shareInfo.getContext());//描述
@@ -135,16 +164,19 @@ public class InviteActivity extends BaseActivity {
     }
 
     //邀请列表
-    private void getInviteList() {
+    private void getInviteList(int page, boolean isLoading) {
         Request<String> request = NoHttp.createStringRequest(ApiConstants.getInviteList, RequestMethod.GET);
-        char[] chars = ("UserId=" + userId).toCharArray();
+        char[] chars = ("UserId=" + userId + "&pageIndex=" + page + "&pageSize=" + pageSize).toCharArray();
         String s = StringUtil.sort(chars);
         String md5 = StringUtil.MD5(ApiConstants.InviteList, s, ApiConstants.API_PROFIT);
         request.add("UserId", userId);
-        request(WHAT_INVITE_LIST, request, httpListener, md5, false, false);
+        request.add("pageIndex", page);
+        request.add("pageSize", pageSize);
+        request(WHAT_INVITE_LIST, request, httpListener, md5, false, isLoading);
         com.lidroid.xutils.util.LogUtils.d("UserId=" + userId);
     }
 
+    private boolean hasMoreData = false;
     private HttpListener<String> httpListener = new HttpListener<String>() {
         @Override
         public void onSucceed(int what, Response<String> response) {
@@ -169,16 +201,31 @@ public class InviteActivity extends BaseActivity {
                     InviteListResponse inviteListResponse = getGson().fromJson(inviteListJson, InviteListResponse.class);
                     LogUtils.d("SJHttp", inviteListResponse.getBackStatus() + "");
                     if (inviteListResponse.getBackStatus() == 0) {
-                        data = inviteListResponse.getData().getList();
-                        if (data != null || data.size() == 0) {
+                        if (page == 1) {
+                            data.clear();
+                            hasMoreData = false;
+                        }
+                        page++;
+                        pages = inviteListResponse.getData().getPageCount();
+                        List<InviteListResponse.DataBean.ListBean> list = inviteListResponse.getData().getList();
+                        if (list != null || list.size() == 0) {
+                            for (int i = 0; i < list.size(); i++) {
+                                data.add(list.get(i));
+                            }
                             adapter.setData(data);
                             adapter.notifyDataSetChanged();
+//                            listPayList.setSelection(0);
                         } else {
                             ToastUtil.show("您还没有邀请过好友");
                         }
                     } else {
                         ToastUtil.show(inviteListResponse.getMessage());
                     }
+                    if (page > pages){
+                        hasMoreData = true;
+                    }
+                    srlMyInvite.finishRefresh(1000, true);
+                    srlMyInvite.finishLoadMore(1000, true, hasMoreData);
                     break;
                 case WHAT_SHARE:
                     String shareJson = response.get();
@@ -196,6 +243,8 @@ public class InviteActivity extends BaseActivity {
         @Override
         public void onFailed(int what, Response<String> response) {
             String json = response.get();
+            srlMyInvite.finishRefresh(1000, true);
+            srlMyInvite.finishLoadMore(1000, true, hasMoreData);
             DialogUtil.dismissLoading();
             LogUtils.d("SJHttp", json);
         }

@@ -31,6 +31,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.sujin.sjpay.BuildConfig;
 import com.sujin.sjpay.R;
@@ -164,6 +165,7 @@ public class MyFragment extends BaseFragment {
         vipType(user.getVipType());
         initView(user);
         srlMy.setRefreshHeader(new MaterialHeader(getContext()));
+        srlMy.setRefreshFooter(new ClassicsFooter(getContext()));
         srlMy.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
