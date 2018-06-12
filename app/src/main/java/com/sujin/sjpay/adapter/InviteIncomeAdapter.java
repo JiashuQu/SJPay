@@ -3,6 +3,7 @@ package com.sujin.sjpay.adapter;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,7 +61,12 @@ public class InviteIncomeAdapter extends BaseAdapter {
         holder.tvGetMoney.setText(data.getInOrOut() + data.getAmount());
         holder.tvByWho.setText(data.getRealName());
         holder.tvGetMoneyType.setText(data.getService());
-
+        int inOrOutNum = data.getInOrOutNum();
+        if (1 == inOrOutNum) {
+            holder.tvGetMoney.setTextColor(context.getResources().getColor(R.color.green_70C050));
+        }else if (-1 == inOrOutNum) {
+            holder.tvGetMoney.setTextColor(context.getResources().getColor(R.color.red_FF0036));
+        }
         return convertView;
     }
 

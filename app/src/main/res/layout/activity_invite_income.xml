@@ -154,6 +154,10 @@
                 android:textSize="13dp"
                 android:text="@string/invite_income"/>
 
+        <LinearLayout
+            style="@style/base_linear_mmv"
+            android:background="@drawable/bg_my_item">
+
             <ListView
                 android:id="@+id/list_my_invite_income"
                 android:layout_width="match_parent"
@@ -165,7 +169,19 @@
                 android:overScrollMode="never"
                 />
 
+            <TextView
+                android:id="@+id/tv_no_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="暂无记录"
+                android:textSize="@dimen/_15dp"
+                android:textColor="@color/black_666666"
+                android:visibility="gone"/>
+
         </LinearLayout>
+
+    </LinearLayout>
 
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 

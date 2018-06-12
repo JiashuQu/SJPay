@@ -256,41 +256,46 @@ public class FeeInfoActivity extends BaseActivity {
     private void setBtn(int selectBtn, List<VipTypeIntroduceResponse.DataBean> feeList) {
 
         String vipTypeTxt = data.getVipTypeTxt();
-        VipTypeIntroduceResponse.DataBean noIntegral = feeList.get(0);
-        VipTypeIntroduceResponse.DataBean integral = feeList.get(1);
-
-        tvNoIntegralFee.setText(noIntegral.getFee());
-        tvIntegralFee.setText(integral.getFee());
-        tvNoIntegralQuota.setText(noIntegral.getQuota());
-        tvIntegralQuota.setText(integral.getQuota());
-
+        if (feeList.size() > 1) {
+            VipTypeIntroduceResponse.DataBean noIntegral = feeList.get(0);
+            VipTypeIntroduceResponse.DataBean integral = feeList.get(1);
+            tvNoIntegralFee.setText(noIntegral.getFee());
+            tvIntegralFee.setText(integral.getFee());
+            tvNoIntegralQuota.setText(noIntegral.getQuota());
+            tvIntegralQuota.setText(integral.getQuota());
+        }
         switch (selectBtn) {
             case 4:
                 tvVipOne.setBackgroundResource(R.drawable.bg_vip_info_light);
                 tvVipTwo.setBackgroundResource(R.drawable.bg_vip_info_dark);
                 tvVipThree.setBackgroundResource(R.drawable.bg_vip_info_dark);
+                llNoIntegral.setVisibility(View.VISIBLE);
                 break;
             case 3:
                 tvVipOne.setBackgroundResource(R.drawable.bg_vip_info_dark);
                 tvVipTwo.setBackgroundResource(R.drawable.bg_vip_info_light);
                 tvVipThree.setBackgroundResource(R.drawable.bg_vip_info_dark);
+                llNoIntegral.setVisibility(View.VISIBLE);
                 break;
             case 2:
                 tvVipOne.setBackgroundResource(R.drawable.bg_vip_info_dark);
                 tvVipTwo.setBackgroundResource(R.drawable.bg_vip_info_dark);
                 tvVipThree.setBackgroundResource(R.drawable.bg_vip_info_light);
+                llNoIntegral.setVisibility(View.VISIBLE);
                 break;
             case 1:
                 tvVipOne.setBackgroundResource(R.drawable.bg_vip_info_dark);
                 tvVipTwo.setBackgroundResource(R.drawable.bg_vip_info_dark);
                 tvVipThree.setBackgroundResource(R.drawable.bg_vip_info_light);
                 tvVipThree.setText(vipTypeTxt);
+                llNoIntegral.setVisibility(View.INVISIBLE);
                 break;
             case 0:
                 tvVipOne.setBackgroundResource(R.drawable.bg_vip_info_dark);
                 tvVipTwo.setBackgroundResource(R.drawable.bg_vip_info_dark);
                 tvVipThree.setBackgroundResource(R.drawable.bg_vip_info_light);
                 tvVipThree.setText(vipTypeTxt);
+                llNoIntegral.setVisibility(View.INVISIBLE);
                 break;
         }
 

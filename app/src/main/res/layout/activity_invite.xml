@@ -37,12 +37,12 @@
                 <ImageView
                     android:layout_width="104dp"
                     android:layout_height="18dp"
-                    android:layout_marginTop="208dp"
+                    android:layout_marginTop="210dp"
                     android:src="@drawable/invite_rule" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="291dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_15dp"
                     android:layout_marginRight="30dp"
                     android:layout_marginLeft="30dp"
@@ -99,6 +99,7 @@
                         android:paddingRight="@dimen/_20dp"
                         android:paddingBottom="@dimen/_10dp"
                         android:paddingTop="@dimen/_10dp"
+                        android:layout_marginBottom="@dimen/_10dp"
                         android:layout_gravity="center"/>
 
                 </LinearLayout>
@@ -119,19 +120,38 @@
                     android:text="@string/invite_list"
                     android:textColor="@color/white"
                     android:drawableRight="@drawable/invite_down"
-                    android:drawablePadding="@dimen/_5dp" />
+                    android:drawablePadding="@dimen/_5dp"
+                    android:layout_marginBottom="@dimen/_10dp"/>
 
             </LinearLayout>
 
-            <com.sujin.sjpay.view.MyListView
-                android:id="@+id/lv_invite"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:listSelector="@drawable/selector_press_gray"
-                android:dividerHeight="@dimen/_0dp"
-                android:divider="@color/transparent"
-                android:scrollbars="none"
-                android:overScrollMode="never"/>
+            <LinearLayout
+                style="@style/base_linear_mmv"
+                android:background="@drawable/bg_my_item">
+
+                <com.sujin.sjpay.view.MyListView
+                    android:id="@+id/lv_invite"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:listSelector="@drawable/selector_press_gray"
+                    android:dividerHeight="@dimen/_0dp"
+                    android:divider="@color/transparent"
+                    android:scrollbars="none"
+                    android:overScrollMode="never"
+                    android:layout_margin="@dimen/_20dp"
+                    android:layout_marginLeft="@dimen/_20dp"/>
+
+                <TextView
+                    android:id="@+id/tv_no_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="暂无记录"
+                    android:textSize="@dimen/_15dp"
+                    android:textColor="@color/black_666666"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 

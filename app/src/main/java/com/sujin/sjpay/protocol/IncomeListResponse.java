@@ -115,6 +115,12 @@ public class IncomeListResponse {
              */
 
             private String InOrOut;
+            private int InOrOutNum;
+
+            public int getInOrOutNum() {
+                return InOrOutNum;
+            }
+
             private String Amount;
             private String CTime;
             private int TypeId;

@@ -4,10 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.android.sohu.sdk.common.toolbox.LogUtils;
@@ -19,13 +17,11 @@ import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.sujin.sjpay.R;
 import com.sujin.sjpay.adapter.InviteListAdapter;
-import com.sujin.sjpay.adapter.PayListAdapter;
 import com.sujin.sjpay.android.ApiConstants;
 import com.sujin.sjpay.android.SJApplication;
 import com.sujin.sjpay.nohttp.HttpListener;
 import com.sujin.sjpay.protocol.InviteListResponse;
 import com.sujin.sjpay.protocol.InviteRuleResponse;
-import com.sujin.sjpay.protocol.PayListResponse;
 import com.sujin.sjpay.protocol.ShareResponse;
 import com.sujin.sjpay.util.DialogUtil;
 import com.sujin.sjpay.util.StringUtil;
@@ -75,6 +71,8 @@ public class InviteActivity extends BaseActivity {
     ListView lvInvite;
     @BindView(R.id.srl_my_invite)
     SmartRefreshLayout srlMyInvite;
+    @BindView(R.id.tv_no_list)
+    TextView tvNoList;
     private String userId;
     private List<InviteRuleResponse.DataBean.ComplexBean> complex;
     private List<InviteRuleResponse.DataBean.SimpleBean> simple;
@@ -103,10 +101,10 @@ public class InviteActivity extends BaseActivity {
         sv.setScrollViewListener(new ScrollzfView.ScrollViewListener() {
             @Override
             public void onScrollChanged(float y) {
-                Log.d("sc", "sv.getScrollY: "+sv.getScrollY());
-                Log.d("sc", "lvInvite.getY(): "+lvInvite.getY());
-                if(Math.abs(sv.getScrollY() - lvInvite.getY())<300 ){
-                    sv.smoothScrollTo(0,(int)lvInvite.getY());
+                Log.d("sc", "sv.getScrollY: " + sv.getScrollY());
+                Log.d("sc", "lvInvite.getY(): " + lvInvite.getY());
+                if (Math.abs(sv.getScrollY() - lvInvite.getY()) < 1100) {
+                    sv.smoothScrollTo(0, (int) lvInvite.getY());
                 }
 
             }
@@ -227,7 +225,7 @@ public class InviteActivity extends BaseActivity {
                         page++;
                         pages = inviteListResponse.getData().getPageCount();
                         List<InviteListResponse.DataBean.ListBean> list = inviteListResponse.getData().getList();
-                        if (list != null || list.size() == 0) {
+                        if (list != null && list.size() != 0) {
                             for (int i = 0; i < list.size(); i++) {
                                 data.add(list.get(i));
                             }
@@ -235,12 +233,13 @@ public class InviteActivity extends BaseActivity {
                             adapter.notifyDataSetChanged();
 //                            listPayList.setSelection(0);
                         } else {
-                            ToastUtil.show("您还没有邀请过好友");
+                            tvNoList.setVisibility(View.VISIBLE);
+                            lvInvite.setVisibility(View.GONE);
                         }
                     } else {
                         ToastUtil.show(inviteListResponse.getMessage());
                     }
-                    if (page > pages){
+                    if (page > pages) {
                         hasMoreData = true;
                     }
                     srlMyInvite.finishRefresh(1000, true);

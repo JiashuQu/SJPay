@@ -16,13 +16,11 @@ import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.sujin.sjpay.R;
 import com.sujin.sjpay.adapter.InviteIncomeAdapter;
-import com.sujin.sjpay.adapter.PayListAdapter;
 import com.sujin.sjpay.android.ApiConstants;
 import com.sujin.sjpay.android.SJApplication;
 import com.sujin.sjpay.nohttp.HttpListener;
 import com.sujin.sjpay.protocol.IncomeListResponse;
 import com.sujin.sjpay.protocol.IncomeTotalResponse;
-import com.sujin.sjpay.protocol.PayListResponse;
 import com.sujin.sjpay.util.StringUtil;
 import com.sujin.sjpay.util.ToastUtil;
 import com.sujin.sjpay.view.dialog.GetTopVipDialog;
@@ -56,6 +54,8 @@ public class InviteIncomeActivity extends BaseActivity {
     TextView tvIncomeTotal;
     @BindView(R.id.list_my_invite_income)
     ListView listMyInviteIncome;
+    @BindView(R.id.tv_no_list)
+    TextView tvNoList;
 
     private String userId;
     private String lastMounthIncomeTip;
@@ -156,19 +156,20 @@ public class InviteIncomeActivity extends BaseActivity {
                         }
                         page++;
                         pages = incomeListResponse.getData().getPageCount();
-                        if (incomeList != null || incomeList.size() == 0) {
+                        if (incomeList != null && incomeList.size() != 0) {
                             for (int i = 0; i < incomeList.size(); i++) {
                                 data.add(incomeList.get(i));
                             }
                             adapter.setData(InviteIncomeActivity.this.data);
                             adapter.notifyDataSetChanged();
                         } else {
-                            ToastUtil.show("没有交易记录");
+                            tvNoList.setVisibility(View.VISIBLE);
+                            listMyInviteIncome.setVisibility(View.GONE);
                         }
                     } else {
                         ToastUtil.show(incomeListResponse.getMessage());
                     }
-                    if (page > pages){
+                    if (page > pages) {
                         hasMoreData = true;
                     }
                     srlIncomeList.finishRefresh(1000, true);

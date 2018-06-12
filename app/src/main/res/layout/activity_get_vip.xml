@@ -70,7 +70,8 @@
             <LinearLayout
                 style="@style/base_linear_mwv"
                 android:background="@drawable/bg_get_vip"
-                android:layout_marginTop="@dimen/_15dp">
+                android:layout_marginTop="@dimen/_15dp"
+                android:layout_height="650dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"

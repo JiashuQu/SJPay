@@ -25,11 +25,13 @@ public class GetTopVipDialog extends Dialog {
     private TextView tvMyAccountTitle;
     private Context context;
     private String showWhat;
+    private String title;
 
     public GetTopVipDialog(Context context, String showWhat, String title) {
         super(context, R.style.SercurityDialogTheme);
         this.context = context;
         this.showWhat = showWhat;
+        this.title = title;
     }
 
     public void onClick(View v) {
@@ -70,6 +72,8 @@ public class GetTopVipDialog extends Dialog {
         }else {
             llContact_us.setVisibility(View.GONE);
             llMyAccountTip.setVisibility(View.VISIBLE);
+            tvMyAccountTitle.setVisibility(View.VISIBLE);
+            tvMyAccountTitle.setText(title);
             tvMyAccountTip.setText(showWhat);
         }
 

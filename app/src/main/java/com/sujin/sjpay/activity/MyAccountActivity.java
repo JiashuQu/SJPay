@@ -21,7 +21,6 @@ import com.sujin.sjpay.android.SJApplication;
 import com.sujin.sjpay.nohttp.HttpListener;
 import com.sujin.sjpay.protocol.AccountRecordResponse;
 import com.sujin.sjpay.protocol.AccountTotalResponse;
-import com.sujin.sjpay.protocol.PayListResponse;
 import com.sujin.sjpay.util.StringUtil;
 import com.sujin.sjpay.util.ToastUtil;
 import com.sujin.sjpay.view.dialog.GetTopVipDialog;
@@ -53,6 +52,8 @@ public class MyAccountActivity extends BaseActivity {
     SmartRefreshLayout srlAccountList;
     @BindView(R.id.list_my_account_list)
     ListView listMyAccountList;
+    @BindView(R.id.tv_no_list)
+    TextView tvNoList;
 
     private ArrayList<AccountRecordResponse.DataBean.ListBean> data;
     private MyAccountAdapter adapter;
@@ -152,19 +153,20 @@ public class MyAccountActivity extends BaseActivity {
                         page++;
                         pages = accountRecordResponse.getData().getPageCount();
                         List<AccountRecordResponse.DataBean.ListBean> list = accountRecordResponse.getData().getList();
-                        if (list != null || list.size() == 0) {
+                        if (list != null && list.size() != 0) {
                             for (int i = 0; i < list.size(); i++) {
                                 data.add(list.get(i));
                             }
                             adapter.setData(data);
                             adapter.notifyDataSetChanged();
                         } else {
-                            ToastUtil.show("没有记录");
+                            tvNoList.setVisibility(View.VISIBLE);
+                            listMyAccountList.setVisibility(View.GONE);
                         }
                     } else {
                         ToastUtil.show(accountRecordResponse.getMessage());
                     }
-                    if (page > pages){
+                    if (page > pages) {
                         hasMoreData = true;
                     }
                     srlAccountList.finishRefresh(1000, true);

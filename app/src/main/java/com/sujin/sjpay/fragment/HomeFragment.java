@@ -14,7 +14,9 @@ import android.widget.TextView;
 import com.android.sohu.sdk.common.toolbox.LogUtils;
 import com.bumptech.glide.Glide;
 import com.sujin.sjpay.R;
+import com.sujin.sjpay.activity.InviteActivity;
 import com.sujin.sjpay.activity.InviteIncomeActivity;
+import com.sujin.sjpay.activity.MyAccountActivity;
 import com.sujin.sjpay.activity.WebActivity;
 import com.sujin.sjpay.android.ApiConstants;
 import com.sujin.sjpay.android.SJApplication;
@@ -91,7 +93,6 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
 
     private String userId;
     private List<BannerListResponse.DataBean> data;
-    private List<IndexDataResponse.DataBean.BtnListBean> bannerList;
     private List<IndexDataResponse.DataBean.BtnListBean> btnList;
 
     @Override
@@ -162,7 +163,6 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
                     IndexDataResponse indexDataResponse = getGson().fromJson(homeInfoJson, IndexDataResponse.class);
                     LogUtils.d("SJHttp", indexDataResponse.getBackStatus() + "");
                     if (indexDataResponse.getBackStatus() == 0) {
-                        bannerList = indexDataResponse.getData().getBtnList();
                         btnList = indexDataResponse.getData().getBtnList();
                         Glide.with(getActivity()).asBitmap().load(btnList.get(0).getIcon()).into(ivInvite);
                         Glide.with(getActivity()).asBitmap().load(btnList.get(1).getIcon()).into(ivMyIncome);
@@ -248,10 +248,30 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
     @Override
     public void OnBannerClick(int position) {
         Log.i("tag", "你点了第" + position + "张轮播图");
-        Intent intent = new Intent(getActivity(), WebActivity.class);
-        intent.putExtra("payUrl", data.get(position).getWapURL());
-        intent.putExtra("title", data.get(position).getTitle());
-        startActivity(intent);
+        String wapURL = data.get(position).getWapURL();
+        Intent intent = null;
+        if (wapURL.contains("http")) {
+            intent = new Intent(getActivity(), WebActivity.class);
+            intent.putExtra("payUrl", wapURL);
+        }else {
+            if (wapURL.equals("HuoBao")) {
+                intent = new Intent(getActivity(), WebActivity.class);
+                wapURL = "file:///android_asset/gift_activity.png";
+                intent.putExtra("payUrl", wapURL);
+            }else if (wapURL.equals("InviteIncome")) {
+                intent = new Intent(getActivity(), InviteIncomeActivity.class);
+            }else if (wapURL.equals("QRcode")) {
+                getQR();
+            }else if (wapURL.equals("Invite")) {
+                intent = new Intent(getActivity(), InviteActivity.class);
+            }else if (wapURL.equals("AccountRecord")) {
+                intent = new Intent(getActivity(), MyAccountActivity.class);
+            }
+        }
+        if (intent != null) {
+            intent.putExtra("title", data.get(position).getTitle());
+            startActivity(intent);
+        }
     }
 
 
@@ -260,28 +280,53 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
         Intent intent = null;
         switch (view.getId()) {
             case R.id.ll_invite:
-                getQR();
+                setBtn(0);
                 break;
             case R.id.ll_invite_income:
-                intent = new Intent(getActivity(), InviteIncomeActivity.class);
+                setBtn(1);
                 break;
             case R.id.ll_loan:
-                intent = new Intent(getActivity(), WebActivity.class);
-                setBtn(2, intent);
+                setBtn(2);
                 break;
             case R.id.ll_get_card:
-                intent = new Intent(getActivity(), WebActivity.class);
-                setBtn(3, intent);
+                setBtn(3);
                 break;
             case R.id.ll_card_raiders:
-                intent = new Intent(getActivity(), WebActivity.class);
-                setBtn(4, intent);
+                setBtn(4);
                 break;
             case R.id.ll_pay_raiders:
-                setBtn(5, intent);
+                setBtn(5);
                 break;
         }
         if (intent != null) {
+            startActivity(intent);
+        }
+    }
+
+    private void setBtn(int i) {
+        Log.i("tag", "你点了第" + i + "个按钮");
+        String wapURL = btnList.get(i).getWapUrl();
+        Intent intent = null;
+        if (wapURL.contains("http")) {
+            intent = new Intent(getActivity(), WebActivity.class);
+            intent.putExtra("payUrl", wapURL);
+        }else {
+            if (wapURL.equals("HuoBao")) {
+                intent = new Intent(getActivity(), WebActivity.class);
+                wapURL = "file:///android_asset/gift_activity.png";
+                intent.putExtra("payUrl", wapURL);
+            }else if (wapURL.equals("InviteIncome")) {
+                intent = new Intent(getActivity(), InviteIncomeActivity.class);
+            }else if (wapURL.equals("QRcode")) {
+                getQR();
+            }else if (wapURL.equals("Invite")) {
+                intent = new Intent(getActivity(), InviteActivity.class);
+            }else if (wapURL.equals("AccountRecord")) {
+                intent = new Intent(getActivity(), MyAccountActivity.class);
+            }
+        }
+        if (intent != null) {
+            intent.putExtra("title", btnList.get(i).getTitle());
             startActivity(intent);
         }
     }

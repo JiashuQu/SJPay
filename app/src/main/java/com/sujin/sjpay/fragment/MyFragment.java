@@ -221,7 +221,7 @@ public class MyFragment extends BaseFragment {
     }
 
     @OnClick({R.id.tv_my_secret, R.id.tv_about_us, R.id.tv_my_credit_card,
-            R.id.tv_fee_info, R.id.tv_invite_income, R.id.tv_invite, R.id.tv_get_vip, R.id.tv_my_account,
+            R.id.tv_invite_income, R.id.tv_invite, R.id.tv_get_vip, R.id.tv_my_account,
             R.id.iv_user_icon, R.id.iv_right_arrow, R.id.tv_user_phone, R.id.ll_fee_info, R.id.tv_pay_list,
             R.id.tv_guide_user, R.id.ll_contact_us})
     public void onViewClicked(View view) {
@@ -255,7 +255,7 @@ public class MyFragment extends BaseFragment {
             case R.id.tv_about_us:
                 startActivity(new Intent(getActivity(), AboutUsActivity.class));
                 break;
-            case R.id.tv_fee_info:
+            case R.id.ll_fee_info:
                 startActivity(new Intent(getActivity(), FeeInfoActivity.class));
                 break;
             case R.id.tv_invite_income:

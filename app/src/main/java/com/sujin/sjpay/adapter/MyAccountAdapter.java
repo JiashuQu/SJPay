@@ -58,6 +58,12 @@ public class MyAccountAdapter extends BaseAdapter {
         AccountRecordResponse.DataBean.ListBean data = datas.get(position);
         holder.tvMoneyType.setText(data.getService());
         holder.tvMoneyStatus.setText(data.getInOrOut() + data.getAmount());
+        int inOrOutNum = data.getInOrOutNum();
+        if (1 == inOrOutNum) {
+            holder.tvMoneyStatus.setTextColor(context.getResources().getColor(R.color.green_70C050));
+        }else if (-1 == inOrOutNum) {
+            holder.tvMoneyStatus.setTextColor(context.getResources().getColor(R.color.red_FF0036));
+        }
         holder.tvMoneyAvailable.setText(data.getAvailable());
         holder.tvFrozenMoney.setText(data.getFrozen());
         holder.tvMoneyTime.setText(data.getCTime());
