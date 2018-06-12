@@ -343,6 +343,18 @@
                     </LinearLayout>
 
                 </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_get_vip_tips"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:layout_marginLeft="@dimen/_20dp"
+                    android:layout_marginRight="@dimen/_20dp"
+                    android:layout_marginBottom="@dimen/_10dp"
+                    android:textColor="@color/gray_EEEEEE"
+                    android:textSize="13sp"/>
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

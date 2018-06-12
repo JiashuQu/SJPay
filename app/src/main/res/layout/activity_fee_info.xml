@@ -207,6 +207,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_no_integral"
         style="@style/base_linear_mmv"
         android:layout_height="140dp"
         android:layout_marginTop="@dimen/_10dp"

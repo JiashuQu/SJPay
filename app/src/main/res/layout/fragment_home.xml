@@ -28,6 +28,7 @@
                 android:gravity="center_horizontal">
 
                 <LinearLayout
+                    android:id="@+id/ll_invite"
                     style="@style/main_btn"
                     android:layout_marginRight="@dimen/_15dp">
 
@@ -38,12 +39,14 @@
                         android:src="@drawable/icon_home_invite" />
 
                     <TextView
+                        android:id="@+id/tv_invite"
                         style="@style/main_btn_text"
                         android:text="@string/invite"/>
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_invite_income"
                     style="@style/main_btn"
                     android:layout_marginLeft="@dimen/_15dp">
 
@@ -54,6 +57,7 @@
                         android:src="@drawable/icon_invite_income"/>
 
                     <TextView
+                        android:id="@+id/tv_my_income"
                         style="@style/main_btn_text"
                         android:text="@string/invite_income"/>
 
@@ -69,6 +73,7 @@
                 android:gravity="center_horizontal">
 
                 <LinearLayout
+                    android:id="@+id/ll_loan"
                     style="@style/main_btn"
                     android:layout_marginRight="@dimen/_15dp">
 
@@ -79,12 +84,14 @@
                         android:src="@drawable/icon_loan" />
 
                     <TextView
+                        android:id="@+id/tv_loan"
                         style="@style/main_btn_text"
                         android:text="@string/loan"/>
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_get_card"
                     style="@style/main_btn"
                     android:layout_marginLeft="@dimen/_15dp">
 
@@ -95,6 +102,7 @@
                         android:src="@drawable/icon_get_card"/>
 
                     <TextView
+                        android:id="@+id/tv_get_card"
                         style="@style/main_btn_text"
                         android:text="@string/get_card"/>
 
@@ -109,6 +117,7 @@
                 android:gravity="center_horizontal"
                 android:layout_marginTop="@dimen/_15dp">
                 <LinearLayout
+                    android:id="@+id/ll_card_raiders"
                     style="@style/main_btn"
                     android:layout_marginRight="@dimen/_15dp">
 
@@ -119,12 +128,14 @@
                         android:src="@drawable/icon_get_card_ways"/>
 
                     <TextView
+                        android:id="@+id/tv_card_raiders"
                         style="@style/main_btn_text"
                         android:text="@string/card_raiders" />
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_pay_raiders"
                     style="@style/main_btn"
                     android:layout_marginLeft="@dimen/_15dp">
 
@@ -136,6 +147,7 @@
                         android:src="@drawable/icon_pay_ways"/>
 
                     <TextView
+                        android:id="@+id/tv_pay_raiders"
                         style="@style/main_btn_text"
                         android:text="@string/pay_raiders"/>
 

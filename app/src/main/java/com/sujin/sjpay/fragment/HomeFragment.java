@@ -8,11 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.android.sohu.sdk.common.toolbox.LogUtils;
 import com.bumptech.glide.Glide;
 import com.sujin.sjpay.R;
-import com.sujin.sjpay.activity.InviteActivity;
+import com.sujin.sjpay.activity.InviteIncomeActivity;
 import com.sujin.sjpay.activity.WebActivity;
 import com.sujin.sjpay.android.ApiConstants;
 import com.sujin.sjpay.android.SJApplication;
@@ -61,11 +63,36 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
     ImageView ivInvite;
     @BindView(R.id.iv_my_income)
     ImageView ivMyIncome;
+    @BindView(R.id.ll_invite)
+    LinearLayout llInvite;
+    @BindView(R.id.ll_invite_income)
+    LinearLayout llInviteIncome;
+    @BindView(R.id.ll_loan)
+    LinearLayout llLoan;
+    @BindView(R.id.ll_get_card)
+    LinearLayout llGetCard;
+    @BindView(R.id.ll_card_raiders)
+    LinearLayout llCardRaiders;
+    @BindView(R.id.ll_pay_raiders)
+    LinearLayout llPayRaiders;
+    @BindView(R.id.tv_invite)
+    TextView tvInvite;
+    @BindView(R.id.tv_my_income)
+    TextView tvMyIncome;
+    @BindView(R.id.tv_loan)
+    TextView tvLoan;
+    @BindView(R.id.tv_get_card)
+    TextView tvGetCard;
+    @BindView(R.id.tv_card_raiders)
+    TextView tvCardRaiders;
+    @BindView(R.id.tv_pay_raiders)
+    TextView tvPayRaiders;
     private ArrayList<String> list_path, list_title;
 
     private String userId;
     private List<BannerListResponse.DataBean> data;
     private List<IndexDataResponse.DataBean.BtnListBean> bannerList;
+    private List<IndexDataResponse.DataBean.BtnListBean> btnList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -136,6 +163,20 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
                     LogUtils.d("SJHttp", indexDataResponse.getBackStatus() + "");
                     if (indexDataResponse.getBackStatus() == 0) {
                         bannerList = indexDataResponse.getData().getBtnList();
+                        btnList = indexDataResponse.getData().getBtnList();
+                        Glide.with(getActivity()).asBitmap().load(btnList.get(0).getIcon()).into(ivInvite);
+                        Glide.with(getActivity()).asBitmap().load(btnList.get(1).getIcon()).into(ivMyIncome);
+                        Glide.with(getActivity()).asBitmap().load(btnList.get(2).getIcon()).into(ivCardRaiders);
+                        Glide.with(getActivity()).asBitmap().load(btnList.get(3).getIcon()).into(ivPayRaiders);
+                        Glide.with(getActivity()).asBitmap().load(btnList.get(4).getIcon()).into(ivLoan);
+                        Glide.with(getActivity()).asBitmap().load(btnList.get(5).getIcon()).into(ivGetCard);
+                        tvInvite.setText(btnList.get(0).getTitle());
+                        tvMyIncome.setText(btnList.get(1).getTitle());
+                        tvLoan.setText(btnList.get(2).getTitle());
+                        tvGetCard.setText(btnList.get(3).getTitle());
+                        tvCardRaiders.setText(btnList.get(4).getTitle());
+                        tvPayRaiders.setText(btnList.get(5).getTitle());
+
                     } else {
                         ToastUtil.show(indexDataResponse.getMessage());
                     }
@@ -162,18 +203,13 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
         }
     };
 
-    //首页按钮
-    private void refresh(List<IndexDataResponse.DataBean.BtnListBean> bannerList) {
-
-    }
-
     //banner
     private void initBanner(List<BannerListResponse.DataBean> bannerList) {
         //放图片地址的集合
         list_path = new ArrayList<>();
         //放标题的集合
         list_title = new ArrayList<>();
-        for (int i = 0; i < bannerList.size(); i++){
+        for (int i = 0; i < bannerList.size(); i++) {
             list_path.add(bannerList.get(i).getImgUrl());
         }
         //设置内置样式，共有六种可以点入方法内逐一体验使用。
@@ -218,42 +254,49 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
         startActivity(intent);
     }
 
-    @OnClick({R.id.iv_loan, R.id.iv_get_card, R.id.iv_card_raiders, R.id.iv_pay_raiders, R.id.iv_invite, R.id.iv_my_income})
+
+    @OnClick({R.id.ll_invite, R.id.ll_invite_income, R.id.ll_loan, R.id.ll_get_card, R.id.ll_card_raiders, R.id.ll_pay_raiders})
     public void onViewClicked(View view) {
         Intent intent = null;
         switch (view.getId()) {
-            case R.id.iv_loan:
-                intent = new Intent(getActivity(), WebActivity.class);
-//            intent.putExtra("payUrl", "http://www.51ley.com/front/loan?uid=fc42c00a05784006aefe49dc0c12fa57&rm=1&time=1521019589327");
-                intent.putExtra("payUrl", "http://www.51ley.com/f/loan/index?uid=fc42c00a05784006aefe49dc0c12fa57&rm=1");
-                intent.putExtra("title", "精选网贷");
-                break;
-            case R.id.iv_get_card:
-                intent = new Intent(getActivity(), WebActivity.class);
-                intent.putExtra("payUrl", "http://www.51ley.com/f/card/index?uid=fc42c00a05784006aefe49dc0c12fa57&rm=1");
-                intent.putExtra("title", "极速办卡");
-                break;
-            case R.id.iv_card_raiders:
-                intent = new Intent(getActivity(), WebActivity.class);
-//                intent.putExtra("payUrl", "https://credit.u51.com/shenqing/25322.html");
-                intent.putExtra("payUrl", "file:///android_asset/get_card.html");
-                intent.putExtra("title", "办卡攻略");
-                break;
-            case R.id.iv_pay_raiders:
-                intent = new Intent(getActivity(), WebActivity.class);
-                intent.putExtra("payUrl", "file:///android_asset/pay_skills.html");
-                intent.putExtra("title", "收款攻略");
-                break;
-            case R.id.iv_invite:
+            case R.id.ll_invite:
                 getQR();
                 break;
-            case R.id.iv_my_income:
-                intent = new Intent(getActivity(), InviteActivity.class);
+            case R.id.ll_invite_income:
+                intent = new Intent(getActivity(), InviteIncomeActivity.class);
+                break;
+            case R.id.ll_loan:
+                intent = new Intent(getActivity(), WebActivity.class);
+                setBtn(2, intent);
+                break;
+            case R.id.ll_get_card:
+                intent = new Intent(getActivity(), WebActivity.class);
+                setBtn(3, intent);
+                break;
+            case R.id.ll_card_raiders:
+                intent = new Intent(getActivity(), WebActivity.class);
+                setBtn(4, intent);
+                break;
+            case R.id.ll_pay_raiders:
+                setBtn(5, intent);
                 break;
         }
         if (intent != null) {
             startActivity(intent);
         }
+    }
+
+    private void setBtn(int i, Intent intent) {
+        String wapUrl = btnList.get(i).getWapUrl();
+        if (wapUrl.contains("http")) {
+            intent.putExtra("payUrl", wapUrl);
+        }else {
+            if (wapUrl.equals("HuoBao")) {
+                wapUrl = "file:///android_asset/gift_activity.png";
+                intent.putExtra("payUrl", wapUrl);
+            }
+        }
+        intent.putExtra("title", btnList.get(i).getTitle());
     }
 
     //自定义的图片加载器

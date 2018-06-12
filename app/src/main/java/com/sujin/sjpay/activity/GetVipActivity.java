@@ -53,6 +53,8 @@ public class GetVipActivity extends BaseActivity {
     TextView tvVipSvipOldPrice;
     @BindView(R.id.iv_get_vip)
     ImageView ivGetVip;
+    @BindView(R.id.tv_get_vip_tips)
+    TextView tvGetVipTips;
 
     private String userId;
     private ArrayList<String> list_path, list_title;
@@ -100,6 +102,7 @@ public class GetVipActivity extends BaseActivity {
                     LogUtils.d("SJHttp", getVipResponse.getBackStatus() + "");
                     if (getVipResponse.getBackStatus() == 0) {
                         listVIPQr = getVipResponse.getData().getList();
+                        tvGetVipTips.setText("提示：" + getVipResponse.getData().getTips());
                         parseBannerUrl(listVIPQr);
                     } else {
                         ToastUtil.show(getVipResponse.getMessage());
@@ -118,6 +121,7 @@ public class GetVipActivity extends BaseActivity {
 
     /**
      * 初始化开通会员二维码轮播图
+     *
      * @param listVIPQr
      */
     private void parseBannerUrl(List<GetVipResponse.DataBean.ListBean> listVIPQr) {
@@ -125,10 +129,10 @@ public class GetVipActivity extends BaseActivity {
         list_path = new ArrayList<>();
         //放标题的集合
         list_title = new ArrayList<>();
-        for (int i = 0; i < listVIPQr.size(); i++){
+        for (int i = 0; i < listVIPQr.size(); i++) {
             list_path.add(listVIPQr.get(i).getQRcode());
         }
-        WebBannerAdapter webBannerAdapter=new WebBannerAdapter(this,list_path);
+        WebBannerAdapter webBannerAdapter = new WebBannerAdapter(this, list_path);
         webBannerAdapter.setOnBannerItemClickListener(new BannerLayout.OnBannerItemClickListener() {
             @Override
             public void onItemClick(int position) {

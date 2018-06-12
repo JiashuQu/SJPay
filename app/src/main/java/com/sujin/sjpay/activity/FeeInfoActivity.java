@@ -10,6 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.sohu.sdk.common.toolbox.LogUtils;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.sujin.sjpay.R;
 import com.sujin.sjpay.android.ApiConstants;
 import com.sujin.sjpay.android.AppConstants;
@@ -64,6 +66,8 @@ public class FeeInfoActivity extends BaseActivity {
     TextView tvNoIntegralFee;
     @BindView(R.id.tv_get_proxy)
     TextView tvGetProxy;
+    @BindView(R.id.ll_no_integral)
+    LinearLayout llNoIntegral;
 
     private String userId;
     private int selectBtn;
@@ -120,15 +124,17 @@ public class FeeInfoActivity extends BaseActivity {
                         SharedPreferences.Editor spUserInfo = getSharedPreferences(AppConstants.SP_NAME_USER_INFO, MODE_PRIVATE).edit();
                         spUserInfo.putInt(AppConstants.SP_DATA_IS_REAL_STATE, isRealState);
                         spUserInfo.commit();
+                        Glide.with(FeeInfoActivity.this).asBitmap().load(data.getAvatarImg()).apply(RequestOptions.circleCropTransform()).into(ivUserIcon);
                         tvUserName.setText(data.getRealName());
                         int vipType = data.getVipType();
                         if (vipType == 0 || vipType == 1) {
                             setGetVip(vipTypeTxt, true, false, false, vipType);
-                        }else if (vipType == 2) {
+                            llNoIntegral.setVisibility(View.INVISIBLE);
+                        } else if (vipType == 2) {
                             setGetVip(getResources().getString(R.string.get_svip), false, true, true, vipType);
-                        }else if (vipType == 3) {
+                        } else if (vipType == 3) {
                             setGetVip("点击升级会员", true, true, true, vipType);
-                        }else if (vipType == 4) {
+                        } else if (vipType == 4) {
                             setGetVip(getResources().getString(R.string.get_svip), true, true, true, vipType);
                         }
                         getVipTypeIntroduce(vipType);
@@ -180,10 +186,10 @@ public class FeeInfoActivity extends BaseActivity {
                 break;
             case R.id.tv_vip_three:
                 int vipType = data.getVipType();
-                if (vipType == 0 || vipType == 1 ) {
+                if (vipType == 0 || vipType == 1) {
                     getVipTypeIntroduce(data.getVipType());
                     selectBtn = data.getVipType();
-                }else {
+                } else {
                     getVipTypeIntroduce(2);
                     selectBtn = 2;
                 }
@@ -191,12 +197,12 @@ public class FeeInfoActivity extends BaseActivity {
                 break;
             case R.id.tv_get_proxy:
                 final GetTopVipDialog getTopVipDialog = new GetTopVipDialog(this, "", "");
-                    getTopVipDialog.setLiftBankCardListener(new GetTopVipDialog.LiftBankCardListener() {
-                        @Override
-                        public void cancel() {
-                            getTopVipDialog.dismiss();
-                        }
-                    });
+                getTopVipDialog.setLiftBankCardListener(new GetTopVipDialog.LiftBankCardListener() {
+                    @Override
+                    public void cancel() {
+                        getTopVipDialog.dismiss();
+                    }
+                });
                 getTopVipDialog.show();
                 break;
         }
@@ -227,11 +233,11 @@ public class FeeInfoActivity extends BaseActivity {
         if (whichIcon == 1 || whichIcon == 0) {
             userType = null;
             tvGetVip.setEnabled(false);
-        }else if (whichIcon == 2 ) {
+        } else if (whichIcon == 2) {
             userType = getResources().getDrawable(R.drawable.user_svip);
-        }else if (whichIcon == 3) {
+        } else if (whichIcon == 3) {
             userType = getResources().getDrawable(R.drawable.user_vip);
-        }else if (whichIcon == 4) {
+        } else if (whichIcon == 4) {
             userType = getResources().getDrawable(R.drawable.user_common);
         }
 
@@ -243,7 +249,8 @@ public class FeeInfoActivity extends BaseActivity {
 
     /**
      * 设置按钮颜色和内容
-     *  @param selectBtn    哪个按钮
+     *
+     * @param selectBtn 哪个按钮
      * @param feeList
      */
     private void setBtn(int selectBtn, List<VipTypeIntroduceResponse.DataBean> feeList) {

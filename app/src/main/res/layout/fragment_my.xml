@@ -73,6 +73,7 @@
                             android:layout_weight="1.0"/>
 
                         <ImageView
+                            android:id="@+id/iv_right_arrow"
                             android:layout_width="14dp"
                             android:layout_height="22dp"
                             android:src="@drawable/icon_right_arrow"
@@ -105,6 +106,7 @@
                     android:layout_marginTop="-30dp">
 
                     <LinearLayout
+                        android:id="@+id/ll_fee_info"
                         style="@style/base_linear_wwh">
 
                         <TextView
@@ -127,7 +129,7 @@
                             android:layout_gravity="center"
                             android:textColor="@color/black_666666"
                             android:layout_marginRight="@dimen/_15dp"
-                            android:layout_marginTop="@dimen/_5dp"
+                            android:layout_marginTop="3dp"
                             android:textSize="14dp"/>
 
                         <ImageView
@@ -151,6 +153,42 @@
                         style="@style/tv_my"
                         android:text="@string/my_count"
                         android:drawableLeft="@drawable/icon_my_amount"/>
+
+                    <View
+                        style="@style/view_1px_line_horizontal"
+                        android:background="@color/gray_F2F2F2"
+                        android:layout_marginRight="@dimen/_10dp"
+                        android:layout_marginLeft="@dimen/_20dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_my_credit_card"
+                        style="@style/tv_my"
+                        android:text="@string/credit_card_list"
+                        android:drawableLeft="@drawable/icon_my_card"/>
+
+                    <View
+                        style="@style/view_1px_line_horizontal"
+                        android:background="@color/gray_F2F2F2"
+                        android:layout_marginRight="@dimen/_10dp"
+                        android:layout_marginLeft="@dimen/_20dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_pay_list"
+                        style="@style/tv_my"
+                        android:text="@string/pay_list"
+                        android:drawableLeft="@drawable/icon_transaction_list"/>
+
+                    <View
+                        style="@style/view_1px_line_horizontal"
+                        android:background="@color/gray_F2F2F2"
+                        android:layout_marginRight="@dimen/_10dp"
+                        android:layout_marginLeft="@dimen/_20dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_my_secret"
+                        style="@style/tv_my"
+                        android:text="@string/change_password"
+                        android:drawableLeft="@drawable/icon_change_password"/>
 
                     <View
                         style="@style/view_1px_line_horizontal"
@@ -185,18 +223,6 @@
                         android:layout_marginLeft="@dimen/_20dp"/>
 
                     <TextView
-                        android:id="@+id/tv_my_credit_card"
-                        style="@style/tv_my"
-                        android:text="@string/credit_card_list"
-                        android:drawableLeft="@drawable/icon_my_card"/>
-
-                    <View
-                        style="@style/view_1px_line_horizontal"
-                        android:background="@color/gray_F2F2F2"
-                        android:layout_marginRight="@dimen/_10dp"
-                        android:layout_marginLeft="@dimen/_20dp"/>
-
-                    <TextView
                         android:id="@+id/tv_guide_user"
                         style="@style/tv_my"
                         android:text="@string/user_guide"
@@ -208,23 +234,40 @@
                         android:layout_marginRight="@dimen/_10dp"
                         android:layout_marginLeft="@dimen/_20dp"/>
 
-                    <TextView
-                        android:id="@+id/tv_my_secret"
-                        style="@style/tv_my"
-                        android:text="@string/change_password"
-                        android:drawableLeft="@drawable/icon_change_password"/>
+                    <LinearLayout
+                        android:id="@+id/ll_contact_us"
+                        style="@style/base_linear_wwh">
 
-                    <View
-                        style="@style/view_1px_line_horizontal"
-                        android:background="@color/gray_F2F2F2"
-                        android:layout_marginRight="@dimen/_10dp"
-                        android:layout_marginLeft="@dimen/_20dp"/>
+                        <TextView
+                            android:id="@+id/tv_contact_us"
+                            style="@style/tv_my"
+                            android:text="@string/contact_us"
+                            android:drawableLeft="@drawable/icon_contect_us"
+                            android:drawableRight="@color/transparent"/>
 
-                    <TextView
-                        android:id="@+id/tv_contact_us"
-                        style="@style/tv_my"
-                        android:text="@string/contact_us"
-                        android:drawableLeft="@drawable/icon_contect_us"/>
+                        <View
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="@dimen/_0dp"
+                            android:layout_weight="1.0"/>
+
+                        <TextView
+                            android:id="@+id/tv_contact_us_tip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/wx_service"
+                            android:textColor="@color/black_666666"
+                            android:layout_marginRight="@dimen/_15dp"
+                            android:textSize="14dp"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/next_arrow_tip"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="25dp"/>
+
+                    </LinearLayout>
 
                     <View
                         style="@style/view_1px_line_horizontal"

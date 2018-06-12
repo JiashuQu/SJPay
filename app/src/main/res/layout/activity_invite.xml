@@ -122,7 +122,7 @@
 
             </LinearLayout>
 
-            <ListView
+            <com.sujin.sjpay.view.MyListView
                 android:id="@+id/lv_invite"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

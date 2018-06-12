@@ -52,7 +52,7 @@ public class MyInfoResponse implements Serializable{
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean  implements Serializable{
         /**
          * Mobile : 18506120807
          * IsRealState : 1

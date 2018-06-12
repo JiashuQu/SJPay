@@ -3,6 +3,8 @@ package com.sujin.sjpay.fragment;
 import android.Manifest;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -43,10 +45,10 @@ import com.sujin.sjpay.activity.FeeInfoActivity;
 import com.sujin.sjpay.activity.GetVipActivity;
 import com.sujin.sjpay.activity.InviteActivity;
 import com.sujin.sjpay.activity.InviteIncomeActivity;
-import com.sujin.sjpay.activity.MainActivity;
 import com.sujin.sjpay.activity.MyAccountActivity;
 import com.sujin.sjpay.activity.MyInfoActivity;
-import com.sujin.sjpay.activity.RegisterActivity;
+import com.sujin.sjpay.activity.PayListActivity;
+import com.sujin.sjpay.activity.WebActivity;
 import com.sujin.sjpay.android.ApiConstants;
 import com.sujin.sjpay.android.AppConstants;
 import com.sujin.sjpay.android.SJApplication;
@@ -99,6 +101,8 @@ public class MyFragment extends BaseFragment {
     TextView tvGetVip;
     @BindView(R.id.ll_my_info)
     LinearLayout llMyInfo;
+    @BindView(R.id.ll_contact_us)
+    LinearLayout llContactUs;
     @BindView(R.id.tv_fee_info)
     TextView tvFeeInfo;
     @BindView(R.id.tv_my_account)
@@ -117,6 +121,8 @@ public class MyFragment extends BaseFragment {
     TextView tvInviteBy;
     @BindView(R.id.iv_user_icon)
     ImageView ivUserIcon;
+    @BindView(R.id.iv_right_arrow)
+    ImageView ivRightArrow;
 
     private String userId;
     private boolean isJump = true;
@@ -133,10 +139,10 @@ public class MyFragment extends BaseFragment {
     public MyFragment() {
     }
 
-    private final Handler handler = new Handler(){
+    private final Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            switch (msg.what){
+            switch (msg.what) {
                 case 1:
                     if (iocnFile != null) {
                         Glide.with(getActivity()).asBitmap().load(tempBitmap).apply(RequestOptions.circleCropTransform()).into(ivUserIcon);
@@ -165,7 +171,7 @@ public class MyFragment extends BaseFragment {
         vipType(user.getVipType());
         initView(user);
         srlMy.setRefreshHeader(new MaterialHeader(getContext()));
-        srlMy.setRefreshFooter(new ClassicsFooter(getContext()));
+        srlMy.setEnableLoadMore(false);
         srlMy.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
@@ -214,14 +220,24 @@ public class MyFragment extends BaseFragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.ll_my_info, R.id.tv_my_secret, R.id.tv_about_us, R.id.tv_my_credit_card,
-            R.id.tv_fee_info, R.id.tv_invite_income, R.id.tv_invite, R.id.tv_get_vip, R.id.tv_my_account, R.id.iv_user_icon})
+    @OnClick({R.id.tv_my_secret, R.id.tv_about_us, R.id.tv_my_credit_card,
+            R.id.tv_fee_info, R.id.tv_invite_income, R.id.tv_invite, R.id.tv_get_vip, R.id.tv_my_account,
+            R.id.iv_user_icon, R.id.iv_right_arrow, R.id.tv_user_phone, R.id.ll_fee_info, R.id.tv_pay_list,
+            R.id.tv_guide_user, R.id.ll_contact_us})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_user_icon:
                 showChosePhoto();
                 break;
-            case R.id.tv_my_info:
+            case R.id.iv_right_arrow:
+                isJump = true;
+                getMyInfo(userId, true);
+                break;
+            case R.id.tv_user_phone:
+                isJump = true;
+                getMyInfo(userId, true);
+                break;
+            case R.id.tv_user_name:
                 isJump = true;
                 getMyInfo(userId, true);
                 break;
@@ -232,6 +248,9 @@ public class MyFragment extends BaseFragment {
                 break;
             case R.id.tv_my_secret:
                 startActivity(new Intent(getActivity(), ChangePasswordActivity.class));
+                break;
+            case R.id.tv_pay_list:
+                startActivity(new Intent(getActivity(), PayListActivity.class));
                 break;
             case R.id.tv_about_us:
                 startActivity(new Intent(getActivity(), AboutUsActivity.class));
@@ -250,6 +269,18 @@ public class MyFragment extends BaseFragment {
                 break;
             case R.id.tv_my_account:
                 startActivity(new Intent(getActivity(), MyAccountActivity.class));
+                break;
+            case R.id.tv_guide_user:
+                Intent userGuide = new Intent(getActivity(), WebActivity.class);
+                userGuide.putExtra("payUrl", "https://mp.weixin.qq.com/s/wPYnEFtQZOuWYnERcsQfGQ");
+                userGuide.putExtra("title", "新手指引");
+                startActivity(userGuide);
+                break;
+            case R.id.ll_contact_us:
+                ClipboardManager copy = (ClipboardManager) getActivity()
+                        .getSystemService(Context.CLIPBOARD_SERVICE);
+                copy.setText("SJpay-op");
+                ToastUtil.show("已复制微信客服号");
                 break;
         }
     }
@@ -333,7 +364,7 @@ public class MyFragment extends BaseFragment {
                         filePath.mkdirs();
                     }
                     Intent intent = new Intent(
-                            android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                            MediaStore.ACTION_IMAGE_CAPTURE);
                     File f = new File(filePath,
                             localTempImageFileName);
                     Uri u;
@@ -395,7 +426,7 @@ public class MyFragment extends BaseFragment {
             tempBitmap = BitmapUtil.getLocalBitmap(path);
 //            if (data != null) {
             if (tempBitmap != null) {
-                    //涉及I/O操作，子线程运行
+                //涉及I/O操作，子线程运行
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -483,7 +514,7 @@ public class MyFragment extends BaseFragment {
                         UploadImgResponse.UploadImg data = uploadImgResponse.getData();
                         int id = data.getID();
                         SetUserIcon(userId, id + "");
-                    }else {
+                    } else {
                         ToastUtil.show(uploadImgResponse.getMessage());
                     }
                     DialogUtil.dismissLoading();
@@ -494,7 +525,7 @@ public class MyFragment extends BaseFragment {
                     LogUtils.d("SJHttp", registerResponse.getBackStatus());
                     if (TextUtils.equals(registerResponse.getBackStatus(), "0")) {
                         ToastUtil.show(registerResponse.getMessage());
-                    }else {
+                    } else {
                         ToastUtil.show(registerResponse.getMessage());
                     }
                     break;
@@ -514,7 +545,7 @@ public class MyFragment extends BaseFragment {
         if (vipType == 0 || vipType == 1) {
             setGetVip("", false);
         } else if (vipType == 2) {
-            setGetVip(getResources().getString(R.string.get_svip), false);
+            setGetVip("我要做顶级代理", false);
         } else if (vipType == 3) {
             setGetVip("点击升级会员", true);
         } else if (vipType == 4) {
