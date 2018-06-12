@@ -59,7 +59,7 @@ public class InviteIncomeAdapter extends BaseAdapter {
         }
         IncomeListResponse.DataBean.ListBean data = datas.get(position);
         holder.tvGetMoney.setText(data.getInOrOut() + data.getAmount());
-        holder.tvByWho.setText(data.getRealName());
+        holder.tvByWho.setText(data.getRealName() + "\b\b" + data.getMobile());
         holder.tvGetMoneyType.setText(data.getService());
         int inOrOutNum = data.getInOrOutNum();
         if (1 == inOrOutNum) {

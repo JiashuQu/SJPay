@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="com.sujin.sjpay.activity.MyInfoActivity"
-    android:background="@color/gray_EFEFEF">
+    android:background="@color/white">
 
     <com.sujin.sjpay.view.TitleBarView
         android:layout_width="match_parent"

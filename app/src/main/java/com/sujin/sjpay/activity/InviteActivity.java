@@ -98,17 +98,17 @@ public class InviteActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        sv.setScrollViewListener(new ScrollzfView.ScrollViewListener() {
-            @Override
-            public void onScrollChanged(float y) {
-                Log.d("sc", "sv.getScrollY: " + sv.getScrollY());
-                Log.d("sc", "lvInvite.getY(): " + lvInvite.getY());
-                if (Math.abs(sv.getScrollY() - lvInvite.getY()) < 1100) {
-                    sv.smoothScrollTo(0, (int) lvInvite.getY());
-                }
-
-            }
-        });
+//        sv.setScrollViewListener(new ScrollzfView.ScrollViewListener() {
+//            @Override
+//            public void onScrollChanged(float y) {
+//                Log.d("sc", "sv.getScrollY: " + sv.getScrollY());
+//                Log.d("sc", "lvInvite.getY(): " + lvInvite.getY());
+//                if (Math.abs(sv.getScrollY() - lvInvite.getY()) < 1100) {
+//                    sv.smoothScrollTo(0, (int) lvInvite.getY());
+//                }
+//
+//            }
+//        });
 
 
         srlMyInvite.setRefreshHeader(new MaterialHeader(this));
