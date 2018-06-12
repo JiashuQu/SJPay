@@ -2,9 +2,12 @@ package com.sujin.sjpay.activity;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.android.sohu.sdk.common.toolbox.LogUtils;
@@ -27,6 +30,7 @@ import com.sujin.sjpay.protocol.ShareResponse;
 import com.sujin.sjpay.util.DialogUtil;
 import com.sujin.sjpay.util.StringUtil;
 import com.sujin.sjpay.util.ToastUtil;
+import com.sujin.sjpay.view.ScrollzfView;
 import com.sujin.sjpay.view.TitleBarView;
 import com.sujin.sjpay.view.dialog.InviteDetailDialog;
 import com.umeng.socialize.ShareAction;
@@ -53,6 +57,8 @@ public class InviteActivity extends BaseActivity {
 
     @BindView(R.id.tb_login_title)
     TitleBarView tbLoginTitle;
+    @BindView(R.id.sv)
+    ScrollzfView sv;
     @BindView(R.id.tv_invite_rule_one)
     TextView tvInviteRuleOne;
     @BindView(R.id.tv_invite_rule_two)
@@ -94,6 +100,19 @@ public class InviteActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        sv.setScrollViewListener(new ScrollzfView.ScrollViewListener() {
+            @Override
+            public void onScrollChanged(float y) {
+                Log.d("sc", "sv.getScrollY: "+sv.getScrollY());
+                Log.d("sc", "lvInvite.getY(): "+lvInvite.getY());
+                if(Math.abs(sv.getScrollY() - lvInvite.getY())<300 ){
+                    sv.smoothScrollTo(0,(int)lvInvite.getY());
+                }
+
+            }
+        });
+
+
         srlMyInvite.setRefreshHeader(new MaterialHeader(this));
         srlMyInvite.setRefreshFooter(new ClassicsFooter(this));
         srlMyInvite.setOnRefreshListener(new OnRefreshListener() {

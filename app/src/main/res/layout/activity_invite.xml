@@ -18,7 +18,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ScrollView
+        <com.sujin.sjpay.view.ScrollzfView
+            android:id="@+id/sv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="none">
@@ -134,7 +135,7 @@
 
         </LinearLayout>
 
-    </ScrollView>
+    </com.sujin.sjpay.view.ScrollzfView>
 
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
