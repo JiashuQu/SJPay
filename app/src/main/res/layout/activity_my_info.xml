@@ -5,98 +5,114 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context="com.sujin.sjpay.activity.MyInfoActivity"
-    android:background="@color/gray_EFEFEF">
+    tools:context="com.sujin.sjpay.activity.MyInfoActivity">
 
     <com.sujin.sjpay.view.TitleBarView
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_height"
         app:bar_title="@string/my_info" />
 
-    <RelativeLayout style="@style/rl_my"
-        android:layout_marginTop="@dimen/_20dp">
+    <LinearLayout
+        style="@style/base_linear_mmv"
+        android:background="@drawable/bg_my_item">
 
-        <TextView
-            style="@style/tv_security"
-            android:text="@string/name" />
+        <RelativeLayout style="@style/rl_my"
+            android:layout_marginTop="@dimen/_20dp">
 
-        <TextView
-            android:id="@+id/tv_name"
-            style="@style/tv_security_right"/>
+            <TextView
+                style="@style/tv_security"
+                android:text="@string/name" />
 
-    </RelativeLayout>
-    <View style="@style/view_1px_line_horizontal" />
-    <RelativeLayout style="@style/rl_my">
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/tv_security_right"/>
 
-        <TextView
-            style="@style/tv_security"
-            android:text="@string/phone" />
+        </RelativeLayout>
+        <View style="@style/view_1px_line_horizontal"
+            android:layout_marginLeft="@dimen/_20dp"
+            android:layout_marginRight="@dimen/_20dp"/>
+        <RelativeLayout style="@style/rl_my">
 
-        <TextView
-            android:id="@+id/tv_phone"
-            style="@style/tv_security_right"/>
+            <TextView
+                style="@style/tv_security"
+                android:text="@string/phone" />
 
-    </RelativeLayout>
-    <View style="@style/view_1px_line_horizontal" />
-    <RelativeLayout style="@style/rl_my">
+            <TextView
+                android:id="@+id/tv_phone"
+                style="@style/tv_security_right"/>
 
-        <TextView
-            style="@style/tv_security"
-            android:text="@string/level" />
+        </RelativeLayout>
+        <View style="@style/view_1px_line_horizontal"
+            android:layout_marginLeft="@dimen/_20dp"
+            android:layout_marginRight="@dimen/_20dp"/>
+        <RelativeLayout style="@style/rl_my">
 
-        <TextView
-            android:id="@+id/tv_level"
-            style="@style/tv_security_right"/>
+            <TextView
+                style="@style/tv_security"
+                android:text="@string/level" />
 
-    </RelativeLayout>
-    <View style="@style/view_1px_line_horizontal" />
-    <RelativeLayout style="@style/rl_my">
+            <TextView
+                android:id="@+id/tv_level"
+                style="@style/tv_security_right"/>
 
-        <TextView
-            style="@style/tv_security"
-            android:text="@string/my_fee" />
+        </RelativeLayout>
+        <View style="@style/view_1px_line_horizontal"
+            android:layout_marginLeft="@dimen/_20dp"
+            android:layout_marginRight="@dimen/_20dp"/>
+        <RelativeLayout style="@style/rl_my">
 
-        <TextView
-            android:id="@+id/tv_my_feel"
-            style="@style/tv_security_right"
-            android:textSize="12sp"/>
+            <TextView
+                style="@style/tv_security"
+                android:text="@string/my_fee" />
 
-    </RelativeLayout>
-    <View style="@style/view_1px_line_horizontal" />
-    <RelativeLayout style="@style/rl_my">
+            <TextView
+                android:id="@+id/tv_my_feel"
+                style="@style/tv_security_right"/>
 
-        <TextView
-            style="@style/tv_security"
-            android:text="@string/id_card" />
+        </RelativeLayout>
+        <View style="@style/view_1px_line_horizontal"
+            android:layout_marginLeft="@dimen/_20dp"
+            android:layout_marginRight="@dimen/_20dp"/>
+        <RelativeLayout style="@style/rl_my">
 
-        <TextView
-            android:id="@+id/tv_id_card"
-            style="@style/tv_security_right"/>
+            <TextView
+                style="@style/tv_security"
+                android:text="@string/id_card" />
 
-    </RelativeLayout>
-    <View style="@style/view_1px_line_horizontal" />
-    <RelativeLayout style="@style/rl_my">
+            <TextView
+                android:id="@+id/tv_id_card"
+                style="@style/tv_security_right"/>
 
-        <TextView
-            style="@style/tv_security"
-            android:text="@string/bankcard" />
+        </RelativeLayout>
+        <View style="@style/view_1px_line_horizontal"
+            android:layout_marginLeft="@dimen/_20dp"
+            android:layout_marginRight="@dimen/_20dp"/>
+        <RelativeLayout style="@style/rl_my">
 
-        <TextView
-            android:id="@+id/tv_bankcard"
-            style="@style/tv_security_right"/>
+            <TextView
+                style="@style/tv_security"
+                android:text="@string/bankcard" />
 
-    </RelativeLayout>
-    <View style="@style/view_1px_line_horizontal" />
-    <RelativeLayout style="@style/rl_my">
+            <TextView
+                android:id="@+id/tv_bankcard"
+                style="@style/tv_security_right"/>
 
-        <TextView
-            style="@style/tv_security"
-            android:text="@string/bank" />
+        </RelativeLayout>
+        <View style="@style/view_1px_line_horizontal"
+            android:layout_marginLeft="@dimen/_20dp"
+            android:layout_marginRight="@dimen/_20dp"/>
+        <RelativeLayout style="@style/rl_my">
 
-        <TextView
-            android:id="@+id/tv_bankcard_belong"
-            style="@style/tv_security_right"/>
+            <TextView
+                style="@style/tv_security"
+                android:text="@string/bank" />
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/tv_bankcard_belong"
+                style="@style/tv_security_right"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
