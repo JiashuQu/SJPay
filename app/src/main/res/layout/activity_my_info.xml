@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context="com.sujin.sjpay.activity.MyInfoActivity">
+    tools:context="com.sujin.sjpay.activity.MyInfoActivity"
+    android:background="@color/gray_EFEFEF">
 
     <com.sujin.sjpay.view.TitleBarView
         android:layout_width="match_parent"
@@ -13,11 +14,13 @@
         app:bar_title="@string/my_info" />
 
     <LinearLayout
-        style="@style/base_linear_mmv"
-        android:background="@drawable/bg_my_item">
+        style="@style/base_linear_mwv"
+        android:background="@drawable/bg_coner_10_stroke_full_white"
+        android:layout_marginTop="@dimen/_15dp"
+        android:layout_marginRight="@dimen/_15dp"
+        android:layout_marginLeft="@dimen/_15dp">
 
-        <RelativeLayout style="@style/rl_my"
-            android:layout_marginTop="@dimen/_20dp">
+        <RelativeLayout style="@style/rl_my">
 
             <TextView
                 style="@style/tv_security"
@@ -29,8 +32,8 @@
 
         </RelativeLayout>
         <View style="@style/view_1px_line_horizontal"
-            android:layout_marginLeft="@dimen/_20dp"
-            android:layout_marginRight="@dimen/_20dp"/>
+            android:layout_marginLeft="@dimen/_15dp"
+            android:layout_marginRight="@dimen/_15dp"/>
         <RelativeLayout style="@style/rl_my">
 
             <TextView
