@@ -66,12 +66,20 @@ public class PayListAdapter extends BaseAdapter {
         holder.tvCreateTime.setFocusable(true);
         holder.tvCreateTime.setFocusableInTouchMode(true);
         holder.tvOrderNumber.setText("订单号：" + data.getOrderNo());
-        holder.tvCreateTime.setText("创建时间：" + data.getCTime());
-        holder.tvPayMoney.setText("支付金额：" + data.getAmount());
-        holder.tvPayState.setText("订单状态：" + data.getPayStateTxt());
-        holder.tvFee.setText("费率：" + data.getRate() + "+" + data.getFee3() + "元/笔");
-        holder.tvGetMoney.setText("到账金额：" + data.getActualAmount());
-        holder.tvDrawState.setText("结算状态：" + data.getDrawStateTxt());
+        holder.tvCreateTime.setText(data.getCTime());
+        holder.tvPayMoney.setText(data.getAmount());
+        holder.tvPayState.setText(data.getPayStateTxt());
+        holder.tvGetMoney.setText(data.getActualAmount());
+
+        int payState = data.getPayState();
+
+        if ( payState == 10) {
+            holder.tvPayState.setTextColor(0xFF1Dc694);
+        }else if ( payState == 5) {
+            holder.tvPayState.setTextColor(0xFFF89B00);
+        }else {
+            holder.tvPayState.setTextColor(0xFFEf001E);
+        }
 
         return convertView;
     }
@@ -90,12 +98,8 @@ public class PayListAdapter extends BaseAdapter {
         TextView tvPayMoney;
         @BindView(R.id.tv_pay_state)
         TextView tvPayState;
-        @BindView(R.id.tv_fee)
-        TextView tvFee;
         @BindView(R.id.tv_get_money)
         TextView tvGetMoney;
-        @BindView(R.id.tv_draw_state)
-        TextView tvDrawState;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);

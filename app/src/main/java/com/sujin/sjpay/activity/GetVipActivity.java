@@ -135,12 +135,12 @@ public class GetVipActivity extends BaseActivity {
         WebBannerAdapter webBannerAdapter = new WebBannerAdapter(this, list_path);
         webBannerAdapter.setOnBannerItemClickListener(new BannerLayout.OnBannerItemClickListener() {
             @Override
-            public void onItemClick(int position) {
-
+            public void onItemClick(final int position) {
             }
         });
         recycler.setAdapter(webBannerAdapter);
     }
+
 
     @OnClick(R.id.iv_get_vip)
     public void onViewClicked() {

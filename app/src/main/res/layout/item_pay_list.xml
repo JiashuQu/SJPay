@@ -1,103 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_20dp"
-        android:background="@color/gray_EFEFEF"/>
-
-    <View
-        style="@style/view_1px_line_horizontal_dbdbdb"/>
-
-    <TextView
-        android:id="@+id/tv_order_number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:padding="@dimen/margin"
-        android:ellipsize="marquee"
-        android:singleLine="true"
-        android:marqueeRepeatLimit="marquee_forever"
-        tools:text="订单号：" />
-
-    <TextView
-        android:id="@+id/tv_create_time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:padding="@dimen/margin"
-        android:ellipsize="marquee"
-        android:singleLine="true"
-        android:marqueeRepeatLimit="marquee_forever"
-        tools:text="创建时间：" />
-
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        style="@style/base_linear_mmv"
+        android:layout_height="140dp"
+        android:layout_marginTop="@dimen/_10dp"
+        android:background="@drawable/bg_vip_info_bar"
+        android:gravity="center_horizontal">
 
         <LinearLayout
-            android:layout_width="@dimen/_0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1.0"
-            android:orientation="vertical">
+            style="@style/base_linear_mwh"
+            android:layout_height="45dp"
+            android:gravity="center">
 
             <TextView
-                android:id="@+id/tv_pay_money"
-                android:layout_width="match_parent"
+                android:id="@+id/tv_order_number"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:padding="@dimen/margin"
-                tools:text="支付金额：" />
+                android:layout_marginLeft="@dimen/_40dp"
+                android:layout_weight="1.0"
+                android:layout_marginTop="6dp"
+                android:text="订单号：12345678"
+                android:textColor="@color/black_333333"
+                android:textSize="@dimen/_15dp"/>
 
             <TextView
                 android:id="@+id/tv_pay_state"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:padding="@dimen/margin"
-                tools:text="订单状态：" />
+                android:layout_marginTop="6dp"
+                android:layout_weight="1.0"
+                android:gravity="right"
+                android:layout_marginRight="35dp"
+                android:textSize="@dimen/_15dp"
+                android:text="支付成功"/>
 
         </LinearLayout>
+
+        <View style="@style/view_1px_line_horizontal"
+            android:layout_marginTop="@dimen/_5dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginLeft="13dp"/>
 
         <LinearLayout
-            android:layout_width="@dimen/_0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1.0"
-            android:orientation="vertical">
+            style="@style/base_linear_mwh"
+            android:layout_marginTop="@dimen/_5dp"
+            android:gravity="center">
 
-            <TextView
-                android:id="@+id/tv_fee"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_weight="1.0"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:padding="@dimen/margin"
-                tools:text="费率："
-                android:visibility="gone"/>
+                android:orientation="vertical"
+                android:gravity="center">
 
-            <TextView
-                android:id="@+id/tv_get_money"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:padding="@dimen/margin"
-                tools:text="到账金额：" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="支付金额"
+                    android:textColor="@color/gray_999999"
+                    android:textSize="13dp"/>
 
-            <TextView
-                android:id="@+id/tv_draw_state"
-                android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/tv_pay_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5dp"
+                    android:text="5000.00"
+                    android:textColor="@color/black_333333"
+                    android:textSize="@dimen/_15dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="1.0"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:padding="@dimen/margin"
-                tools:text="结算状态："
-                android:visibility="gone"/>
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gray_999999"
+                    android:textSize="@dimen/_14sp"
+                    android:text="到账金额"/>
+
+                <TextView
+                    android:id="@+id/tv_get_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5dp"
+                    android:text="0.00"
+                    android:textSize="@dimen/_15dp"
+                    android:textColor="@color/black_333333"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
+        <View style="@style/view_1px_line_horizontal"
+            android:layout_marginTop="@dimen/_5dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginLeft="13dp"/>
+
+        <TextView
+            android:id="@+id/tv_create_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2018-09-09  21:12:21"
+            android:textColor="@color/gray_999999"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="28dp"
+            android:textSize="13dp"/>
+
     </LinearLayout>
+
+
 
 </LinearLayout>
