@@ -7,8 +7,10 @@
     android:orientation="vertical">
 
     <com.sujin.sjpay.view.TitleBarView
+        android:id="@+id/tbv"
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_height"
+        app:bar_type="1"
         app:bar_title="@string/pay_list" />
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout

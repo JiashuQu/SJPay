@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.android.sohu.sdk.common.toolbox.LogUtils;
+import com.lidroid.xutils.db.table.KeyValue;
 import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -20,6 +21,9 @@ import com.sujin.sjpay.nohttp.HttpListener;
 import com.sujin.sjpay.protocol.PayListResponse;
 import com.sujin.sjpay.util.StringUtil;
 import com.sujin.sjpay.util.ToastUtil;
+import com.sujin.sjpay.view.TitleBarView;
+import com.sujin.sjpay.view.dialog.BaseDialog;
+import com.sujin.sjpay.view.dialog.WheelViewDialog;
 import com.yanzhenjie.nohttp.NoHttp;
 import com.yanzhenjie.nohttp.RequestMethod;
 import com.yanzhenjie.nohttp.rest.Request;
@@ -35,6 +39,8 @@ public class PayListActivity extends BaseActivity {
 
     @BindView(R.id.list_pay_list)
     ListView listPayList;
+    @BindView(R.id.tbv)
+    TitleBarView tbv;
     @BindView(R.id.srl_pay_list)
     SmartRefreshLayout srlPayList;
 
@@ -43,6 +49,8 @@ public class PayListActivity extends BaseActivity {
     private int page = 1;
     private static int pageSize = 10;
     private int pages = 10;
+    private String state = "-200";
+    private WheelViewDialog wvDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,15 +85,43 @@ public class PayListActivity extends BaseActivity {
         listPayList.setOverScrollMode(View.OVER_SCROLL_NEVER);
         listPayList.setSelector(R.color.transparent);
         listPayList.setAdapter(adapter);
+
+        initDialog();
+
+        tbv.setOnClick2RightText(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                wvDialog.show();
+            }
+        });
+    }
+
+    private void initDialog() {
+        List<KeyValue> kvs = new ArrayList<>();
+                kvs.add(new KeyValue("0","未支付"));
+                kvs.add(new KeyValue("-1","支付失败"));
+                kvs.add(new KeyValue("1","支付发起中"));
+                kvs.add(new KeyValue("5","确认成功"));
+                kvs.add(new KeyValue("10","支付成功"));
+                 wvDialog = new WheelViewDialog(this, kvs);
+        wvDialog.setListener(new BaseDialog.DialogListener() {
+                    @Override
+                    public void onClickType(int type, KeyValue bean) {
+
+                        state = bean.key;
+                        page = 1;
+                        getPayList(SJApplication.getInstance().getUserId(), page, false);
+                    }
+                });
     }
 
     private void getPayList(String userId, int page, boolean isLoading) {
         Request<String> request = NoHttp.createStringRequest(ApiConstants.getQueryPayRecordList, RequestMethod.GET);
-        char[] chars = ("UserId=" + userId + "&State=" + -200 + "&pageIndex=" + page + "&pageSize=" + pageSize).toCharArray();
+        char[] chars = ("UserId=" + userId + "&State=" + state + "&pageIndex=" + page + "&pageSize=" + pageSize).toCharArray();
         String s = StringUtil.sort(chars);
         String md5 = StringUtil.MD5(ApiConstants.QueryPayRecordList, s, ApiConstants.API_USERS);
         request.add("UserId", userId);
-        request.add("State", -200);
+        request.add("State", state);
         request.add("pageIndex", page);
         request.add("pageSize", pageSize);
         com.lidroid.xutils.util.LogUtils.d("UserId=" + userId + "&pageIndex=" + page + "&pageSize=" + pageSize + "---" + s + "---" + md5);
