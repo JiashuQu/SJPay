@@ -10,16 +10,15 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="@dimen/_15dp"
+        android:layout_margin="@dimen/_15dp"
         android:text="@string/invite_face_to_face"
         android:textColor="@color/black_666666"
-        android:textSize="@dimen/_15dp"/>
+        android:textSize="@dimen/_16sp"/>
 
     <ImageView
         android:id="@+id/iv_qr_code"
-        android:layout_marginTop="@dimen/_15dp"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:paddingRight="@dimen/_20dp"
         android:paddingLeft="@dimen/_20dp"/>
 
