@@ -132,8 +132,10 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_margin="@dimen/_15dp"
+                android:elevation="@dimen/_2dp"
                 style="@style/base_linear_mmv"
-                android:background="@drawable/bg_my_item">
+                android:background="@drawable/bg_coner_5_stroke">
 
                 <com.sujin.sjpay.view.MyListView
                     android:id="@+id/lv_invite"
@@ -152,6 +154,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/_40dp"
+                    android:layout_marginBottom="@dimen/_40dp"
                     android:gravity="center"
                     android:text="暂无记录"
                     android:textSize="@dimen/_15dp"
