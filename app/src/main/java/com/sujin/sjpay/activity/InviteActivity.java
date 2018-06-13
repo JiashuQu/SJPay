@@ -241,6 +241,8 @@ public class InviteActivity extends BaseActivity {
                         pages = inviteListResponse.getData().getPageCount();
                         List<InviteListResponse.DataBean.ListBean> list = inviteListResponse.getData().getList();
                         if (list != null && list.size() != 0) {
+                            tvNoList.setVisibility(View.GONE);
+                            lvInvite.setVisibility(View.VISIBLE);
                             for (int i = 0; i < list.size(); i++) {
                                 data.add(list.get(i));
                             }

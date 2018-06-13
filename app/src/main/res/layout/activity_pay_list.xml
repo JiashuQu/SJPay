@@ -10,13 +10,15 @@
         android:id="@+id/tbv"
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_height"
-        app:bar_type="1"
+        app:bar_type="11"
         app:bar_title="@string/pay_list" />
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/srl_pay_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        >
 
         <ListView
             android:id="@+id/list_pay_list"
@@ -30,5 +32,17 @@
             />
 
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    <TextView
+        android:id="@+id/tv_no_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_40dp"
+        android:layout_marginBottom="@dimen/_40dp"
+        android:gravity="center"
+        android:text="暂无记录"
+        android:textSize="@dimen/_15dp"
+        android:textColor="@color/black_666666"
+        android:visibility="gone"/>
 
 </LinearLayout>

@@ -154,6 +154,8 @@ public class MyAccountActivity extends BaseActivity {
                         pages = accountRecordResponse.getData().getPageCount();
                         List<AccountRecordResponse.DataBean.ListBean> list = accountRecordResponse.getData().getList();
                         if (list != null && list.size() != 0) {
+                            tvNoList.setVisibility(View.GONE);
+                            listMyAccountList.setVisibility(View.VISIBLE);
                             for (int i = 0; i < list.size(); i++) {
                                 data.add(list.get(i));
                             }

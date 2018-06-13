@@ -1,20 +1,19 @@
 package com.sujin.sjpay.adapter;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.sujin.sjpay.R;
 import com.sujin.sjpay.protocol.GetHistoryPayBankCardListResponse;
-import com.sujin.sjpay.protocol.HistoryPayBankCardList;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -59,11 +58,12 @@ public class ChoseBankCardAdapter extends BaseAdapter {
             holder = new SelectBankAdapter.ViewHolder(convertView);
             convertView.setTag(holder);
         } else {
-            holder = (SelectBankAdapter.ViewHolder)convertView.getTag();
+            holder = (SelectBankAdapter.ViewHolder) convertView.getTag();
         }
         GetHistoryPayBankCardListResponse.DataBean.ListBean data = datas.get(position);
         holder.tvItemBankCell.setText(data.getBankName());
         holder.tvItemBankLimit.setText(data.getBankCard());
+//        Glide.with(context).asBitmap().load(data.getBankCard()).into(holder.ivBankIcon);
 
         return convertView;
     }
@@ -74,6 +74,8 @@ public class ChoseBankCardAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
+        @BindView(R.id.iv_bank_icon)
+        ImageView ivBankIcon;
         @BindView(R.id.tv_item_bank_cell)
         TextView tvItemBankCell;
         @BindView(R.id.tv_item_bank_limit)

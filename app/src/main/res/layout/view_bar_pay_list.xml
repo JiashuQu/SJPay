@@ -17,6 +17,6 @@
         android:textSize="@dimen/textSize_28px"
         android:textColor="@color/white"
         android:layout_alignParentRight="true"
-        android:text="交易记录"
+        android:text="筛选"
         android:gravity="center"/>
 </merge>

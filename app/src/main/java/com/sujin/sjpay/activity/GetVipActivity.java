@@ -55,6 +55,26 @@ public class GetVipActivity extends BaseActivity {
     ImageView ivGetVip;
     @BindView(R.id.tv_get_vip_tips)
     TextView tvGetVipTips;
+    @BindView(R.id.tv_vip_one)
+    TextView tvVipOne;
+    @BindView(R.id.tv_vip_two)
+    TextView tvVipTwo;
+    @BindView(R.id.tv_vip_three)
+    TextView tvVipThree;
+    @BindView(R.id.tv_activity_one)
+    TextView tvActivityOne;
+    @BindView(R.id.tv_activity_one_tip_1)
+    TextView tvActivityOneTip1;
+    @BindView(R.id.tv_activity_one_tip_2)
+    TextView tvActivityOneTip2;
+    @BindView(R.id.tv_activity_two)
+    TextView tvActivityTwo;
+    @BindView(R.id.tv_activity_two_tip)
+    TextView tvActivityTwoTip;
+    @BindView(R.id.tv_activity_three)
+    TextView tvActivityThree;
+    @BindView(R.id.tv_activity_three_tip)
+    TextView tvActivityThreeTip;
 
     private String userId;
     private ArrayList<String> list_path, list_title;
@@ -102,7 +122,10 @@ public class GetVipActivity extends BaseActivity {
                     LogUtils.d("SJHttp", getVipResponse.getBackStatus() + "");
                     if (getVipResponse.getBackStatus() == 0) {
                         listVIPQr = getVipResponse.getData().getList();
+                        List<GetVipResponse.DataBean.List2Bean> list2 = getVipResponse.getData().getList2();
                         tvGetVipTips.setText("提示：" + getVipResponse.getData().getTips());
+                        initVipVIew(listVIPQr);
+                        initVipRule(list2);
                         parseBannerUrl(listVIPQr);
                     } else {
                         ToastUtil.show(getVipResponse.getMessage());
@@ -118,6 +141,33 @@ public class GetVipActivity extends BaseActivity {
             LogUtils.d("SJHttp", json);
         }
     };
+
+    private void initVipRule(List<GetVipResponse.DataBean.List2Bean> list2) {
+        tvActivityOne.setText(list2.get(0).getTitle());
+        tvActivityOneTip1.setText(list2.get(0).getContext());
+//        tvActivityOneTip2.setText(list2.get(0).getContext());
+        tvActivityTwo.setText(list2.get(1).getTitle());
+        tvActivityTwoTip.setText(list2.get(1).getContext());
+        tvActivityThree.setText(list2.get(2).getTitle());
+        tvActivityThreeTip.setText(list2.get(2).getContext());
+    }
+
+    private void initVipVIew(List<GetVipResponse.DataBean.ListBean> listVIPQr) {
+        if (listVIPQr == null || listVIPQr.size() < 3) {
+            return;
+        }
+        tvVipOne.setText(listVIPQr.get(0).getTitle());
+        tvVipTwo.setText(listVIPQr.get(1).getTitle());
+        tvVipThree.setText(listVIPQr.get(2).getTitle());
+
+        tvSvipPrice.setText(listVIPQr.get(0).getCurrentPrice());
+        tvVipPrice.setText(listVIPQr.get(1).getCurrentPrice());
+        tvVipSvipPrice.setText(listVIPQr.get(2).getCurrentPrice());
+
+        tvSvipOldPrice.setText(listVIPQr.get(0).getOriginalPrice());
+        tvVipOldPrice.setText(listVIPQr.get(1).getOriginalPrice());
+        tvVipSvipOldPrice.setText(listVIPQr.get(2).getOriginalPrice());
+    }
 
     /**
      * 初始化开通会员二维码轮播图

@@ -157,6 +157,8 @@ public class InviteIncomeActivity extends BaseActivity {
                         page++;
                         pages = incomeListResponse.getData().getPageCount();
                         if (incomeList != null && incomeList.size() != 0) {
+                            tvNoList.setVisibility(View.GONE);
+                            listMyInviteIncome.setVisibility(View.VISIBLE);
                             for (int i = 0; i < incomeList.size(); i++) {
                                 data.add(incomeList.get(i));
                             }

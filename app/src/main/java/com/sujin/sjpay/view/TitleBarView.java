@@ -31,6 +31,7 @@ public class TitleBarView extends RelativeLayout {
     public static final int TITLE_BAR_TYPE_EDIT_LIFE = 8;
     public static final int TITLE_BAR_TYPE_FRESH = 9;
     public static final int TITLE_BAR_TYPE_MY_FRESH = 10;
+    public static final int TITLE_TYPE_PAY_LIST = 11;
 
     /*
     *  普通标题
@@ -62,6 +63,10 @@ public class TitleBarView extends RelativeLayout {
             /*交易记录标题*/
             case TITLE_BAR_TYPE_PAY_LIST:
                 inflate(context, R.layout.view_titlebar_pay_list, this);
+                break;
+            /*交易记录筛选*/
+            case TITLE_TYPE_PAY_LIST:
+                inflate(context, R.layout.view_bar_pay_list, this);
                 break;
 //            /*置业标题*/
 //            case TITLE_BAR_TYPE_CROWDFUNDING:
