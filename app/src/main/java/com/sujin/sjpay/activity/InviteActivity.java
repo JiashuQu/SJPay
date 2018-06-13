@@ -9,6 +9,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.sohu.sdk.common.toolbox.LogUtils;
+import com.lidroid.xutils.db.table.KeyValue;
 import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -28,7 +29,9 @@ import com.sujin.sjpay.util.StringUtil;
 import com.sujin.sjpay.util.ToastUtil;
 import com.sujin.sjpay.view.ScrollzfView;
 import com.sujin.sjpay.view.TitleBarView;
+import com.sujin.sjpay.view.dialog.BaseDialog;
 import com.sujin.sjpay.view.dialog.InviteDetailDialog;
+import com.sujin.sjpay.view.dialog.WheelViewDialog;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
@@ -111,6 +114,7 @@ public class InviteActivity extends BaseActivity {
 //        });
 
 
+
         srlMyInvite.setRefreshHeader(new MaterialHeader(this));
         srlMyInvite.setRefreshFooter(new ClassicsFooter(this));
         srlMyInvite.setOnRefreshListener(new OnRefreshListener() {
@@ -139,6 +143,17 @@ public class InviteActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_invite_detail_btn:
+//                List<InviteListResponse.DataBean.ListBean> data1 = new ArrayList<>();
+//                data1.add(new InviteListResponse.DataBean.ListBean("1","111"));
+//                data1.add(new InviteListResponse.DataBean.ListBean("2","222"));
+//                data1.add(new InviteListResponse.DataBean.ListBean("3","333"));
+//                WheelViewDialog dialog = new WheelViewDialog(this, data1);
+//                dialog.setListener(new BaseDialog.DialogListener() {
+//                    @Override
+//                    public void onClickType(int type, KeyValue bean) {
+//
+//                    }
+//                });
                 String inviteDetail = StringUtil.EMPTY;
                 for (int i = 0; i < complex.size(); i++) {
                     inviteDetail = inviteDetail + complex.get(i).getLine() + "\n\n";

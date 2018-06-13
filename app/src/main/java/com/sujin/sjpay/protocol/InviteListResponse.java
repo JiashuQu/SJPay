@@ -1,5 +1,7 @@
 package com.sujin.sjpay.protocol;
 
+import com.lidroid.xutils.db.table.KeyValue;
+
 import java.util.List;
 
 public class InviteListResponse {
@@ -103,7 +105,7 @@ public class InviteListResponse {
             this.list = list;
         }
 
-        public static class ListBean {
+        public static class ListBean extends KeyValue{
             /**
              * Mobile : 17778041594
              * CTime : 2018-06-08 08:43:36
@@ -117,6 +119,10 @@ public class InviteListResponse {
             private int IsRealState;
             private String IsRealStateTxt;
             private String RealName;
+
+            public ListBean(String key, Object value) {
+                super(key, value);
+            }
 
             public String getMobile() {
                 return Mobile;
