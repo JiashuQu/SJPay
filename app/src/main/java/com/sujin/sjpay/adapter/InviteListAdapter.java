@@ -62,10 +62,10 @@ public class InviteListAdapter extends BaseAdapter {
         String isRealStateTxt = inviteList.getIsRealStateTxt();
         holder.tvInviteStatus.setText(isRealStateTxt);
         if (isRealState == 0) {//未实名
-            holder.tvInviteStatus.setTextColor(0xFF00BA76);
+            holder.tvInviteStatus.setTextColor(0xFF999999);
             holder.tvInviteStatus.setText(isRealStateTxt);
         }else {
-            holder.tvInviteStatus.setTextColor(0xFF999999);
+            holder.tvInviteStatus.setTextColor(0xFF00BA76);
             holder.tvInviteStatus.setText(isRealStateTxt);
         }
         return convertView;
