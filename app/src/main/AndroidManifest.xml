@@ -40,43 +40,66 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.MainActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.LoginActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".activity.RegisterActivity" />
-        <activity android:name=".activity.FindPasswordActivity" />
-        <activity android:name=".activity.SetPasswordActivity" />
-        <activity android:name=".activity.MyInfoActivity" />
-        <activity android:name=".activity.AuthenticateActivity" />
-        <activity android:name=".activity.BandCardActivity" />
-        <activity android:name=".activity.SelectAddressActivity" />
-        <activity android:name=".activity.SelectBankActivity" />
+        <activity android:name=".activity.RegisterActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.FindPasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.SetPasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.MyInfoActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.AuthenticateActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.BandCardActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.SelectAddressActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.SelectBankActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.WebActivity"
-            android:launchMode="singleTop" />
-        <activity android:name=".activity.ChoseBankCardActivity" />
-        <activity android:name=".activity.SelectPayBankActivity" />
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.ChoseBankCardActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.SelectPayBankActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.MySecretActivity"
-            android:label="@string/title_activity_my_secret" />
-        <activity android:name=".activity.ChangePasswordActivity" />
-        <activity android:name=".activity.AboutUsActivity" />
-        <activity android:name=".activity.PayListActivity" />
-        <activity android:name=".activity.CreditCardActivity" />
-        <activity android:name=".activity.FeeInfoActivity" />
-        <activity android:name=".activity.QuickAgreementActivity" />
-        <activity android:name=".activity.InviteIncomeActivity" />
-        <activity android:name=".activity.InviteActivity" />
+            android:label="@string/title_activity_my_secret"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.ChangePasswordActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.AboutUsActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.PayListActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.CreditCardActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.FeeInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.QuickAgreementActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.InviteIncomeActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.InviteActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity android:name=".activity.MyAccountActivity" />
-        <activity android:name=".activity.GetVipActivity"></activity>
+        <activity android:name=".activity.MyAccountActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.GetVipActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

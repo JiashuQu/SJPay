@@ -33,7 +33,6 @@ import com.bumptech.glide.request.RequestOptions;
 import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.sujin.sjpay.BuildConfig;
 import com.sujin.sjpay.R;
@@ -61,6 +60,7 @@ import com.sujin.sjpay.util.DialogUtil;
 import com.sujin.sjpay.util.StringUtil;
 import com.sujin.sjpay.util.ToastUtil;
 import com.sujin.sjpay.view.dialog.AuthenticateDialog;
+import com.sujin.sjpay.view.dialog.GetTopVipDialog;
 import com.yanzhenjie.nohttp.NoHttp;
 import com.yanzhenjie.nohttp.RequestMethod;
 import com.yanzhenjie.nohttp.rest.Request;
@@ -135,6 +135,7 @@ public class MyFragment extends BaseFragment {
     public static final File FILE_PIC_SCREENSHOT = new File(FILE_LOCAL, "images/screenshots");
     private Bitmap tempBitmap;
     private File iocnFile;
+    private int vipType;
 
     public MyFragment() {
     }
@@ -191,6 +192,7 @@ public class MyFragment extends BaseFragment {
         int isRealState = user.getIsRealState();
         String vipTypeTxt = user.getVipTypeTxt();
         String baseUserName = user.getBaseUserName();
+        vipType = user.getVipType();
         tvUserName.setText(realName);
         tvUserPhone.setText(mobile);
         tvVipType.setText(vipTypeTxt);
@@ -265,7 +267,18 @@ public class MyFragment extends BaseFragment {
                 startActivity(new Intent(getActivity(), InviteActivity.class));
                 break;
             case R.id.tv_get_vip:
-                startActivity(new Intent(getActivity(), GetVipActivity.class));
+                if (vipType == 2) {
+                    final GetTopVipDialog getTopVipDialog = new GetTopVipDialog(getActivity(), "", "");
+                    getTopVipDialog.setLiftBankCardListener(new GetTopVipDialog.LiftBankCardListener() {
+                        @Override
+                        public void cancel() {
+                            getTopVipDialog.dismiss();
+                        }
+                    });
+                    getTopVipDialog.show();
+                }else {
+                    startActivity(new Intent(getActivity(), GetVipActivity.class));
+                }
                 break;
             case R.id.tv_my_account:
                 startActivity(new Intent(getActivity(), MyAccountActivity.class));
@@ -485,7 +498,7 @@ public class MyFragment extends BaseFragment {
                     if (myInfoResponse.getBackStatus() == 0) {
                         MyInfoResponse.DataBean data = myInfoResponse.getData();
                         int isRealState = data.getIsRealState();
-                        int vipType = data.getVipType();
+                        vipType = data.getVipType();
                         vipType(vipType);
                         if (isJump) {
                             if (isRealState == 0) {
@@ -545,7 +558,7 @@ public class MyFragment extends BaseFragment {
         if (vipType == 0 || vipType == 1) {
             setGetVip("", false);
         } else if (vipType == 2) {
-            setGetVip("我要做顶级代理", false);
+            setGetVip("成为顶级代理", true);
         } else if (vipType == 3) {
             setGetVip("点击升级会员", true);
         } else if (vipType == 4) {

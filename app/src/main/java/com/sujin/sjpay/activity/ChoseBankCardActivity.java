@@ -39,6 +39,8 @@ public class ChoseBankCardActivity extends BaseActivity {
     TitleBarView titleBar;
     @BindView(R.id.tv_bankcard)
     TextView tvBankcard;
+    @BindView(R.id.tv_no_list)
+    TextView tvNoList;
 
     private ArrayList<GetHistoryPayBankCardListResponse.DataBean.ListBean> data;
     private ChoseBankCardAdapter adapter;
@@ -77,9 +79,9 @@ public class ChoseBankCardActivity extends BaseActivity {
                 if ("支付卡管理".equals(title)) {//这里进来可以修改银行卡
                     Intent intent = new Intent(ChoseBankCardActivity.this, CreditCardActivity.class);
                     intent.putExtra("CreditCardInfo", historyPayBankCardList);
-                    intent.putExtra("title","修改支付卡信息");
+                    intent.putExtra("title", "修改支付卡信息");
                     startActivity(intent);
-                }else {
+                } else {
                     Intent intent = new Intent();
                     intent.putExtra(AppConstants.INTENT_KEY_BANK_CELL, historyPayBankCardList);
                     setResult(RESULT_OK, intent);
@@ -113,11 +115,14 @@ public class ChoseBankCardActivity extends BaseActivity {
                     GetHistoryPayBankCardListResponse getHistoryPayBankCardListResponse = getGson().fromJson(registerJson, GetHistoryPayBankCardListResponse.class);
                     if (getHistoryPayBankCardListResponse.getBackStatus() == 0) {
                         List<GetHistoryPayBankCardListResponse.DataBean.ListBean> list = getHistoryPayBankCardListResponse.getData().getList();
-                        if (list != null || list.size() == 0) {
+                        if (list != null && list.size() != 0) {
+                            tvNoList.setVisibility(View.GONE);
+                            listSelectBankBelong.setVisibility(View.VISIBLE);
                             adapter.setData(list);
                             listSelectBankBelong.setSelection(0);
                         } else {
-                            ToastUtil.show("暂无数据");
+                            tvNoList.setVisibility(View.VISIBLE);
+                            listSelectBankBelong.setVisibility(View.GONE);
                         }
                     } else {
                         ToastUtil.show(getHistoryPayBankCardListResponse.getMessage());

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.android.sohu.sdk.common.toolbox.LogUtils;
 import com.lidroid.xutils.db.table.KeyValue;
@@ -43,6 +44,8 @@ public class PayListActivity extends BaseActivity {
     TitleBarView tbv;
     @BindView(R.id.srl_pay_list)
     SmartRefreshLayout srlPayList;
+    @BindView(R.id.tv_no_list)
+    TextView tvNoList;
 
     private ArrayList<PayListResponse.DataBean.ListBean> data;
     private PayListAdapter adapter;
@@ -98,21 +101,21 @@ public class PayListActivity extends BaseActivity {
 
     private void initDialog() {
         List<KeyValue> kvs = new ArrayList<>();
-                kvs.add(new KeyValue("0","未支付"));
-                kvs.add(new KeyValue("-1","支付失败"));
-                kvs.add(new KeyValue("1","支付发起中"));
-                kvs.add(new KeyValue("5","确认成功"));
-                kvs.add(new KeyValue("10","支付成功"));
-                 wvDialog = new WheelViewDialog(this, kvs);
+        kvs.add(new KeyValue("0", "未支付"));
+        kvs.add(new KeyValue("-1", "支付失败"));
+        kvs.add(new KeyValue("1", "支付发起中"));
+        kvs.add(new KeyValue("5", "确认成功"));
+        kvs.add(new KeyValue("10", "支付成功"));
+        wvDialog = new WheelViewDialog(this, kvs);
         wvDialog.setListener(new BaseDialog.DialogListener() {
-                    @Override
-                    public void onClickType(int type, KeyValue bean) {
+            @Override
+            public void onClickType(int type, KeyValue bean) {
 
-                        state = bean.key;
-                        page = 1;
-                        getPayList(SJApplication.getInstance().getUserId(), page, false);
-                    }
-                });
+                state = bean.key;
+                page = 1;
+                getPayList(SJApplication.getInstance().getUserId(), page, false);
+            }
+        });
     }
 
     private void getPayList(String userId, int page, boolean isLoading) {
@@ -145,20 +148,22 @@ public class PayListActivity extends BaseActivity {
                         page++;
                         pages = payListResponse.getData().getPageCount();
                         List<PayListResponse.DataBean.ListBean> list = payListResponse.getData().getList();
-                        if (list != null || list.size() == 0) {
+                        if (list != null && list.size() != 0) {
+                            tvNoList.setVisibility(View.GONE);
+                            srlPayList.setVisibility(View.VISIBLE);
                             for (int i = 0; i < list.size(); i++) {
                                 data.add(list.get(i));
                             }
                             adapter.setData(data);
                             adapter.notifyDataSetChanged();
-//                            listPayList.setSelection(0);
                         } else {
-                            ToastUtil.show("没有交易记录");
+                            tvNoList.setVisibility(View.VISIBLE);
+                            srlPayList.setVisibility(View.GONE);
                         }
                     } else {
                         ToastUtil.show(payListResponse.getMessage());
                     }
-                    if (page > pages){
+                    if (page > pages) {
                         hasMoreData = true;
                     }
                     srlPayList.finishRefresh(1000, true);

@@ -16,15 +16,15 @@
         android:id="@+id/tv_bankcard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin"
-        android:layout_marginRight="@dimen/margin"
-        android:layout_marginLeft="@dimen/margin"
-        android:padding="@dimen/_10dp"
-        android:text="   绑定新的信用卡"
-        android:drawableLeft="@drawable/icon_add"
-        android:textColor="@color/gray_A3A3A3"
-        android:textSize="15sp"
-        android:background="@drawable/bg_trans_rect"/>
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="@string/band_new_card"
+        android:textSize="@dimen/textSize_40px"
+        android:background="@drawable/bg_orange_rect"
+        android:textColor="@color/white"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="@dimen/_15dp"
+        android:layout_marginRight="@dimen/_15dp"/>
 
     <ListView
         android:id="@+id/list_select_bank_belong"
@@ -36,5 +36,17 @@
         android:scrollbars="none"
         android:overScrollMode="never"
         />
+
+    <TextView
+        android:id="@+id/tv_no_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_40dp"
+        android:layout_marginBottom="@dimen/_40dp"
+        android:gravity="center"
+        android:text="暂无记录"
+        android:textSize="@dimen/_15dp"
+        android:textColor="@color/black_666666"
+        android:visibility="gone"/>
 
 </LinearLayout>

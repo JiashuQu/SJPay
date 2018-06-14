@@ -7,8 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.sujin.sjpay.R;
 
 import java.util.ArrayList;
@@ -53,16 +55,15 @@ public class SelectPayBankListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         SelectBankAdapter.ViewHolder holder = null;
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_bank_cell, null, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_bank_belong, null, false);
             holder = new SelectBankAdapter.ViewHolder(convertView);
             convertView.setTag(holder);
         } else {
-            holder = (SelectBankAdapter.ViewHolder)convertView.getTag();
+            holder = (SelectBankAdapter.ViewHolder) convertView.getTag();
         }
         String data = datas.get(position);
         holder.tvItemBankCell.setText(data);
-//        Resources resources = context.getResources();
-//        holder.tvItemBankLimit.setText(resources.getString(R.string.single_quota) + data.getSingleQuota() + "  " + resources.getString(R.string.day_quota) + data.getDayQuota() + "  " + resources.getString(R.string.mouth_quota) + data.getMouthQuota());
+//        Glide.with(context).asBitmap().load(datas.getBankCard()).into(holder.ivBankIcon);
 
         return convertView;
     }
@@ -73,14 +74,13 @@ public class SelectPayBankListAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
+        @BindView(R.id.iv_bank_icon)
+        ImageView ivBankIcon;
         @BindView(R.id.tv_item_bank_cell)
         TextView tvItemBankCell;
-        @BindView(R.id.tv_item_bank_limit)
-        TextView tvItemBankLimit;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
         }
     }
-    
 }

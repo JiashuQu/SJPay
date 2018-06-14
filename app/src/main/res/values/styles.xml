@@ -176,27 +176,28 @@
 
     <!-- 我的,更多页,安全中心-->
     <style name="rl_my">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:paddingLeft">@dimen/margin</item>
-        <item name="android:paddingRight">@dimen/margin</item>
         <item name="android:paddingTop">15dp</item>
         <item name="android:paddingBottom">15dp</item>
-        <item name="android:background">@drawable/selector_press_gray</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
     </style>
 
     <style name="tv_security">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/black_262626</item>
+        <item name="android:textColor">@color/gray_999999</item>
         <item name="android:textSize">@dimen/textSize_32px</item>
         <item name="android:layout_centerVertical">true</item>
     </style>
 
     <style name="tv_security_right" parent="tv_security">
         <item name="android:layout_alignParentRight">true</item>
+        <item name="android:textColor">@color/black_666666</item>
     </style>
 
     <!-- 通用ScrollView样式 -->

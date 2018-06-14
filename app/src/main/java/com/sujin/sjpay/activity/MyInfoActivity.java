@@ -47,8 +47,7 @@ public class MyInfoActivity extends BaseActivity {
         tvLevel.setText(vipTypeTxt);
         tvBankcard.setText(bankCard);
         tvBankcardBelong.setText(bankName);
-        tvMyFeel.setText("有积分" + data.getRate1() + "+" + data.getRate3() + "元/笔\n"
-                            + "无积分" + data.getNoneRate1() + "+" + data.getNoneRate3() + "元/笔");
+        tvMyFeel.setText(data.getRate1() + "+" + data.getRate3() + "元/笔");
     }
 
 
