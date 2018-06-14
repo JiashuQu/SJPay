@@ -231,7 +231,7 @@ public class InviteActivity extends BaseActivity {
                         List<InviteListResponse.DataBean.ListBean> list = inviteListResponse.getData().getList();
                         if (list != null && list.size() != 0) {
                             holder2.tvNoList.setVisibility(View.GONE);
-                            holder2.lvInvite.setVisibility(View.VISIBLE);
+                            holder2.srlMyInvite.setVisibility(View.VISIBLE);
                             for (int i = 0; i < list.size(); i++) {
                                 data.add(list.get(i));
                             }
@@ -240,7 +240,7 @@ public class InviteActivity extends BaseActivity {
 //                            listPayList.setSelection(0);
                         } else {
                             holder2.tvNoList.setVisibility(View.VISIBLE);
-                            holder2.lvInvite.setVisibility(View.GONE);
+                            holder2.srlMyInvite.setVisibility(View.GONE);
                         }
                     } else {
                         ToastUtil.show(inviteListResponse.getMessage());

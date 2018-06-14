@@ -32,25 +32,6 @@ android:orientation="vertical">
                     android:layout_marginTop="@dimen/_10dp"
                     android:src="@drawable/invite_rule" />
 
-                <ImageView
-                    android:id="@+id/iv_invite_share"
-                    android:layout_width="match_parent"
-                    android:layout_marginLeft="@dimen/_20dp"
-                    android:layout_marginRight="@dimen/_20dp"
-                    android:layout_height="75dp"
-                    android:background="@drawable/btn_invite"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_gravity="center"
-                    android:text="@string/invite_list"
-                    android:textColor="@color/white"
-                    android:drawableRight="@drawable/invite_down"
-                    android:drawablePadding="@dimen/_5dp"
-                    android:layout_marginBottom="@dimen/_15dp"/>
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -110,6 +91,26 @@ android:orientation="vertical">
                         android:textSize="12dp" />
 
                 </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/iv_invite_share"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/_20dp"
+                    android:layout_marginRight="@dimen/_20dp"
+                    android:layout_height="75dp"
+                    android:background="@drawable/btn_invite"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:text="@string/invite_list"
+                    android:textColor="@color/white"
+                    android:drawableRight="@drawable/invite_down"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:drawablePadding="@dimen/_5dp"
+                    android:layout_marginBottom="@dimen/_15dp"/>
 
             </LinearLayout>
 
