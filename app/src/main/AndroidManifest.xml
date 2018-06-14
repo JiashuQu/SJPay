@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <application
+        android:screenOrientation="portrait"
         tools:replace="android:label"
         android:name=".android.SJApplication"
         android:allowBackup="true"
