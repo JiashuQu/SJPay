@@ -15,6 +15,7 @@ import com.sujin.sjpay.android.SJApplication;
 import com.sujin.sjpay.nohttp.HttpListener;
 import com.sujin.sjpay.protocol.GetHistoryPayBankCardListResponse;
 import com.sujin.sjpay.protocol.GetPayBankQuotaList;
+import com.sujin.sjpay.protocol.PayCardListResponse;
 import com.sujin.sjpay.protocol.RegisterResponse;
 import com.sujin.sjpay.util.StringUtil;
 import com.sujin.sjpay.util.ToastUtil;
@@ -231,7 +232,7 @@ public class CreditCardActivity extends BaseActivity {
                 case AppConstants.INTENT_REQUEST_CODE_FROM_BAND_CARD:
                     Serializable serializableExtra = data.getSerializableExtra(AppConstants.INTENT_KEY_BANK_CELL);
                     if (serializableExtra != null) {
-                        GetPayBankQuotaList bankCell = (GetPayBankQuotaList) serializableExtra;
+                        PayCardListResponse.DataBean bankCell = (PayCardListResponse.DataBean) serializableExtra;
                         bankCode = bankCell.getBankCode();
                         bankName = bankCell.getBankName();
                         bankcellBandCard.setData(bankName, "", "");

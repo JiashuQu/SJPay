@@ -29,6 +29,7 @@ import com.sujin.sjpay.android.ApiConstants;
 import com.sujin.sjpay.android.AppConstants;
 import com.sujin.sjpay.android.SJApplication;
 import com.sujin.sjpay.nohttp.HttpListener;
+import com.sujin.sjpay.protocol.PayCardListResponse;
 import com.sujin.sjpay.protocol.UploadImgResponse;
 import com.sujin.sjpay.util.BitmapUtil;
 import com.sujin.sjpay.util.DialogUtil;
@@ -44,6 +45,7 @@ import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -105,6 +107,8 @@ public class BandCardActivity extends BaseActivity {
     private File imageFront;
     private File imageBack;
 
+    private Serializable serializableExtra;
+
     private final Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -159,6 +163,10 @@ public class BandCardActivity extends BaseActivity {
                     return;
                 }
 
+                if (serializableExtra == null){
+                    ToastUtil.show("请您选择开户行");
+                    return;
+                }
                 if (BankCardPhoto != 0) {
 //                    tvConfirm.setEnabled(false);
 //                    upLoad(imageFrontBitmap);
@@ -394,7 +402,14 @@ public class BandCardActivity extends BaseActivity {
                     break;
                 case AppConstants.INTENT_REQUEST_CODE_FROM_BAND_CARD:
 //                    Serializable serializableExtra = data.getSerializableExtra(AppConstants.INTENT_KEY_BANK_CELL);
-                    bankName = data.getStringExtra(AppConstants.INTENT_KEY_BANK_CELL);
+
+                    serializableExtra = data.getSerializableExtra(AppConstants.INTENT_KEY_BANK_CELL);
+                    if (serializableExtra != null) {
+                        PayCardListResponse.DataBean bankCell = (PayCardListResponse.DataBean) serializableExtra;
+                        bankName = bankCell.getBankName();
+                        bankcellBandCard.setData(bankName, "", "");
+                    }
+
 //                    if (serializableExtra != null) {
 //                        GetPayBankQuotaList bankCell = (GetPayBankQuotaList) serializableExtra;
 //                        String bankId = bankCell.getId();
@@ -403,7 +418,6 @@ public class BandCardActivity extends BaseActivity {
 //                        dayQuota = bankCell.getDayQuota();
 //                        dayQuota = bankCell.getMouthQuota();
 //                        Resources resources = getResources();
-                        bankcellBandCard.setData(bankName, "", "");
 //                    }
                     break;
                 case FLAG_CHOOSE_PHONE:
@@ -466,25 +480,6 @@ public class BandCardActivity extends BaseActivity {
                 }).start();
 
             } else if (PHOTO_STEP == 1) {
-//                DialogUtil.showLoading(this, false);
-//                btTakePhotoTop.setText("重新上传");
-//                btTakePhotoBottom.setVisibility(View.VISIBLE);
-//                btTakePhotoBottom.setText("重新上传");
-//                ivTakePhotoBottom.setImageBitmap(tempBitmap);
-//                isCanUpload = true;
-//                imageBackPath = path;
-//                imageBackmap = tempBitmap;
-//                //涉及I/O操作，子线程运行
-//                new Thread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        imageBack = null;
-//                        imageBack = BitmapUtil.saveBitmap(tempBitmap, getCacheDir().getAbsolutePath(), "jiebang2.png");
-//                        Message message = new Message();
-//                        message.what = 1;
-//                        handler.sendMessage(message);
-//                    }
-//                }).start();
             }
         }
     }

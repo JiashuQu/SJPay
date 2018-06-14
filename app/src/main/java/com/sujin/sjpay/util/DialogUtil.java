@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.sujin.sjpay.R;
+import com.sujin.sjpay.view.dialog.Tip2ButtonDialog;
 
 public class DialogUtil {
 
@@ -67,6 +68,30 @@ public class DialogUtil {
         loadingDialog.getWindow().setAttributes(attributes);
         return loadingDialog;
     }
+
+    /**
+     * 带一条提示，两个按钮的Dialog，右边按钮为红色
+     *
+     * @param context
+     * @param tip
+     * @param leftText      左边文案默认取消 可传""
+     * @param leftListener  默认点击dismiss dialog 可传null
+     * @param rightText
+     * @param rightListener
+     * @return
+     */
+    public static Tip2ButtonDialog showTip2ButtonDialog(Context context, String tip, String leftText, View.OnClickListener leftListener, String rightText, View.OnClickListener rightListener) {
+        Tip2ButtonDialog.Builder builder = new Tip2ButtonDialog.Builder(context);
+        Tip2ButtonDialog dialog = builder.setTip(tip)
+                .setLeftText(leftText)
+                .setLeftListener(leftListener)
+                .setRightText(rightText)
+                .setRightListener(rightListener)
+                .create();
+        dialog.setCancelable(false);
+        return dialog;
+    }
+
 
     /**
      * @Description: 关闭加载提示框

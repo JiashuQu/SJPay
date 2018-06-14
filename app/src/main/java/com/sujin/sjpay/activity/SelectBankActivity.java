@@ -57,7 +57,7 @@ public class SelectBankActivity extends BaseActivity {
         listSelectBankBelong.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String payBank = (String) parent.getAdapter().getItem(position);
+                PayCardListResponse.DataBean payBank = (PayCardListResponse.DataBean) parent.getAdapter().getItem(position);
                 if (payBank == null) {
                     return;
                 }

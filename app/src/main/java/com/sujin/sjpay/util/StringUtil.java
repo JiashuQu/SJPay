@@ -8,6 +8,7 @@ import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
+import android.widget.TextView;
 
 import com.sujin.sjpay.android.ApiConstants;
 import com.sujin.sjpay.android.AppConstants;
@@ -784,4 +785,17 @@ public class StringUtil {
             return false;
         }
     }
+
+    /**
+     * 设置滚动
+     * @param tv
+     */
+    public static void setEllipsize(TextView tv){
+        tv.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+        tv.setSingleLine(true);
+        tv.setSelected(true);
+        tv.setFocusable(true);
+        tv.setFocusableInTouchMode(true);
+    }
+
 }

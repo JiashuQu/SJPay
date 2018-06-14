@@ -405,7 +405,7 @@ public class MyFragment extends BaseFragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        DialogUtil.showLoading(this, false);
+        DialogUtil.showLoading(getActivity(), true);
         String path = StringUtil.EMPTY;
 
         if (resultCode == Activity.RESULT_OK) {
@@ -462,7 +462,7 @@ public class MyFragment extends BaseFragment {
         String md5 = StringUtil.MD5(ApiConstants.UpImg, s, ApiConstants.API_UPLOAD);
         request.add("UserId", userId);
         request.add("base64", imgBase64);
-        request(WHAT_UPLOAD, request, httpListener, md5, false, true);
+        request(WHAT_UPLOAD, request, httpListener, md5, false, false);
         com.lidroid.xutils.util.LogUtils.d("UserId=" + userId);
     }
 
@@ -533,7 +533,6 @@ public class MyFragment extends BaseFragment {
                     } else {
                         ToastUtil.show(uploadImgResponse.getMessage());
                     }
-                    DialogUtil.dismissLoading();
                     break;
                 case WHAT_SET_ICON:
                     String registerJson = response.get();
@@ -544,6 +543,7 @@ public class MyFragment extends BaseFragment {
                     } else {
                         ToastUtil.show(registerResponse.getMessage());
                     }
+                    DialogUtil.dismissLoading();
                     break;
             }
 
@@ -553,6 +553,7 @@ public class MyFragment extends BaseFragment {
         public void onFailed(int what, Response<String> response) {
             String json = response.get();
             srlMy.finishRefresh(2000, false);
+            DialogUtil.dismissLoading();
             LogUtils.d("SJHttp", json);
         }
     };

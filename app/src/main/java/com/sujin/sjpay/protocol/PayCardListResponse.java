@@ -1,13 +1,14 @@
 package com.sujin.sjpay.protocol;
 
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by QJS on 2018/3/16.
  */
 
-public class PayCardListResponse {
+public class PayCardListResponse  implements Serializable {
 
     /**
      * backStatus : 0
@@ -53,7 +54,7 @@ public class PayCardListResponse {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean   implements Serializable {
         /**
          * BankName : 建设银行
          * BankCode : CCB

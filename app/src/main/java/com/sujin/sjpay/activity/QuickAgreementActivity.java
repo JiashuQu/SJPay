@@ -81,6 +81,7 @@ public class QuickAgreementActivity extends BaseActivity implements SJApplicatio
             case R.id.tv_next:
                 String forgetSms = etSmsCode.getText().toString();
                 if (forgetSms.length() == 6) {
+                    tvNext.setEnabled(false);
                     getBankCardSubmitActivateCode(userId, channelType, forgetSms, bankId);
                 }else {
                     ToastUtil.show(getResources().getString(R.string.sms_code_error));
@@ -169,6 +170,7 @@ public class QuickAgreementActivity extends BaseActivity implements SJApplicatio
                         getReceiveApi(userId, payMoney, bankCell.getID(), payType);
                     } else {
                         ToastUtil.show(bankCardSubmitActivateCodeResponse.getMessage());
+                        tvNext.setEnabled(true);
                     }
                     break;
                 case 2:
@@ -189,6 +191,7 @@ public class QuickAgreementActivity extends BaseActivity implements SJApplicatio
                     } else {
                         ToastUtil.show(receiveApiResponse.getMessage());
                     }
+                    tvNext.setEnabled(true);
                     break;
             }
 
@@ -197,7 +200,7 @@ public class QuickAgreementActivity extends BaseActivity implements SJApplicatio
         @Override
         public void onFailed(int what, Response<String> response) {
             String json = response.get();
-
+            tvNext.setEnabled(true);
             LogUtils.d("SJHttp", json);
         }
     };

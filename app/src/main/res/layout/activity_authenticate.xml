@@ -43,7 +43,8 @@
 
                     <ImageView
                         android:id="@+id/iv_take_photo_top"
-                        style="@style/iv_take_photo" />
+                        style="@style/iv_take_photo"
+                        android:src="@drawable/take_photo_up"/>
 
                     <Button
                         android:id="@+id/bt_take_photo_top"
@@ -67,7 +68,8 @@
 
                     <ImageView
                         android:id="@+id/iv_take_photo_bottom"
-                        style="@style/iv_take_photo"/>
+                        style="@style/iv_take_photo"
+                        android:src="@drawable/take_photo_up"/>
 
                     <Button
                         android:id="@+id/bt_take_photo_bottom"

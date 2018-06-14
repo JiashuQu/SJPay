@@ -56,7 +56,7 @@ public class SelectPayBankActivity extends BaseActivity {
         listSelectBankBelong.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                GetPayBankQuotaList payBankQuotaListResponse = (GetPayBankQuotaList) parent.getAdapter().getItem(position);
+                PayCardListResponse.DataBean payBankQuotaListResponse = (PayCardListResponse.DataBean) parent.getAdapter().getItem(position);
                 if (payBankQuotaListResponse == null) {
                     return;
                 }
