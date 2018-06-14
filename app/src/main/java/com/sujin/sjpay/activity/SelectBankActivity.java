@@ -14,6 +14,7 @@ import com.sujin.sjpay.adapter.SelectBankAdapter;
 import com.sujin.sjpay.adapter.SelectPayBankListAdapter;
 import com.sujin.sjpay.android.ApiConstants;
 import com.sujin.sjpay.android.AppConstants;
+import com.sujin.sjpay.android.SJApplication;
 import com.sujin.sjpay.nohttp.HttpListener;
 import com.sujin.sjpay.protocol.GetPayBankQuotaList;
 import com.sujin.sjpay.protocol.GetPayBankQuotaListResponse;
@@ -36,7 +37,7 @@ public class SelectBankActivity extends BaseActivity {
     @BindView(R.id.list_select_bank_belong)
     ListView listSelectBankBelong;
 
-    private ArrayList<String> data;
+    private ArrayList<PayCardListResponse.DataBean> data;
     private SelectPayBankListAdapter adapter;
 
     @Override
@@ -70,8 +71,11 @@ public class SelectBankActivity extends BaseActivity {
     }
 
     private void request() {
-        Request<String> request = NoHttp.createStringRequest(ApiConstants.getYeePayBankList, RequestMethod.GET);
-        String md5 = StringUtil.MD5(ApiConstants.GetBankList, "", ApiConstants.API_YEEPAY);
+        Request<String> request = NoHttp.createStringRequest(ApiConstants.getBankList, RequestMethod.GET);
+        char[] chars = ("TypeId=" + 1).toCharArray();
+        String s = StringUtil.sort(chars);
+        String md5 = StringUtil.MD5(ApiConstants.GetBankList, s, ApiConstants.API_USERS);
+        request.add("TypeId", 1);
         com.lidroid.xutils.util.LogUtils.d(md5);
         request(0, request, httpListener, md5, true, true);
     }
@@ -86,7 +90,7 @@ public class SelectBankActivity extends BaseActivity {
                     PayCardListResponse payCardListResponse = getGson().fromJson(registerJson, PayCardListResponse.class);
                     LogUtils.d("SJHttp", payCardListResponse.getBackStatus()+"");
                     if (TextUtils.equals(payCardListResponse.getBackStatus()+"", "0")) {
-                        List<String> data = payCardListResponse.getData();
+                        List<PayCardListResponse.DataBean> data = payCardListResponse.getData();
                         if (data != null || data.size() == 0) {
                             adapter.setData(data);
                             listSelectBankBelong.setSelection(0);

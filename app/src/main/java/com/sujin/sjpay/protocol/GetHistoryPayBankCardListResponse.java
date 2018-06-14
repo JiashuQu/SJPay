@@ -138,6 +138,12 @@ public class GetHistoryPayBankCardListResponse implements Serializable {
             private String OpeningBank;
             private String OpeningSerialBank;
             private String CTime;
+            private String ICON;
+
+            public String getICON() {
+                return ICON;
+            }
+
             private int State;
             private List<ListChannelBean> listChannel;
 

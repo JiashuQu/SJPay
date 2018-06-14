@@ -1,102 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <LinearLayout
 xmlns:android="http://schemas.android.com/apk/res/android"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-android:background="@drawable/bg_invite_top"
-android:layout_marginTop="-37dp"
 android:gravity="center_horizontal"
 android:orientation="vertical">
 
-<ImageView
-    android:layout_width="104dp"
-    android:layout_height="18dp"
-    android:layout_marginTop="@dimen/_15dp"
-    android:src="@drawable/invite_rule" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/_15dp"
-    android:layout_marginRight="25dp"
-    android:layout_marginLeft="25dp"
-    android:background="@drawable/bg_invite_get_money"
-    android:orientation="vertical">
+        <LinearLayout
+            style="@style/base_linear_mmv"
+            android:gravity="center_horizontal">
 
-    <TextView
-        android:id="@+id/tv_invite_rule_one"
-        style="@style/invite_rule"
-        android:layout_marginTop="60dp"
-        android:text="1. "/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="@drawable/invite_top"/>
 
-    <View
-        style="@style/invite_rule_line"/>
+            <LinearLayout
+                style="@style/base_linear_mmv"
+                android:background="@drawable/bg_invite_top"
+                android:layout_marginTop="-50dp"
+                android:gravity="center_horizontal">
 
-    <TextView
-        android:id="@+id/tv_invite_rule_two"
-        style="@style/invite_rule"
-        android:layout_marginTop="15dp"
-        android:text="2. "/>
+                <ImageView
+                    android:layout_width="104dp"
+                    android:layout_height="18dp"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:src="@drawable/invite_rule" />
 
-    <View
-        style="@style/invite_rule_line"/>
+                <ImageView
+                    android:id="@+id/iv_invite_share"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/_20dp"
+                    android:layout_marginRight="@dimen/_20dp"
+                    android:layout_height="75dp"
+                    android:background="@drawable/btn_invite"/>
 
-    <TextView
-        android:id="@+id/tv_invite_rule_three"
-        style="@style/invite_rule"
-        android:layout_marginTop="15dp"
-        android:text="3."/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:text="@string/invite_list"
+                    android:textColor="@color/white"
+                    android:drawableRight="@drawable/invite_down"
+                    android:drawablePadding="@dimen/_5dp"
+                    android:layout_marginBottom="@dimen/_15dp"/>
 
-    <View
-        style="@style/invite_rule_line"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:background="@drawable/bg_invite_get_money"
+                    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_invite_rule_four"
-        style="@style/invite_rule"
-        android:layout_marginTop="15dp"
-        android:text="4. "/>
+                    <TextView
+                        android:id="@+id/tv_invite_rule_one"
+                        style="@style/invite_rule"
+                        android:layout_marginTop="60dp"
+                        android:text="1. " />
 
-    <View
-        style="@style/invite_rule_line"/>
+                    <View style="@style/invite_rule_line" />
 
-    <TextView
-        android:id="@+id/tv_invite_detail_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_coner_20_stroke_white"
-        android:text="@string/rule_detail"
-        android:textSize="12dp"
-        android:textColor="@color/white"
-        android:drawableRight="@drawable/invite_right"
-        android:layout_marginTop="@dimen/_10dp"
-        android:paddingLeft="@dimen/_20dp"
-        android:paddingRight="@dimen/_20dp"
-        android:paddingBottom="@dimen/_10dp"
-        android:paddingTop="@dimen/_10dp"
-        android:layout_marginBottom="@dimen/_10dp"
-        android:layout_gravity="center"/>
+                    <TextView
+                        android:id="@+id/tv_invite_rule_two"
+                        style="@style/invite_rule"
+                        android:layout_marginTop="15dp"
+                        android:text="2. " />
 
-</LinearLayout>
+                    <View style="@style/invite_rule_line" />
 
-<ImageView
-    android:id="@+id/iv_invite_share"
-    android:layout_width="match_parent"
-    android:layout_marginLeft="@dimen/_20dp"
-    android:layout_marginRight="@dimen/_20dp"
-    android:layout_height="75dp"
-    android:background="@drawable/btn_invite"/>
+                    <TextView
+                        android:id="@+id/tv_invite_rule_three"
+                        style="@style/invite_rule"
+                        android:layout_marginTop="15dp"
+                        android:text="3." />
 
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:layout_gravity="center"
-    android:text="@string/invite_list"
-    android:textColor="@color/white"
-    android:drawableRight="@drawable/invite_down"
-    android:drawablePadding="@dimen/_5dp"
-    android:layout_marginBottom="@dimen/_15dp"/>
+                    <View style="@style/invite_rule_line" />
+
+                    <TextView
+                        android:id="@+id/tv_invite_rule_four"
+                        style="@style/invite_rule"
+                        android:layout_marginTop="15dp"
+                        android:text="4. " />
+
+                    <View style="@style/invite_rule_line" />
+
+                    <TextView
+                        android:id="@+id/tv_invite_detail_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="@dimen/_10dp"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:background="@drawable/bg_coner_20_stroke_white"
+                        android:drawableRight="@drawable/invite_right"
+                        android:paddingBottom="@dimen/_10dp"
+                        android:paddingLeft="@dimen/_20dp"
+                        android:paddingRight="@dimen/_20dp"
+                        android:paddingTop="@dimen/_10dp"
+                        android:text="@string/rule_detail"
+                        android:textColor="@color/white"
+                        android:textSize="12dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

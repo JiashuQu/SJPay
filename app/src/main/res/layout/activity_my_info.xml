@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="com.sujin.sjpay.activity.MyInfoActivity"
-    android:background="@color/gray_EFEFEF">
+    android:background="@color/white_FFF0FAF8">
 
     <com.sujin.sjpay.view.TitleBarView
         android:layout_width="match_parent"
@@ -48,7 +48,8 @@
         <View style="@style/view_1px_line_horizontal"
             android:layout_marginLeft="@dimen/_20dp"
             android:layout_marginRight="@dimen/_20dp"/>
-        <RelativeLayout style="@style/rl_my">
+        <RelativeLayout style="@style/rl_my"
+            android:visibility="gone">
 
             <TextView
                 style="@style/tv_security"
@@ -61,8 +62,11 @@
         </RelativeLayout>
         <View style="@style/view_1px_line_horizontal"
             android:layout_marginLeft="@dimen/_20dp"
-            android:layout_marginRight="@dimen/_20dp"/>
-        <RelativeLayout style="@style/rl_my">
+            android:layout_marginRight="@dimen/_20dp"
+
+            android:visibility="gone"/>
+        <RelativeLayout style="@style/rl_my"
+            android:visibility="gone">
 
             <TextView
                 style="@style/tv_security"
@@ -75,7 +79,8 @@
         </RelativeLayout>
         <View style="@style/view_1px_line_horizontal"
             android:layout_marginLeft="@dimen/_20dp"
-            android:layout_marginRight="@dimen/_20dp"/>
+            android:layout_marginRight="@dimen/_20dp"
+            android:visibility="gone"/>
         <RelativeLayout style="@style/rl_my">
 
             <TextView

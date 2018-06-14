@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.sujin.sjpay.R;
+import com.sujin.sjpay.protocol.PayCardListResponse;
+import com.sujin.sjpay.util.BitmapUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,10 +28,10 @@ import butterknife.ButterKnife;
 public class SelectPayBankListAdapter extends BaseAdapter {
 
     private Context context;
-    private List<String> datas;
+    private List<PayCardListResponse.DataBean> datas;
     private Drawable arrow;
 
-    public SelectPayBankListAdapter(Context context, ArrayList<String> datas) {
+    public SelectPayBankListAdapter(Context context, ArrayList<PayCardListResponse.DataBean> datas) {
         this.context = context;
         this.datas = datas;
         arrow = ContextCompat.getDrawable(context, R.drawable.next_arrow_tip);
@@ -53,22 +55,23 @@ public class SelectPayBankListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        SelectBankAdapter.ViewHolder holder = null;
+        ViewHolder holder = null;
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.item_bank_belong, null, false);
-            holder = new SelectBankAdapter.ViewHolder(convertView);
+            holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         } else {
-            holder = (SelectBankAdapter.ViewHolder) convertView.getTag();
+            holder = (ViewHolder) convertView.getTag();
         }
-        String data = datas.get(position);
-        holder.tvItemBankCell.setText(data);
-//        Glide.with(context).asBitmap().load(datas.getBankCard()).into(holder.ivBankIcon);
+        PayCardListResponse.DataBean dataBean = datas.get(position);
+        String bankName = dataBean.getBankName();
+        holder.tvItemBankCell.setText(bankName);
+        Glide.with(context).asBitmap().load(dataBean.getICON()).into(holder.ivBankIcon);
 
         return convertView;
     }
 
-    public void setData(List<String> data) {
+    public void setData(List<PayCardListResponse.DataBean> data) {
         this.datas = data;
         notifyDataSetChanged();
     }
@@ -83,4 +86,5 @@ public class SelectPayBankListAdapter extends BaseAdapter {
             ButterKnife.bind(this, view);
         }
     }
+
 }

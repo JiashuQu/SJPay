@@ -73,6 +73,7 @@ public interface ApiConstants {
     String getAccountTotal = APP_URL + API_USERS  + AccountTotal;
     String getAccountRecord = APP_URL + API_USERS  + AccountRecord;
     String setAvatarImg = APP_URL + API_USERS  + AvatarImg;
+    String getBankList = APP_URL + API_USERS  + GetBankList;
 
     String getForgetImgCode = APP_URL + API_FORGET  + GetImgCode;
     String getForgetSmsCode = APP_URL + API_FORGET  + SendMsgCode;
@@ -85,7 +86,6 @@ public interface ApiConstants {
     String getYeePayRegister = APP_URL + API_YEEPAY  + Register;
     String getPayFeeTool = APP_URL + API_YEEPAY  + PayFeeTool;
     String getReceiveApi = APP_URL + API_YEEPAY  + ReceiveApi;
-    String getYeePayBankList = APP_URL + API_YEEPAY  + GetBankList;
 
     String getVersion = APP_URL + API_CONFIG  + Version;
     String getPayType = APP_URL + API_CONFIG  + PayType;

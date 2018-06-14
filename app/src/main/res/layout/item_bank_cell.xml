@@ -9,7 +9,8 @@
     <ImageView
         android:id="@+id/iv_bank_icon"
         android:layout_width="20dp"
-        android:layout_height="20dp" />
+        android:layout_height="20dp"
+        android:layout_marginLeft="@dimen/_30dp"/>
 
     <TextView
         android:id="@+id/tv_item_bank_cell"
@@ -17,17 +18,18 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:textSize="@dimen/textSize_32px"
-        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginLeft="@dimen/_10dp"
         android:text="名字"
         android:textColor="@color/black_666666"/>
 
     <TextView
         android:id="@+id/tv_item_bank_limit"
         style="@style/tv_black_262626"
-        android:layout_height="match_parent"
-        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="right"
         android:textSize="@dimen/textSize_32px"
-        android:layout_marginLeft="@dimen/_50dp"
+        android:layout_marginRight="@dimen/_30dp"
         android:textColor="@color/black_666666"/>
 
 </LinearLayout>

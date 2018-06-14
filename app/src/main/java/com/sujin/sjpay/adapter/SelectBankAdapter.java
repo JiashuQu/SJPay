@@ -1,17 +1,18 @@
 package com.sujin.sjpay.adapter;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.sujin.sjpay.R;
-import com.sujin.sjpay.protocol.GetPayBankQuotaList;
+import com.sujin.sjpay.protocol.PayCardListResponse;
 
 import java.util.ArrayList;
 
@@ -24,10 +25,10 @@ import butterknife.ButterKnife;
 
 public class SelectBankAdapter extends BaseAdapter {
     private Context context;
-    private ArrayList<GetPayBankQuotaList> datas;
+    private ArrayList<PayCardListResponse.DataBean> datas;
     private Drawable arrow;
 
-    public SelectBankAdapter(Context context, ArrayList<GetPayBankQuotaList> datas) {
+    public SelectBankAdapter(Context context, ArrayList<PayCardListResponse.DataBean> datas) {
         this.context = context;
         this.datas = datas;
         arrow = ContextCompat.getDrawable(context, R.drawable.next_arrow_tip);
@@ -57,22 +58,23 @@ public class SelectBankAdapter extends BaseAdapter {
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         } else {
-            holder = (ViewHolder)convertView.getTag();
+            holder = (ViewHolder) convertView.getTag();
         }
-        GetPayBankQuotaList data = datas.get(position);
+        PayCardListResponse.DataBean data = datas.get(position);
         holder.tvItemBankCell.setText(data.getBankName());
-//        Resources resources = context.getResources();
-//        holder.tvItemBankLimit.setText(resources.getString(R.string.single_quota) + data.getSingleQuota() + "  " + resources.getString(R.string.day_quota) + data.getDayQuota() + "  " + resources.getString(R.string.mouth_quota) + data.getMouthQuota());
+        Glide.with(context).asBitmap().load(data.getICON()).into(holder.ivBankIcon);
 
         return convertView;
     }
 
-    public void setData(ArrayList<GetPayBankQuotaList> data) {
+    public void setData(ArrayList<PayCardListResponse.DataBean> data) {
         this.datas = data;
         notifyDataSetChanged();
     }
 
     static class ViewHolder {
+        @BindView(R.id.iv_bank_icon)
+        ImageView ivBankIcon;
         @BindView(R.id.tv_item_bank_cell)
         TextView tvItemBankCell;
         @BindView(R.id.tv_item_bank_limit)

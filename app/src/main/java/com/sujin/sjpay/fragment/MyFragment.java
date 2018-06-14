@@ -38,6 +38,7 @@ import com.sujin.sjpay.BuildConfig;
 import com.sujin.sjpay.R;
 import com.sujin.sjpay.activity.AboutUsActivity;
 import com.sujin.sjpay.activity.AuthenticateActivity;
+import com.sujin.sjpay.activity.BandCardActivity;
 import com.sujin.sjpay.activity.ChangePasswordActivity;
 import com.sujin.sjpay.activity.ChoseBankCardActivity;
 import com.sujin.sjpay.activity.FeeInfoActivity;
@@ -503,7 +504,9 @@ public class MyFragment extends BaseFragment {
                         if (isJump) {
                             if (isRealState == 0) {
                                 // 去认证
-                                Intent intent = new Intent(getActivity(), AuthenticateActivity.class);
+//                                Intent intent = new Intent(getActivity(), AuthenticateActivity.class);
+                                Intent intent = new Intent(getActivity(), BandCardActivity.class);
+
                                 startActivity(intent);
                             } else {
                                 Intent intent = new Intent(getActivity(), MyInfoActivity.class);

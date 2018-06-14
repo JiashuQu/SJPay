@@ -36,8 +36,8 @@ public class SelectPayBankActivity extends BaseActivity {
     @BindView(R.id.list_select_bank_belong)
     ListView listSelectBankBelong;
 
-    private ArrayList<GetPayBankQuotaList> data;
-    private SelectBankAdapter adapter;
+    private ArrayList<PayCardListResponse.DataBean> data;
+    private SelectPayBankListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class SelectPayBankActivity extends BaseActivity {
         ButterKnife.bind(this);
         request();
         data = new ArrayList<>();
-        adapter = new SelectBankAdapter(this, data);
+        adapter = new SelectPayBankListAdapter(this, data);
         listSelectBankBelong.setAdapter(adapter);
         initView();
     }
@@ -70,8 +70,11 @@ public class SelectPayBankActivity extends BaseActivity {
     }
 
     private void request() {
-        Request<String> request = NoHttp.createStringRequest(ApiConstants.getUserBankList, RequestMethod.GET);
-        String md5 = StringUtil.MD5(ApiConstants.GetBankList, "", ApiConstants.API_USERS);
+        Request<String> request = NoHttp.createStringRequest(ApiConstants.getBankList, RequestMethod.GET);
+        char[] chars = ("TypeId=" + 0).toCharArray();
+        String s = StringUtil.sort(chars);
+        String md5 = StringUtil.MD5(ApiConstants.GetBankList, s, ApiConstants.API_USERS);
+        request.add("TypeId", 0);
         com.lidroid.xutils.util.LogUtils.d(md5);
         request(0, request, httpListener, md5, true, true);
     }
@@ -83,18 +86,18 @@ public class SelectPayBankActivity extends BaseActivity {
             switch (what) {
                 case 0:
                     String registerJson = response.get();
-                    GetPayBankQuotaListResponse getPayBankQuotaListResponse = getGson().fromJson(registerJson, GetPayBankQuotaListResponse.class);
-                    LogUtils.d("SJHttp", getPayBankQuotaListResponse.getBackStatus());
-                    if (TextUtils.equals(getPayBankQuotaListResponse.getBackStatus(), "0")) {
-                        ArrayList<GetPayBankQuotaList> data = getPayBankQuotaListResponse.getData();
+                    PayCardListResponse payCardListResponse = getGson().fromJson(registerJson, PayCardListResponse.class);
+                    LogUtils.d("SJHttp", payCardListResponse.getBackStatus()+"");
+                    if (TextUtils.equals(payCardListResponse.getBackStatus()+"", "0")) {
+                        List<PayCardListResponse.DataBean> data = payCardListResponse.getData();
                         if (data != null || data.size() == 0) {
                             adapter.setData(data);
                             listSelectBankBelong.setSelection(0);
                         } else {
-                            ToastUtil.show("暂可用银行卡");
+                            ToastUtil.show("暂无数据");
                         }
                     } else {
-                        ToastUtil.show(getPayBankQuotaListResponse.getMessage());
+                        ToastUtil.show(payCardListResponse.getMessage());
                     }
                     break;
             }

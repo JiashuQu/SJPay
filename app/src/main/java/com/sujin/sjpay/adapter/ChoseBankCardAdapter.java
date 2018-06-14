@@ -52,18 +52,18 @@ public class ChoseBankCardAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        SelectBankAdapter.ViewHolder holder = null;
+        ViewHolder holder = null;
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.item_bank_cell, null, false);
-            holder = new SelectBankAdapter.ViewHolder(convertView);
+            holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         } else {
-            holder = (SelectBankAdapter.ViewHolder) convertView.getTag();
+            holder = (ViewHolder) convertView.getTag();
         }
         GetHistoryPayBankCardListResponse.DataBean.ListBean data = datas.get(position);
         holder.tvItemBankCell.setText(data.getBankName());
         holder.tvItemBankLimit.setText(data.getBankCard());
-//        Glide.with(context).asBitmap().load(data.getBankCard()).into(holder.ivBankIcon);
+        Glide.with(context).asBitmap().load(data.getICON()).into(holder.ivBankIcon);
 
         return convertView;
     }

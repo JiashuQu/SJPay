@@ -335,17 +335,6 @@ public class InviteActivity extends BaseActivity {
         public void onViewClicked(View view) {
             switch (view.getId()) {
                 case R.id.tv_invite_detail_btn:
-//                List<InviteListResponse.DataBean.ListBean> data1 = new ArrayList<>();
-//                data1.add(new InviteListResponse.DataBean.ListBean("1","111"));
-//                data1.add(new InviteListResponse.DataBean.ListBean("2","222"));
-//                data1.add(new InviteListResponse.DataBean.ListBean("3","333"));
-//                WheelViewDialog dialog = new WheelViewDialog(this, data1);
-//                dialog.setListener(new BaseDialog.DialogListener() {
-//                    @Override
-//                    public void onClickType(int type, KeyValue bean) {
-//
-//                    }
-//                });
                     String inviteDetail = StringUtil.EMPTY;
                     for (int i = 0; i < complex.size(); i++) {
                         inviteDetail = inviteDetail + complex.get(i).getLine() + "\n\n";
