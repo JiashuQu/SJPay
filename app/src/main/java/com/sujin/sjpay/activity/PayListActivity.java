@@ -141,13 +141,13 @@ public class PayListActivity extends BaseActivity {
                     String registerJson = response.get();
                     PayListResponse payListResponse = getGson().fromJson(registerJson, PayListResponse.class);
                     if (payListResponse.getBackStatus() == 0) {
+                        List<PayListResponse.DataBean.ListBean> list = payListResponse.getData().getList();
                         if (page == 1) {
                             data.clear();
                             hasMoreData = false;
                         }
                         page++;
                         pages = payListResponse.getData().getPageCount();
-                        List<PayListResponse.DataBean.ListBean> list = payListResponse.getData().getList();
                         if (list != null && list.size() != 0) {
                             tvNoList.setVisibility(View.GONE);
                             srlPayList.setVisibility(View.VISIBLE);
@@ -156,7 +156,7 @@ public class PayListActivity extends BaseActivity {
                             }
                             adapter.setData(data);
                             adapter.notifyDataSetChanged();
-                        } else {
+                        } else if(data.size() == 0){
                             tvNoList.setVisibility(View.VISIBLE);
                             srlPayList.setVisibility(View.GONE);
                         }

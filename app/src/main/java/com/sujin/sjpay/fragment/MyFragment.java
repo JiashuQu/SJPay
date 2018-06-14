@@ -504,9 +504,8 @@ public class MyFragment extends BaseFragment {
                         if (isJump) {
                             if (isRealState == 0) {
                                 // 去认证
-//                                Intent intent = new Intent(getActivity(), AuthenticateActivity.class);
-                                Intent intent = new Intent(getActivity(), BandCardActivity.class);
-
+                                Intent intent = new Intent(getActivity(), AuthenticateActivity.class);
+//                                Intent intent = new Intent(getActivity(), BandCardActivity.class);
                                 startActivity(intent);
                             } else {
                                 Intent intent = new Intent(getActivity(), MyInfoActivity.class);

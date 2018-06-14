@@ -76,6 +76,7 @@ public class QuickAgreementActivity extends BaseActivity implements SJApplicatio
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_get_sms_code:
+                tvGetSmsCode.setClickable(false);
                 getBankCardActivate(userId, bankCell.getID());
                 break;
             case R.id.tv_next:
