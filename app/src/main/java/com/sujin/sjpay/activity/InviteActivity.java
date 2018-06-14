@@ -28,6 +28,7 @@ import com.sujin.sjpay.util.DialogUtil;
 import com.sujin.sjpay.util.StringUtil;
 import com.sujin.sjpay.util.ToastUtil;
 import com.sujin.sjpay.view.MyListView;
+import com.sujin.sjpay.view.MyScrollView;
 import com.sujin.sjpay.view.TitleBarView;
 import com.sujin.sjpay.view.dialog.InviteDetailDialog;
 import com.umeng.socialize.ShareAction;
@@ -313,6 +314,8 @@ public class InviteActivity extends BaseActivity {
     };
 
     public class ViewHolder1 {
+        @BindView(R.id.sv)
+        MyScrollView sv;
         @BindView(R.id.tv_invite_rule_one)
         TextView tvInviteRuleOne;
         @BindView(R.id.tv_invite_rule_two)

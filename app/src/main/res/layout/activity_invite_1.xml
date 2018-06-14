@@ -6,9 +6,11 @@ android:layout_height="match_parent"
 android:gravity="center_horizontal"
 android:orientation="vertical">
 
-    <ScrollView
+    <com.sujin.sjpay.view.MyScrollView
+        android:id="@+id/sv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fillViewport="true"
         android:scrollbars="none">
 
         <LinearLayout
@@ -116,6 +118,6 @@ android:orientation="vertical">
 
         </LinearLayout>
 
-    </ScrollView>
+    </com.sujin.sjpay.view.MyScrollView>
 
 </LinearLayout>
