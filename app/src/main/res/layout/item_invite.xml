@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_vertical">
+    android:gravity="center_vertical"
+
+    android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/ll_item"
         style="@style/base_linear_mmh"
-
+        android:layout_marginLeft="@dimen/_15dp"
+        android:layout_marginRight="@dimen/_15dp"
         android:gravity="center_vertical">
+
 
         <LinearLayout
             style="@style/base_linear_wwv"
@@ -17,40 +22,43 @@
             <TextView
                 android:id="@+id/tv_invite_name"
                 style="@style/tv_black_262626"
-                android:textSize="@dimen/_15dp"
                 android:layout_marginLeft="@dimen/margin"
                 android:text="名字"
-                android:textColor="@color/black_333333" />
+                android:textColor="@color/black_333333"
+                android:textSize="@dimen/_15dp" />
 
             <TextView
                 android:id="@+id/tv_invite_data"
                 style="@style/tv_black_262626"
-                android:textSize="12dp"
-                android:layout_marginTop="@dimen/_5dp"
                 android:layout_marginLeft="@dimen/margin"
+                android:layout_marginTop="@dimen/_5dp"
+                android:text="2018-12-12"
                 android:textColor="@color/gray_999999"
-                android:text="2018-12-12"/>
+                android:textSize="12dp" />
 
         </LinearLayout>
 
         <View
             android:layout_width="@dimen/_0dp"
             android:layout_height="@dimen/_1dp"
-            android:layout_weight="1.0"/>
+            android:layout_weight="1.0" />
 
         <TextView
             android:id="@+id/tv_invite_status"
             style="@style/tv_black_262626"
-            android:textSize="16dp"
             android:layout_marginRight="@dimen/margin"
+            android:text="未认证"
             android:textColor="@color/gray_999999"
-            android:text="未认证"/>
+            android:textSize="16dp" />
 
     </LinearLayout>
 
     <View
+        android:id="@+id/v"
+        android:layout_marginLeft="@dimen/_15dp"
+        android:layout_marginRight="@dimen/_15dp"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_1dp"
-        android:background="@color/gray_EEEEEE"/>
+        android:background="@color/gray_EEEEEE" />
 
 </LinearLayout>

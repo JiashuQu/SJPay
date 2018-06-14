@@ -131,6 +131,8 @@ public class InviteActivity extends BaseActivity {
         holder2.lvInvite.setOverScrollMode(View.OVER_SCROLL_NEVER);
         holder2.lvInvite.setSelector(R.color.transparent);
         holder2.lvInvite.setAdapter(adapter);
+        View head = View.inflate(this,R.layout.activity_invite_2_top,null);
+        holder2.lvInvite.addHeaderView(head);
     }
 
     private void initVVP() {

@@ -30,7 +30,7 @@ public class MyScrollView extends ScrollView{
                 break;
             case MotionEvent.ACTION_MOVE:
                 newY = ev.getY();
-                if(newY<oldY &&  getMeasuredHeight() <= getScrollY()){
+                if(newY<oldY &&  getChildAt(0).getMeasuredHeight() <= getScrollY() + getHeight()){
                     return true;
                 }
 

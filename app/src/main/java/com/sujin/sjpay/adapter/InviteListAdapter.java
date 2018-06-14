@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.sujin.sjpay.R;
@@ -68,6 +69,24 @@ public class InviteListAdapter extends BaseAdapter {
             holder.tvInviteStatus.setTextColor(0xFF00BA76);
             holder.tvInviteStatus.setText(isRealStateTxt);
         }
+
+
+
+        if(data.size()==1){
+            holder.ll_item.setBackgroundResource(R.drawable.bg_coner_5_stroke);
+        }else{
+            if(position==0){
+                holder.ll_item.setBackgroundResource(R.drawable.bg_coner_5_stroke_top);
+            }else if(position==data.size()-1){
+                holder.ll_item.setBackgroundResource(R.drawable.bg_coner_5_stroke_bottom);
+            }else {
+                holder.ll_item.setBackgroundResource(R.color.white);
+            }
+        }
+
+        holder.v.setVisibility(position==data.size()-1?View.GONE:View.VISIBLE);
+
+
         return convertView;
     }
 
@@ -83,6 +102,10 @@ public class InviteListAdapter extends BaseAdapter {
         TextView tvInviteData;
         @BindView(R.id.tv_invite_status)
         TextView tvInviteStatus;
+        @BindView(R.id.ll_item)
+        LinearLayout ll_item;
+        @BindView(R.id.v)
+        View v;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
