@@ -115,7 +115,8 @@ public class PayListActivity extends BaseActivity {
                 state = bean.key;
                 page = 1;
                 noMoreData = false;
-                getPayList(SJApplication.getInstance().getUserId(), page, false);
+                srlPayList.setNoMoreData(noMoreData);
+                getPayList(SJApplication.getInstance().getUserId(), page, true);
             }
         });
     }
@@ -168,8 +169,10 @@ public class PayListActivity extends BaseActivity {
                     if (page > pages) {
                         noMoreData = true;
                     }
-                    srlPayList.finishRefresh(1000, true);
+                        srlPayList.finishRefresh(1000, true);
+
                     srlPayList.finishLoadMore(1000, true, noMoreData);
+
                     break;
             }
 
