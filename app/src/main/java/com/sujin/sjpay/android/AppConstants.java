@@ -10,7 +10,7 @@ import com.sujin.sjpay.fragment.PayFragment;
 
 public class AppConstants {
     // log开关
-    public static final boolean DEBUG = true;  // false true
+    public static final boolean DEBUG = false;  // false true
 
     public static final String LOG_TAG_HTTP = "SJHttp";
 
