@@ -6,6 +6,7 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -234,6 +235,7 @@ public class InviteActivity extends BaseActivity {
                         List<InviteListResponse.DataBean.ListBean> list = inviteListResponse.getData().getList();
                         if (list != null && list.size() != 0) {
                             holder2.tvNoList.setVisibility(View.GONE);
+                            holder2.llTop.setVisibility(View.GONE);
                             holder2.srlMyInvite.setVisibility(View.VISIBLE);
                             for (int i = 0; i < list.size(); i++) {
                                 data.add(list.get(i));
@@ -242,6 +244,7 @@ public class InviteActivity extends BaseActivity {
                             adapter.notifyDataSetChanged();
                         } else if(list.size() == 0){
                             holder2.tvNoList.setVisibility(View.VISIBLE);
+                            holder2.llTop.setVisibility(View.VISIBLE);
                             holder2.srlMyInvite.setVisibility(View.GONE);
                         }
                     } else {
@@ -363,6 +366,8 @@ public class InviteActivity extends BaseActivity {
         MyListView lvInvite;
         @BindView(R.id.tv_no_list)
         TextView tvNoList;
+        @BindView(R.id.ll_top)
+        LinearLayout llTop;
         @BindView(R.id.srl_my_invite)
         SmartRefreshLayout srlMyInvite;
 
