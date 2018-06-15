@@ -302,6 +302,7 @@ public class PayFragment extends BaseFragment {
      * @param userId
      */
     private void getBankCardActivate(String userId, int bankID) {
+        DialogUtil.showLoading(getActivity(), true);
         Request<String> request = NoHttp.createStringRequest(ApiConstants.getBankCardActivate, RequestMethod.GET);
         char[] chars = ("UserId=" + userId + "&BankID=" + bankID + "&ChannelType=" + channelType).toCharArray();
         String s = StringUtil.sort(chars);
@@ -441,7 +442,7 @@ public class PayFragment extends BaseFragment {
             String json = response.get();
             DialogUtil.dismissLoading();
             click = true;
-            LogUtils.d("SJHttp", json);
+            LogUtils.d("SJHttp", getResources().getString(R.string.net_error));
         }
     };
 

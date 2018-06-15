@@ -190,7 +190,7 @@ public class LoginActivity extends BaseActivity {
         public void onFailed(int what, Response<String> response) {
             String json = response.get();
 
-            LogUtils.d("SJHttp", json);
+            LogUtils.d("SJHttp", getResources().getString(R.string.net_error));
         }
     };
 }

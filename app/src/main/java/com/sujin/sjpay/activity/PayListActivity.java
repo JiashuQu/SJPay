@@ -101,6 +101,7 @@ public class PayListActivity extends BaseActivity {
 
     private void initDialog() {
         List<KeyValue> kvs = new ArrayList<>();
+        kvs.add(new KeyValue("-200", "全部"));
         kvs.add(new KeyValue("0", "未支付"));
         kvs.add(new KeyValue("-1", "支付失败"));
         kvs.add(new KeyValue("1", "支付发起中"));
@@ -113,6 +114,7 @@ public class PayListActivity extends BaseActivity {
 
                 state = bean.key;
                 page = 1;
+                noMoreData = false;
                 getPayList(SJApplication.getInstance().getUserId(), page, false);
             }
         });
@@ -131,7 +133,7 @@ public class PayListActivity extends BaseActivity {
         request(0, request, httpListener, md5, true, isLoading);
     }
 
-    private boolean hasMoreData = false;
+    private boolean noMoreData = false;
     private HttpListener<String> httpListener = new HttpListener<String>() {
 
         @Override
@@ -143,7 +145,7 @@ public class PayListActivity extends BaseActivity {
                     if (payListResponse.getBackStatus() == 0) {
                         if (page == 1) {
                             data.clear();
-                            hasMoreData = false;
+                            noMoreData = false;
                         }
                         page++;
                         pages = payListResponse.getData().getPageCount();
@@ -164,10 +166,10 @@ public class PayListActivity extends BaseActivity {
                         ToastUtil.show(payListResponse.getMessage());
                     }
                     if (page > pages) {
-                        hasMoreData = true;
+                        noMoreData = true;
                     }
                     srlPayList.finishRefresh(1000, true);
-                    srlPayList.finishLoadMore(1000, true, hasMoreData);
+                    srlPayList.finishLoadMore(1000, true, noMoreData);
                     break;
             }
 
@@ -177,8 +179,8 @@ public class PayListActivity extends BaseActivity {
         public void onFailed(int what, Response<String> response) {
             String json = response.get();
             srlPayList.finishRefresh(1000, true);
-            srlPayList.finishLoadMore(1000, true, hasMoreData);
-            LogUtils.d("SJHttp", json);
+            srlPayList.finishLoadMore(1000, true, noMoreData);
+            LogUtils.d("SJHttp", getResources().getString(R.string.net_error));
         }
     };
 }

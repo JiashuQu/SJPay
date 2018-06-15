@@ -554,7 +554,7 @@ public class MyFragment extends BaseFragment {
             String json = response.get();
             srlMy.finishRefresh(2000, false);
             DialogUtil.dismissLoading();
-            LogUtils.d("SJHttp", json);
+            LogUtils.d("SJHttp", getResources().getString(R.string.net_error));
         }
     };
 

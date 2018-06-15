@@ -275,7 +275,7 @@ public class InviteActivity extends BaseActivity {
 //            srlMyInvite.finishRefresh(1000, true);
 //            srlMyInvite.finishLoadMore(1000, true, hasMoreData);
             DialogUtil.dismissLoading();
-            LogUtils.d("SJHttp", json);
+            LogUtils.d("SJHttp", getResources().getString(R.string.net_error));
         }
     };
 

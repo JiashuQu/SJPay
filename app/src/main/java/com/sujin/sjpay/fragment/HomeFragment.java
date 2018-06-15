@@ -199,7 +199,7 @@ public class HomeFragment extends BaseFragment implements OnBannerListener {
         public void onFailed(int what, Response<String> response) {
             String json = response.get();
             DialogUtil.dismissLoading();
-            LogUtils.d("SJHttp", json);
+            LogUtils.d("SJHttp", getResources().getString(R.string.net_error));
         }
     };
 

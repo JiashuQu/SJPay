@@ -204,7 +204,7 @@ public class QuickAgreementActivity extends BaseActivity implements SJApplicatio
             String json = response.get();
             tvNext.setEnabled(true);
             tvGetSmsCode.setEnabled(true);
-            LogUtils.d("SJHttp", json);
+            LogUtils.d("SJHttp", getResources().getString(R.string.net_error));
         }
     };
 

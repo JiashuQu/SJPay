@@ -109,7 +109,7 @@ public class OpenActivity extends BaseActivity {
             prepareTask.execute();
             String json = response.get();
 
-            LogUtils.d("SJHttp", json + "");
+            LogUtils.d("SJHttp", getResources().getString(R.string.net_error));
         }
     };
 
