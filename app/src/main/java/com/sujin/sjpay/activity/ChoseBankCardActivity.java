@@ -120,7 +120,7 @@ public class ChoseBankCardActivity extends BaseActivity {
                             listSelectBankBelong.setVisibility(View.VISIBLE);
                             adapter.setData(list);
                             listSelectBankBelong.setSelection(0);
-                        } else {
+                        } else  if(list.size() == 0){
                             tvNoList.setVisibility(View.VISIBLE);
                             listSelectBankBelong.setVisibility(View.GONE);
                         }

@@ -164,7 +164,7 @@ public class InviteIncomeActivity extends BaseActivity {
                             }
                             adapter.setData(InviteIncomeActivity.this.data);
                             adapter.notifyDataSetChanged();
-                        } else {
+                        } else  if(incomeList.size() == 0){
                             tvNoList.setVisibility(View.VISIBLE);
                             listMyInviteIncome.setVisibility(View.GONE);
                         }

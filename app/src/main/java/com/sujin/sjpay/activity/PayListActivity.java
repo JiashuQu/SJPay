@@ -156,7 +156,7 @@ public class PayListActivity extends BaseActivity {
                             }
                             adapter.setData(data);
                             adapter.notifyDataSetChanged();
-                        } else {
+                        } else  if(list.size() == 0){
                             tvNoList.setVisibility(View.VISIBLE);
                             srlPayList.setVisibility(View.GONE);
                         }

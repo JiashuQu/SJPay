@@ -102,10 +102,6 @@ android:orientation="vertical">
                     android:layout_height="75dp"
                     android:background="@drawable/btn_invite"/>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1.0"/>
 
                 <TextView
                     android:layout_width="wrap_content"

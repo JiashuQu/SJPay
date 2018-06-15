@@ -240,8 +240,7 @@ public class InviteActivity extends BaseActivity {
                             }
                             adapter.setData(data);
                             adapter.notifyDataSetChanged();
-//                            listPayList.setSelection(0);
-                        } else {
+                        } else if(list.size() == 0){
                             holder2.tvNoList.setVisibility(View.VISIBLE);
                             holder2.srlMyInvite.setVisibility(View.GONE);
                         }
