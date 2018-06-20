@@ -120,7 +120,7 @@ public class ChoseBankCardActivity extends BaseActivity {
                             listSelectBankBelong.setVisibility(View.VISIBLE);
                             adapter.setData(list);
                             listSelectBankBelong.setSelection(0);
-                        } else {
+                        } else  if(list.size() == 0){
                             tvNoList.setVisibility(View.VISIBLE);
                             listSelectBankBelong.setVisibility(View.GONE);
                         }
@@ -135,7 +135,7 @@ public class ChoseBankCardActivity extends BaseActivity {
         @Override
         public void onFailed(int what, Response<String> response) {
             String json = response.get();
-            LogUtils.d("SJHttp", json);
+            LogUtils.d("SJHttp", getResources().getString(R.string.net_error));
         }
     };
 

@@ -161,7 +161,7 @@ public class MyAccountActivity extends BaseActivity {
                             }
                             adapter.setData(data);
                             adapter.notifyDataSetChanged();
-                        } else {
+                        } else  if(list.size() == 0){
                             tvNoList.setVisibility(View.VISIBLE);
                             listMyAccountList.setVisibility(View.GONE);
                         }
@@ -183,7 +183,7 @@ public class MyAccountActivity extends BaseActivity {
             String json = response.get();
             srlAccountList.finishRefresh(1000, true);
             srlAccountList.finishLoadMore(1000, true, hasMoreData);
-            LogUtils.d("SJHttp", json);
+            LogUtils.d("SJHttp", getResources().getString(R.string.net_error));
         }
     };
 

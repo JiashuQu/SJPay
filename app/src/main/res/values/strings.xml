@@ -119,6 +119,7 @@
     <string name="contact">联系我们</string>
     <string name="quota">额度</string>
     <string name="money_list">资金记录</string>
+    <string name="net_error">网络错误</string>
 
     <!-- Download status -->
     <string name="download_progress">已下载：%1$d&#037;&#037;，速度：%2$skb&#047;s</string>

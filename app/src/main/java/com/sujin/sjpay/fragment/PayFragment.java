@@ -302,6 +302,7 @@ public class PayFragment extends BaseFragment {
      * @param userId
      */
     private void getBankCardActivate(String userId, int bankID) {
+        DialogUtil.showLoading(getActivity(), true);
         Request<String> request = NoHttp.createStringRequest(ApiConstants.getBankCardActivate, RequestMethod.GET);
         char[] chars = ("UserId=" + userId + "&BankID=" + bankID + "&ChannelType=" + channelType).toCharArray();
         String s = StringUtil.sort(chars);
@@ -344,6 +345,7 @@ public class PayFragment extends BaseFragment {
 
                     break;
                 case 2:
+                    DialogUtil.dismissLoading();
                     String receiveApiJson = response.get();
                     ReceiveApiResponse receiveApiResponse = getGson().fromJson(receiveApiJson, ReceiveApiResponse.class);
                     LogUtils.d("SJHttp", receiveApiResponse.getBackStatus());
@@ -360,7 +362,7 @@ public class PayFragment extends BaseFragment {
                         bankID = data.getBankID();
                         channelType = data.getChannelType();
                         getBankCardActivate(userId, bankID);
-                        DialogUtil.dismissLoading();
+
                         etPayMoney.setText("");
                         etBankCardNumber.setText("");
                     } else if (TextUtils.equals(receiveApiResponse.getBackStatus(), "-8401")) {//通道无额度
@@ -369,7 +371,6 @@ public class PayFragment extends BaseFragment {
                         ToastUtil.show(receiveApiResponse.getMessage());
                     }
                     click = true;
-                    DialogUtil.dismissLoading();
                     break;
                 case 3:
                     String payTypeJson = response.get();
@@ -412,9 +413,12 @@ public class PayFragment extends BaseFragment {
                     }
                     break;
                 case 4:
+
+                    DialogUtil.dismissLoading();
                     String bankCardActivateJson = response.get();
                     RegisterResponse registerResponse = getGson().fromJson(bankCardActivateJson, RegisterResponse.class);
                     LogUtils.d("SJHttp", registerResponse.getBackStatus() + "");
+
                     if (registerResponse.getBackStatus().equals("0")) {
                         ToastUtil.show("短信已发送");
                         Intent intent = new Intent(getActivity(), QuickAgreementActivity.class);
@@ -426,6 +430,8 @@ public class PayFragment extends BaseFragment {
                     } else {
                         ToastUtil.show(registerResponse.getMessage());
                     }
+
+
                     break;
             }
 
@@ -436,7 +442,7 @@ public class PayFragment extends BaseFragment {
             String json = response.get();
             DialogUtil.dismissLoading();
             click = true;
-            LogUtils.d("SJHttp", json);
+            LogUtils.d("SJHttp", getResources().getString(R.string.net_error));
         }
     };
 

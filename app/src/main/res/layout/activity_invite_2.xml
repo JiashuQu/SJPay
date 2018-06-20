@@ -30,6 +30,9 @@
 
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
+    <include layout="@layout/activity_invite_2_top"
+        android:id="@+id/ll_top"/>
+
     <TextView
         android:id="@+id/tv_no_list"
         android:layout_width="match_parent"

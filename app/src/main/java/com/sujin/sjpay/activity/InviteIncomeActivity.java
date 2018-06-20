@@ -162,9 +162,9 @@ public class InviteIncomeActivity extends BaseActivity {
                             for (int i = 0; i < incomeList.size(); i++) {
                                 data.add(incomeList.get(i));
                             }
-                            adapter.setData(data);
+                            adapter.setData(InviteIncomeActivity.this.data);
                             adapter.notifyDataSetChanged();
-                        } else if(data.size() == 0){
+                        } else  if(incomeList.size() == 0){
                             tvNoList.setVisibility(View.VISIBLE);
                             listMyInviteIncome.setVisibility(View.GONE);
                         }
@@ -184,7 +184,7 @@ public class InviteIncomeActivity extends BaseActivity {
         @Override
         public void onFailed(int what, Response<String> response) {
             String json = response.get();
-            LogUtils.d("SJHttp", json);
+            LogUtils.d("SJHttp", getResources().getString(R.string.net_error));
         }
     };
 

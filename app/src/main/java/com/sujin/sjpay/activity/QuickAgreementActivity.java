@@ -76,7 +76,7 @@ public class QuickAgreementActivity extends BaseActivity implements SJApplicatio
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_get_sms_code:
-                tvGetSmsCode.setClickable(false);
+                tvGetSmsCode.setEnabled(false);
                 getBankCardActivate(userId, bankCell.getID());
                 break;
             case R.id.tv_next:
@@ -160,6 +160,7 @@ public class QuickAgreementActivity extends BaseActivity implements SJApplicatio
                         SJApplication.getInstance().startCountDown();
                     } else {
                         ToastUtil.show(registerResponse.getMessage());
+                        tvGetSmsCode.setEnabled(true);
                     }
                     break;
                 case 1:
@@ -202,7 +203,8 @@ public class QuickAgreementActivity extends BaseActivity implements SJApplicatio
         public void onFailed(int what, Response<String> response) {
             String json = response.get();
             tvNext.setEnabled(true);
-            LogUtils.d("SJHttp", json);
+            tvGetSmsCode.setEnabled(true);
+            LogUtils.d("SJHttp", getResources().getString(R.string.net_error));
         }
     };
 

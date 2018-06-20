@@ -101,6 +101,7 @@ public class PayListActivity extends BaseActivity {
 
     private void initDialog() {
         List<KeyValue> kvs = new ArrayList<>();
+        kvs.add(new KeyValue("-200", "全部"));
         kvs.add(new KeyValue("0", "未支付"));
         kvs.add(new KeyValue("-1", "支付失败"));
         kvs.add(new KeyValue("1", "支付发起中"));
@@ -113,7 +114,9 @@ public class PayListActivity extends BaseActivity {
 
                 state = bean.key;
                 page = 1;
-                getPayList(SJApplication.getInstance().getUserId(), page, false);
+                noMoreData = false;
+                srlPayList.setNoMoreData(noMoreData);
+                getPayList(SJApplication.getInstance().getUserId(), page, true);
             }
         });
     }
@@ -131,7 +134,7 @@ public class PayListActivity extends BaseActivity {
         request(0, request, httpListener, md5, true, isLoading);
     }
 
-    private boolean hasMoreData = false;
+    private boolean noMoreData = false;
     private HttpListener<String> httpListener = new HttpListener<String>() {
 
         @Override
@@ -141,13 +144,13 @@ public class PayListActivity extends BaseActivity {
                     String registerJson = response.get();
                     PayListResponse payListResponse = getGson().fromJson(registerJson, PayListResponse.class);
                     if (payListResponse.getBackStatus() == 0) {
-                        List<PayListResponse.DataBean.ListBean> list = payListResponse.getData().getList();
                         if (page == 1) {
                             data.clear();
-                            hasMoreData = false;
+                            noMoreData = false;
                         }
                         page++;
                         pages = payListResponse.getData().getPageCount();
+                        List<PayListResponse.DataBean.ListBean> list = payListResponse.getData().getList();
                         if (list != null && list.size() != 0) {
                             tvNoList.setVisibility(View.GONE);
                             srlPayList.setVisibility(View.VISIBLE);
@@ -156,7 +159,7 @@ public class PayListActivity extends BaseActivity {
                             }
                             adapter.setData(data);
                             adapter.notifyDataSetChanged();
-                        } else if(data.size() == 0){
+                        } else  if(list.size() == 0){
                             tvNoList.setVisibility(View.VISIBLE);
                             srlPayList.setVisibility(View.GONE);
                         }
@@ -164,10 +167,12 @@ public class PayListActivity extends BaseActivity {
                         ToastUtil.show(payListResponse.getMessage());
                     }
                     if (page > pages) {
-                        hasMoreData = true;
+                        noMoreData = true;
                     }
-                    srlPayList.finishRefresh(1000, true);
-                    srlPayList.finishLoadMore(1000, true, hasMoreData);
+                        srlPayList.finishRefresh(1000, true);
+
+                    srlPayList.finishLoadMore(1000, true, noMoreData);
+
                     break;
             }
 
@@ -177,8 +182,8 @@ public class PayListActivity extends BaseActivity {
         public void onFailed(int what, Response<String> response) {
             String json = response.get();
             srlPayList.finishRefresh(1000, true);
-            srlPayList.finishLoadMore(1000, true, hasMoreData);
-            LogUtils.d("SJHttp", json);
+            srlPayList.finishLoadMore(1000, true, noMoreData);
+            LogUtils.d("SJHttp", getResources().getString(R.string.net_error));
         }
     };
 }

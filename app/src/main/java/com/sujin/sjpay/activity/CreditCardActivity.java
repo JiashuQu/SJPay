@@ -220,7 +220,7 @@ public class CreditCardActivity extends BaseActivity {
         public void onFailed(int what, Response<String> response) {
             tvConfirm.setEnabled(true);
             String json = response.get();
-            LogUtils.d("SJHttp", json);
+            LogUtils.d("SJHttp", getResources().getString(R.string.net_error));
         }
     };
 

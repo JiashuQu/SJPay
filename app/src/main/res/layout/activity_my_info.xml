@@ -11,7 +11,7 @@
     <com.sujin.sjpay.view.TitleBarView
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_height"
-        app:bar_title="@string/my_info" />
+        app:bar_title="基本信息" />
 
     <LinearLayout
         style="@style/base_linear_mwv"

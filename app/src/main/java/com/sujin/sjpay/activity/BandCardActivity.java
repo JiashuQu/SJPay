@@ -380,7 +380,7 @@ public class BandCardActivity extends BaseActivity {
             String json = response.get();
             tvConfirm.setEnabled(true);
             DialogUtil.dismissLoading();
-            LogUtils.d("SJHttp", json);
+            LogUtils.d("SJHttp", getResources().getString(R.string.net_error));
         }
     };
 
