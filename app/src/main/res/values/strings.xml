@@ -15,7 +15,7 @@
     <string name="hint_login_password">请输入密码</string>
     <string name="hint_login_error_tip">密码位数小于6位</string>
     <string name="hint_register_password">请设置您的密码</string>
-    <string name="hint_invite_code">填写邀请码(填写邀请人手机号)</string>
+    <string name="hint_invite_code">填写邀请人手机号（非必填）</string>
     <string name="forget_password">忘记密码？</string>
     <string name="quick_register">还没有账号？手机快速注册</string>
     <string name="login">登录</string>
