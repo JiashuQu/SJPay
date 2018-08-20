@@ -186,6 +186,7 @@ public class MyFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
+        isJump = false;
         getMyInfo(MyFragment.this.userId, false);
     }
 

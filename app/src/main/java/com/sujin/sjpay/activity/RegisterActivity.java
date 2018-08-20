@@ -217,7 +217,7 @@ public class RegisterActivity extends BaseActivity implements SJApplication.OnTi
                     password = editRegisterPassword.getText().toString();
                     if (editRegisterInviteCode.getText().toString().trim().length() == 0) {
 //                        ToastUtil.show("邀请码不能为空");
-                        baseUserId = "0";
+                        baseUserId = "";
 //                        return;
                     }else {
                         baseUserId = editRegisterInviteCode.getText().toString();
@@ -233,7 +233,10 @@ public class RegisterActivity extends BaseActivity implements SJApplication.OnTi
                                 ToastUtil.show("密码必须为6~16位字母，数字，部分符号");
                                 return;
                             }
-                            if (StringUtil.isLegalPhoneNum(baseUserId)) {
+                            if(TextUtils.isEmpty(baseUserId)){
+                                baseUserId = "0";
+                                register(phoneNum, password, registerSms, regGuid, baseUserId);
+                            }else if (StringUtil.isLegalPhoneNum(baseUserId)) {
                                 checkInvite(baseUserId);
                             }else{
                                 ToastUtil.show("邀请码不正确");
