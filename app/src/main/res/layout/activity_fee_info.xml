@@ -1,6 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:background="@color/gray_EFEFEF">
 
@@ -61,7 +62,7 @@
                 <TextView
                     android:id="@+id/tv_user_name"
                     style="@style/tv_my_top"
-                    android:text="帅又美"
+                    tools:text="帅又美"
                     android:layout_marginTop="@dimen/_5dp"
                     android:drawablePadding="@dimen/_10dp"/>
 
@@ -168,7 +169,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10dp"
-                    android:text="500-20000"
+                    tools:text="500-20000"
                     android:textSize="16dp"
                     android:textColor="@color/black_333333"/>
 
@@ -196,7 +197,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10dp"
-                    android:text="0.5%+2元/笔"
+                    tools:text="0.5%+2元/笔"
                     android:textSize="16dp"
                     android:textColor="@color/black_333333"/>
 
@@ -250,7 +251,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10dp"
-                    android:text="500-20000"
+                    tools:text="500-20000"
                     android:textSize="16dp"
                     android:textColor="@color/black_333333"/>
 
@@ -279,7 +280,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10dp"
-                    android:text="0.5%+2元/笔"
+                    tools:text="0.5%+2元/笔"
                     android:textSize="16dp"
                     android:textColor="@color/black_333333"/>
 

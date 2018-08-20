@@ -1,5 +1,6 @@
 package com.sujin.sjpay.fragment;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -31,6 +32,7 @@ public abstract class BaseFragment extends Fragment {
      */
     public boolean isVisible;
     public Gson gson;
+    private Activity mActivity;
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
@@ -42,8 +44,13 @@ public abstract class BaseFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.mActivity = (Activity)context;
+    }
 
-//    /**
+    //    /**
 //     * 创建add Fragment时不会调用，调用hide和show时会调用
 //     * @param hidden 是否隐藏
 //     */
@@ -137,8 +144,8 @@ public abstract class BaseFragment extends Fragment {
         request.setCancelSign(object);
         request.add("itormName", "itormandroid");
         request.add("sign", md5);
-        request.add("version", AppVersionUtil.getAppVersion(getActivity()));
-        mQueue.add(what, request, new HttpResponseListener<>(getActivity(), request, callback, canCancel, isLoading));
+        request.add("version", AppVersionUtil.getAppVersion(mActivity));
+        mQueue.add(what, request, new HttpResponseListener<>(mActivity, request, callback, canCancel, isLoading));
     }
 
     protected void cancelAll() {
