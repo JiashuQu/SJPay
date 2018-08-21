@@ -82,6 +82,7 @@ public class AuthenticateActivity extends BaseActivity {
     public static final File FILE_SDCARD = Environment.getExternalStorageDirectory();
     public static final File FILE_LOCAL = new File(FILE_SDCARD, "sj_id_card_" + PHOTO_STEP);
     public static final File FILE_PIC_SCREENSHOT = new File(FILE_LOCAL, "images/screenshots");
+    public static AuthenticateActivity instance = null;
 
     private AuthenticateDialog authenticateDialog;
     private boolean isCanUpload = false;
@@ -120,6 +121,7 @@ public class AuthenticateActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authenticate);
+        instance = this;
         ButterKnife.bind(this);
         userId = SJApplication.getInstance().getUserId();
     }

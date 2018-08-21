@@ -167,6 +167,11 @@ public class BandCardActivity extends BaseActivity {
                     ToastUtil.show("请您选择开户行");
                     return;
                 }
+                String handleAddress = tvHandleAddress.getText().toString().trim();
+                if (TextUtils.isEmpty(handleAddress) || TextUtils.equals("所属地区", handleAddress)) {
+                    ToastUtil.show("请您选择所属地区");
+                    return;
+                }
                 if (BankCardPhoto != 0) {
 //                    tvConfirm.setEnabled(false);
 //                    upLoad(imageFrontBitmap);
@@ -362,15 +367,16 @@ public class BandCardActivity extends BaseActivity {
                     String yeePayRegisterJson = response.get();
                     UploadImgResponse yeePayRegister = getGson().fromJson(yeePayRegisterJson, UploadImgResponse.class);
                     LogUtils.d("SJHttp", yeePayRegister.getBackStatus());
+                    tvConfirm.setEnabled(true);
+                    DialogUtil.dismissLoading();
                     if (TextUtils.equals(yeePayRegister.getBackStatus(), "0")) {
                         ToastUtil.show("实名认证成功");
 //                        startActivity(new Intent(BandCardActivity.this, MyInfoActivity.class));
+                        AuthenticateActivity.instance.finish();
                         finish();
                     } else {
                         ToastUtil.show(yeePayRegister.getMessage());
                     }
-                    tvConfirm.setEnabled(true);
-                    DialogUtil.dismissLoading();
                     break;
             }
         }

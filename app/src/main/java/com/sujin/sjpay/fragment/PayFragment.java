@@ -378,35 +378,50 @@ public class PayFragment extends BaseFragment {
                     LogUtils.d("SJHttp", payTypeResponse.getBackStatus() + "");
                     if (payTypeResponse.getBackStatus() == 0) {
                         List<PayTypeResponse.DataBean> payTypeData = payTypeResponse.getData();
-                        PayTypeResponse.DataBean dataBean = payTypeData.get(1);
-                        timeIntegral = dataBean.getTime();
-                        integralPayType = dataBean.getPayType();
-                        tvNoIntegralName.setText(dataBean.getPayName());
-                        tvIntegralQuota.setText("额度：" + dataBean.getQuota());
-                        tvIntegralFee.setText("费率：" + dataBean.getFee());
-                        tvIntegralClearing.setText("结算：" + dataBean.getWithDraw());
-                        tvIntegralTime.setText("时间：" + timeIntegral);
-                        tvIntegralTip.setText("提示：" + dataBean.getRemark());
-                        tvIntegralTip.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-                        tvIntegralTip.setSingleLine(true);
-                        tvIntegralTip.setSelected(true);
-                        tvIntegralTip.setFocusable(true);
-                        tvIntegralTip.setFocusableInTouchMode(true);
+                        if (payTypeData.size() == 0) {
+                            return;
+                        }else if (payTypeData.size() == 1) {
+                            PayTypeResponse.DataBean noIntegral = payTypeData.get(0);
+                            int payType = noIntegral.getPayType();
+                            if (payType == 0) {
+                                initNoIntegral(noIntegral);
+                                llIntegralAisle.setVisibility(View.GONE);
+                            }else {
+                                initIntegral(noIntegral);
+                                llNoIntegralAisle.setVisibility(View.GONE);
+                            }
+                        }else if(payTypeData.size() == 2){
+                            PayTypeResponse.DataBean dataBean = payTypeData.get(1);
+                            timeIntegral = dataBean.getTime();
+                            integralPayType = dataBean.getPayType();
+                            tvNoIntegralName.setText(dataBean.getPayName());
+                            tvIntegralQuota.setText("额度：" + dataBean.getQuota());
+                            tvIntegralFee.setText("费率：" + dataBean.getFee());
+                            tvIntegralClearing.setText("结算：" + dataBean.getWithDraw());
+                            tvIntegralTime.setText("时间：" + timeIntegral);
+                            tvIntegralTip.setText("提示：" + dataBean.getRemark());
+                            tvIntegralTip.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+                            tvIntegralTip.setSingleLine(true);
+                            tvIntegralTip.setSelected(true);
+                            tvIntegralTip.setFocusable(true);
+                            tvIntegralTip.setFocusableInTouchMode(true);
 
-                        PayTypeResponse.DataBean noIntegral = payTypeData.get(0);
-                        timeNoIntegral = noIntegral.getTime();
-                        noIntegralPayType = noIntegral.getPayType();
-                        tvIntegralName.setText(noIntegral.getPayName());
-                        tvNoIntegralQuota.setText("额度：" + noIntegral.getQuota());
-                        tvNoIntegralFee.setText("费率：" + noIntegral.getFee());
-                        tvNoIntegralClearing.setText("结算：" + noIntegral.getWithDraw());
-                        tvNoIntegralTime.setText("时间：" + timeNoIntegral);
-                        tvNoIntegralTip.setText("提示：" + noIntegral.getRemark());
-                        tvNoIntegralTip.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-                        tvNoIntegralTip.setSingleLine(true);
-                        tvNoIntegralTip.setSelected(true);
-                        tvNoIntegralTip.setFocusable(true);
-                        tvNoIntegralTip.setFocusableInTouchMode(true);
+                            PayTypeResponse.DataBean noIntegral = payTypeData.get(0);
+                            timeNoIntegral = noIntegral.getTime();
+                            noIntegralPayType = noIntegral.getPayType();
+                            tvIntegralName.setText(noIntegral.getPayName());
+                            tvNoIntegralQuota.setText("额度：" + noIntegral.getQuota());
+                            tvNoIntegralFee.setText("费率：" + noIntegral.getFee());
+                            tvNoIntegralClearing.setText("结算：" + noIntegral.getWithDraw());
+                            tvNoIntegralTime.setText("时间：" + timeNoIntegral);
+                            tvNoIntegralTip.setText("提示：" + noIntegral.getRemark());
+                            tvNoIntegralTip.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+                            tvNoIntegralTip.setSingleLine(true);
+                            tvNoIntegralTip.setSelected(true);
+                            tvNoIntegralTip.setFocusable(true);
+                            tvNoIntegralTip.setFocusableInTouchMode(true);
+                        }
+
 
                     } else {
                         ToastUtil.show(payTypeResponse.getMessage());
@@ -435,6 +450,40 @@ public class PayFragment extends BaseFragment {
                     break;
             }
 
+        }
+
+        //无积分
+        private void initIntegral(PayTypeResponse.DataBean dataBean) {
+            timeIntegral = dataBean.getTime();
+            integralPayType = dataBean.getPayType();
+            tvNoIntegralName.setText(dataBean.getPayName());
+            tvIntegralQuota.setText("额度：" + dataBean.getQuota());
+            tvIntegralFee.setText("费率：" + dataBean.getFee());
+            tvIntegralClearing.setText("结算：" + dataBean.getWithDraw());
+            tvIntegralTime.setText("时间：" + timeIntegral);
+            tvIntegralTip.setText("提示：" + dataBean.getRemark());
+            tvIntegralTip.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+            tvIntegralTip.setSingleLine(true);
+            tvIntegralTip.setSelected(true);
+            tvIntegralTip.setFocusable(true);
+            tvIntegralTip.setFocusableInTouchMode(true);
+        }
+
+        //积分
+        private void initNoIntegral(PayTypeResponse.DataBean noIntegral) {
+            timeNoIntegral = noIntegral.getTime();
+            noIntegralPayType = noIntegral.getPayType();
+            tvIntegralName.setText(noIntegral.getPayName());
+            tvNoIntegralQuota.setText("额度：" + noIntegral.getQuota());
+            tvNoIntegralFee.setText("费率：" + noIntegral.getFee());
+            tvNoIntegralClearing.setText("结算：" + noIntegral.getWithDraw());
+            tvNoIntegralTime.setText("时间：" + timeNoIntegral);
+            tvNoIntegralTip.setText("提示：" + noIntegral.getRemark());
+            tvNoIntegralTip.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+            tvNoIntegralTip.setSingleLine(true);
+            tvNoIntegralTip.setSelected(true);
+            tvNoIntegralTip.setFocusable(true);
+            tvNoIntegralTip.setFocusableInTouchMode(true);
         }
 
         @Override

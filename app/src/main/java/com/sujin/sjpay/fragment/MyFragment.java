@@ -522,6 +522,7 @@ public class MyFragment extends BaseFragment {
                         SharedPreferences.Editor spUserInfo = getActivity().getSharedPreferences(AppConstants.SP_NAME_USER_INFO, MODE_PRIVATE).edit();
                         spUserInfo.putInt(AppConstants.SP_DATA_IS_REAL_STATE, isRealState);
                         spUserInfo.commit();
+                        initView(data);
                     } else {
                         ToastUtil.show(myInfoResponse.getMessage());
                     }

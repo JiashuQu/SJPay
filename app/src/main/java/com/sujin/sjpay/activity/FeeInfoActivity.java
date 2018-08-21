@@ -263,6 +263,10 @@ public class FeeInfoActivity extends BaseActivity {
             tvIntegralFee.setText(integral.getFee());
             tvNoIntegralQuota.setText(noIntegral.getQuota());
             tvIntegralQuota.setText(integral.getQuota());
+        }else {
+            VipTypeIntroduceResponse.DataBean noIntegral = feeList.get(0);
+            tvIntegralFee.setText(noIntegral.getFee());
+            tvIntegralQuota.setText(noIntegral.getQuota());
         }
         switch (selectBtn) {
             case 4:
